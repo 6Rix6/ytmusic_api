@@ -31,3 +31,11 @@ flutter:
   assets:
     - .env
 
+index_generator:
+  exclude:
+    - "**.g.dart"
+    - "**.freezed.dart"
+  libraries:
+    - directory_path: lib
+      include:
+        - "src/**"
