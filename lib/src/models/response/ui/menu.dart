@@ -10,7 +10,9 @@ part 'menu.g.dart';
 
 @freezed
 sealed class Menu with _$Menu {
-  const factory Menu({required MenuRenderer menuRenderer}) = _Menu;
+  const factory Menu({
+    @JsonKey(name: 'menuRenderer') required MenuRenderer menuRenderer,
+  }) = _Menu;
 
   factory Menu.fromJson(Map<String, dynamic> json) => _$MenuFromJson(json);
 }
@@ -18,78 +20,78 @@ sealed class Menu with _$Menu {
 @freezed
 sealed class MenuRenderer with _$MenuRenderer {
   const factory MenuRenderer({
-    List<Item>? items,
-    List<TopLevelButton>? topLevelButtons,
+    List<MenuRendererItem>? items,
+    List<MenuRendererTopLevelButton>? topLevelButtons,
   }) = _MenuRenderer;
 
-  factory MenuRenderer.fromJson(Map<String, dynamic> json) =>
-      _$MenuRendererFromJson(json);
+  factory MenuRenderer.fromJson(Map<String, dynamic> json) => _$MenuRendererFromJson(json);
 }
 
 @freezed
-sealed class Item with _$Item {
-  const factory Item({
-    MenuNavigationItemRenderer? menuNavigationItemRenderer,
-    MenuServiceItemRenderer? menuServiceItemRenderer,
-    ToggleMenuServiceRenderer? toggleMenuServiceItemRenderer,
-  }) = _Item;
+sealed class MenuRendererItem with _$MenuRendererItem {
+  const factory MenuRendererItem({
+    MenuRendererItemMenuNavigationItemRenderer? menuNavigationItemRenderer,
+    MenuRendererItemMenuServiceItemRenderer? menuServiceItemRenderer,
+    MenuRendererItemToggleMenuServiceRenderer? toggleMenuServiceItemRenderer,
+  }) = _MenuRendererItem;
 
-  factory Item.fromJson(Map<String, dynamic> json) => _$ItemFromJson(json);
+  factory MenuRendererItem.fromJson(Map<String, dynamic> json) => _$MenuRendererItemFromJson(json);
 }
 
 @freezed
-sealed class MenuNavigationItemRenderer with _$MenuNavigationItemRenderer {
-  const factory MenuNavigationItemRenderer({
+sealed class MenuRendererItemMenuNavigationItemRenderer with _$MenuRendererItemMenuNavigationItemRenderer {
+  const factory MenuRendererItemMenuNavigationItemRenderer({
     required Runs text,
     required YoutubeIcon icon,
     required NavigationEndpoint navigationEndpoint,
-  }) = _MenuNavigationItemRenderer;
+  }) = _MenuRendererItemMenuNavigationItemRenderer;
 
-  factory MenuNavigationItemRenderer.fromJson(Map<String, dynamic> json) =>
-      _$MenuNavigationItemRendererFromJson(json);
+  factory MenuRendererItemMenuNavigationItemRenderer.fromJson(Map<String, dynamic> json) =>
+      _$MenuRendererItemMenuNavigationItemRendererFromJson(json);
 }
 
 @freezed
-sealed class MenuServiceItemRenderer with _$MenuServiceItemRenderer {
-  const factory MenuServiceItemRenderer({
+sealed class MenuRendererItemMenuServiceItemRenderer with _$MenuRendererItemMenuServiceItemRenderer {
+  const factory MenuRendererItemMenuServiceItemRenderer({
     required Runs text,
     required YoutubeIcon icon,
     required NavigationEndpoint serviceEndpoint,
-  }) = _MenuServiceItemRenderer;
+  }) = _MenuRendererItemMenuServiceItemRenderer;
 
-  factory MenuServiceItemRenderer.fromJson(Map<String, dynamic> json) =>
-      _$MenuServiceItemRendererFromJson(json);
+  factory MenuRendererItemMenuServiceItemRenderer.fromJson(Map<String, dynamic> json) =>
+      _$MenuRendererItemMenuServiceItemRendererFromJson(json);
 }
 
 @freezed
-sealed class ToggleMenuServiceRenderer with _$ToggleMenuServiceRenderer {
-  const factory ToggleMenuServiceRenderer({
+sealed class MenuRendererItemToggleMenuServiceRenderer with _$MenuRendererItemToggleMenuServiceRenderer {
+  const factory MenuRendererItemToggleMenuServiceRenderer({
     required YoutubeIcon defaultIcon,
     required DefaultServiceEndpoint defaultServiceEndpoint,
     ToggledServiceEndpoint? toggledServiceEndpoint,
     @Default(false) bool isSelected,
-  }) = _ToggleMenuServiceRenderer;
+  }) = _MenuRendererItemToggleMenuServiceRenderer;
 
-  factory ToggleMenuServiceRenderer.fromJson(Map<String, dynamic> json) =>
-      _$ToggleMenuServiceRendererFromJson(json);
+  factory MenuRendererItemToggleMenuServiceRenderer.fromJson(Map<String, dynamic> json) =>
+      _$MenuRendererItemToggleMenuServiceRendererFromJson(json);
 }
 
 @freezed
-sealed class TopLevelButton with _$TopLevelButton {
-  const factory TopLevelButton({ButtonRenderer? buttonRenderer}) =
-      _TopLevelButton;
+sealed class MenuRendererTopLevelButton with _$MenuRendererTopLevelButton {
+  const factory MenuRendererTopLevelButton({
+    MenuRendererTopLevelButtonButtonRenderer? buttonRenderer,
+  }) = _MenuRendererTopLevelButton;
 
-  factory TopLevelButton.fromJson(Map<String, dynamic> json) =>
-      _$TopLevelButtonFromJson(json);
+  factory MenuRendererTopLevelButton.fromJson(Map<String, dynamic> json) =>
+      _$MenuRendererTopLevelButtonFromJson(json);
 }
 
 @freezed
-sealed class ButtonRenderer with _$ButtonRenderer {
-  const factory ButtonRenderer({
+sealed class MenuRendererTopLevelButtonButtonRenderer with _$MenuRendererTopLevelButtonButtonRenderer {
+  const factory MenuRendererTopLevelButtonButtonRenderer({
     required YoutubeIcon icon,
     required NavigationEndpoint navigationEndpoint,
-  }) = _ButtonRenderer;
+  }) = _MenuRendererTopLevelButtonButtonRenderer;
 
-  factory ButtonRenderer.fromJson(Map<String, dynamic> json) =>
-      _$ButtonRendererFromJson(json);
+  factory MenuRendererTopLevelButtonButtonRenderer.fromJson(Map<String, dynamic> json) =>
+      _$MenuRendererTopLevelButtonButtonRendererFromJson(json);
 }

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 import 'dart:io';
 
+import 'package:collection/collection.dart';
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:fpdart/fpdart.dart';
@@ -739,8 +740,4 @@ class InnerTube {
       ),
     );
   }
-}
-
-extension _LastOrNull<T> on List<T> {
-  T? get lastOrNull => isEmpty ? null : last;
 }

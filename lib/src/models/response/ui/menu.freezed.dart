@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Menu {
 
- MenuRenderer get menuRenderer;
+@JsonKey(name: 'menuRenderer') MenuRenderer get menuRenderer;
 /// Create a copy of Menu
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +48,7 @@ abstract mixin class $MenuCopyWith<$Res>  {
   factory $MenuCopyWith(Menu value, $Res Function(Menu) _then) = _$MenuCopyWithImpl;
 @useResult
 $Res call({
- MenuRenderer menuRenderer
+@JsonKey(name: 'menuRenderer') MenuRenderer menuRenderer
 });
 
 
@@ -159,7 +159,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( MenuRenderer menuRenderer)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'menuRenderer')  MenuRenderer menuRenderer)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Menu() when $default != null:
 return $default(_that.menuRenderer);case _:
@@ -180,7 +180,7 @@ return $default(_that.menuRenderer);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( MenuRenderer menuRenderer)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'menuRenderer')  MenuRenderer menuRenderer)  $default,) {final _that = this;
 switch (_that) {
 case _Menu():
 return $default(_that.menuRenderer);}
@@ -197,7 +197,7 @@ return $default(_that.menuRenderer);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( MenuRenderer menuRenderer)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'menuRenderer')  MenuRenderer menuRenderer)?  $default,) {final _that = this;
 switch (_that) {
 case _Menu() when $default != null:
 return $default(_that.menuRenderer);case _:
@@ -212,10 +212,10 @@ return $default(_that.menuRenderer);case _:
 @JsonSerializable()
 
 class _Menu implements Menu {
-  const _Menu({required this.menuRenderer});
+  const _Menu({@JsonKey(name: 'menuRenderer') required this.menuRenderer});
   factory _Menu.fromJson(Map<String, dynamic> json) => _$MenuFromJson(json);
 
-@override final  MenuRenderer menuRenderer;
+@override@JsonKey(name: 'menuRenderer') final  MenuRenderer menuRenderer;
 
 /// Create a copy of Menu
 /// with the given fields replaced by the non-null parameter values.
@@ -250,7 +250,7 @@ abstract mixin class _$MenuCopyWith<$Res> implements $MenuCopyWith<$Res> {
   factory _$MenuCopyWith(_Menu value, $Res Function(_Menu) _then) = __$MenuCopyWithImpl;
 @override @useResult
 $Res call({
- MenuRenderer menuRenderer
+@JsonKey(name: 'menuRenderer') MenuRenderer menuRenderer
 });
 
 
@@ -290,7 +290,7 @@ $MenuRendererCopyWith<$Res> get menuRenderer {
 /// @nodoc
 mixin _$MenuRenderer {
 
- List<Item>? get items; List<TopLevelButton>? get topLevelButtons;
+ List<MenuRendererItem>? get items; List<MenuRendererTopLevelButton>? get topLevelButtons;
 /// Create a copy of MenuRenderer
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -323,7 +323,7 @@ abstract mixin class $MenuRendererCopyWith<$Res>  {
   factory $MenuRendererCopyWith(MenuRenderer value, $Res Function(MenuRenderer) _then) = _$MenuRendererCopyWithImpl;
 @useResult
 $Res call({
- List<Item>? items, List<TopLevelButton>? topLevelButtons
+ List<MenuRendererItem>? items, List<MenuRendererTopLevelButton>? topLevelButtons
 });
 
 
@@ -343,8 +343,8 @@ class _$MenuRendererCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') @override $Res call({Object? items = freezed,Object? topLevelButtons = freezed,}) {
   return _then(_self.copyWith(
 items: freezed == items ? _self.items : items // ignore: cast_nullable_to_non_nullable
-as List<Item>?,topLevelButtons: freezed == topLevelButtons ? _self.topLevelButtons : topLevelButtons // ignore: cast_nullable_to_non_nullable
-as List<TopLevelButton>?,
+as List<MenuRendererItem>?,topLevelButtons: freezed == topLevelButtons ? _self.topLevelButtons : topLevelButtons // ignore: cast_nullable_to_non_nullable
+as List<MenuRendererTopLevelButton>?,
   ));
 }
 
@@ -426,7 +426,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<Item>? items,  List<TopLevelButton>? topLevelButtons)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<MenuRendererItem>? items,  List<MenuRendererTopLevelButton>? topLevelButtons)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _MenuRenderer() when $default != null:
 return $default(_that.items,_that.topLevelButtons);case _:
@@ -447,7 +447,7 @@ return $default(_that.items,_that.topLevelButtons);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<Item>? items,  List<TopLevelButton>? topLevelButtons)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<MenuRendererItem>? items,  List<MenuRendererTopLevelButton>? topLevelButtons)  $default,) {final _that = this;
 switch (_that) {
 case _MenuRenderer():
 return $default(_that.items,_that.topLevelButtons);}
@@ -464,7 +464,7 @@ return $default(_that.items,_that.topLevelButtons);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<Item>? items,  List<TopLevelButton>? topLevelButtons)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<MenuRendererItem>? items,  List<MenuRendererTopLevelButton>? topLevelButtons)?  $default,) {final _that = this;
 switch (_that) {
 case _MenuRenderer() when $default != null:
 return $default(_that.items,_that.topLevelButtons);case _:
@@ -479,11 +479,11 @@ return $default(_that.items,_that.topLevelButtons);case _:
 @JsonSerializable()
 
 class _MenuRenderer implements MenuRenderer {
-  const _MenuRenderer({final  List<Item>? items, final  List<TopLevelButton>? topLevelButtons}): _items = items,_topLevelButtons = topLevelButtons;
+  const _MenuRenderer({final  List<MenuRendererItem>? items, final  List<MenuRendererTopLevelButton>? topLevelButtons}): _items = items,_topLevelButtons = topLevelButtons;
   factory _MenuRenderer.fromJson(Map<String, dynamic> json) => _$MenuRendererFromJson(json);
 
- final  List<Item>? _items;
-@override List<Item>? get items {
+ final  List<MenuRendererItem>? _items;
+@override List<MenuRendererItem>? get items {
   final value = _items;
   if (value == null) return null;
   if (_items is EqualUnmodifiableListView) return _items;
@@ -491,8 +491,8 @@ class _MenuRenderer implements MenuRenderer {
   return EqualUnmodifiableListView(value);
 }
 
- final  List<TopLevelButton>? _topLevelButtons;
-@override List<TopLevelButton>? get topLevelButtons {
+ final  List<MenuRendererTopLevelButton>? _topLevelButtons;
+@override List<MenuRendererTopLevelButton>? get topLevelButtons {
   final value = _topLevelButtons;
   if (value == null) return null;
   if (_topLevelButtons is EqualUnmodifiableListView) return _topLevelButtons;
@@ -534,7 +534,7 @@ abstract mixin class _$MenuRendererCopyWith<$Res> implements $MenuRendererCopyWi
   factory _$MenuRendererCopyWith(_MenuRenderer value, $Res Function(_MenuRenderer) _then) = __$MenuRendererCopyWithImpl;
 @override @useResult
 $Res call({
- List<Item>? items, List<TopLevelButton>? topLevelButtons
+ List<MenuRendererItem>? items, List<MenuRendererTopLevelButton>? topLevelButtons
 });
 
 
@@ -554,8 +554,8 @@ class __$MenuRendererCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? items = freezed,Object? topLevelButtons = freezed,}) {
   return _then(_MenuRenderer(
 items: freezed == items ? _self._items : items // ignore: cast_nullable_to_non_nullable
-as List<Item>?,topLevelButtons: freezed == topLevelButtons ? _self._topLevelButtons : topLevelButtons // ignore: cast_nullable_to_non_nullable
-as List<TopLevelButton>?,
+as List<MenuRendererItem>?,topLevelButtons: freezed == topLevelButtons ? _self._topLevelButtons : topLevelButtons // ignore: cast_nullable_to_non_nullable
+as List<MenuRendererTopLevelButton>?,
   ));
 }
 
@@ -564,22 +564,22 @@ as List<TopLevelButton>?,
 
 
 /// @nodoc
-mixin _$Item {
+mixin _$MenuRendererItem {
 
- MenuNavigationItemRenderer? get menuNavigationItemRenderer; MenuServiceItemRenderer? get menuServiceItemRenderer; ToggleMenuServiceRenderer? get toggleMenuServiceItemRenderer;
-/// Create a copy of Item
+ MenuRendererItemMenuNavigationItemRenderer? get menuNavigationItemRenderer; MenuRendererItemMenuServiceItemRenderer? get menuServiceItemRenderer; MenuRendererItemToggleMenuServiceRenderer? get toggleMenuServiceItemRenderer;
+/// Create a copy of MenuRendererItem
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$ItemCopyWith<Item> get copyWith => _$ItemCopyWithImpl<Item>(this as Item, _$identity);
+$MenuRendererItemCopyWith<MenuRendererItem> get copyWith => _$MenuRendererItemCopyWithImpl<MenuRendererItem>(this as MenuRendererItem, _$identity);
 
-  /// Serializes this Item to a JSON map.
+  /// Serializes this MenuRendererItem to a JSON map.
   Map<String, dynamic> toJson();
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Item&&(identical(other.menuNavigationItemRenderer, menuNavigationItemRenderer) || other.menuNavigationItemRenderer == menuNavigationItemRenderer)&&(identical(other.menuServiceItemRenderer, menuServiceItemRenderer) || other.menuServiceItemRenderer == menuServiceItemRenderer)&&(identical(other.toggleMenuServiceItemRenderer, toggleMenuServiceItemRenderer) || other.toggleMenuServiceItemRenderer == toggleMenuServiceItemRenderer));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MenuRendererItem&&(identical(other.menuNavigationItemRenderer, menuNavigationItemRenderer) || other.menuNavigationItemRenderer == menuNavigationItemRenderer)&&(identical(other.menuServiceItemRenderer, menuServiceItemRenderer) || other.menuServiceItemRenderer == menuServiceItemRenderer)&&(identical(other.toggleMenuServiceItemRenderer, toggleMenuServiceItemRenderer) || other.toggleMenuServiceItemRenderer == toggleMenuServiceItemRenderer));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -588,84 +588,84 @@ int get hashCode => Object.hash(runtimeType,menuNavigationItemRenderer,menuServi
 
 @override
 String toString() {
-  return 'Item(menuNavigationItemRenderer: $menuNavigationItemRenderer, menuServiceItemRenderer: $menuServiceItemRenderer, toggleMenuServiceItemRenderer: $toggleMenuServiceItemRenderer)';
+  return 'MenuRendererItem(menuNavigationItemRenderer: $menuNavigationItemRenderer, menuServiceItemRenderer: $menuServiceItemRenderer, toggleMenuServiceItemRenderer: $toggleMenuServiceItemRenderer)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $ItemCopyWith<$Res>  {
-  factory $ItemCopyWith(Item value, $Res Function(Item) _then) = _$ItemCopyWithImpl;
+abstract mixin class $MenuRendererItemCopyWith<$Res>  {
+  factory $MenuRendererItemCopyWith(MenuRendererItem value, $Res Function(MenuRendererItem) _then) = _$MenuRendererItemCopyWithImpl;
 @useResult
 $Res call({
- MenuNavigationItemRenderer? menuNavigationItemRenderer, MenuServiceItemRenderer? menuServiceItemRenderer, ToggleMenuServiceRenderer? toggleMenuServiceItemRenderer
+ MenuRendererItemMenuNavigationItemRenderer? menuNavigationItemRenderer, MenuRendererItemMenuServiceItemRenderer? menuServiceItemRenderer, MenuRendererItemToggleMenuServiceRenderer? toggleMenuServiceItemRenderer
 });
 
 
-$MenuNavigationItemRendererCopyWith<$Res>? get menuNavigationItemRenderer;$MenuServiceItemRendererCopyWith<$Res>? get menuServiceItemRenderer;$ToggleMenuServiceRendererCopyWith<$Res>? get toggleMenuServiceItemRenderer;
+$MenuRendererItemMenuNavigationItemRendererCopyWith<$Res>? get menuNavigationItemRenderer;$MenuRendererItemMenuServiceItemRendererCopyWith<$Res>? get menuServiceItemRenderer;$MenuRendererItemToggleMenuServiceRendererCopyWith<$Res>? get toggleMenuServiceItemRenderer;
 
 }
 /// @nodoc
-class _$ItemCopyWithImpl<$Res>
-    implements $ItemCopyWith<$Res> {
-  _$ItemCopyWithImpl(this._self, this._then);
+class _$MenuRendererItemCopyWithImpl<$Res>
+    implements $MenuRendererItemCopyWith<$Res> {
+  _$MenuRendererItemCopyWithImpl(this._self, this._then);
 
-  final Item _self;
-  final $Res Function(Item) _then;
+  final MenuRendererItem _self;
+  final $Res Function(MenuRendererItem) _then;
 
-/// Create a copy of Item
+/// Create a copy of MenuRendererItem
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? menuNavigationItemRenderer = freezed,Object? menuServiceItemRenderer = freezed,Object? toggleMenuServiceItemRenderer = freezed,}) {
   return _then(_self.copyWith(
 menuNavigationItemRenderer: freezed == menuNavigationItemRenderer ? _self.menuNavigationItemRenderer : menuNavigationItemRenderer // ignore: cast_nullable_to_non_nullable
-as MenuNavigationItemRenderer?,menuServiceItemRenderer: freezed == menuServiceItemRenderer ? _self.menuServiceItemRenderer : menuServiceItemRenderer // ignore: cast_nullable_to_non_nullable
-as MenuServiceItemRenderer?,toggleMenuServiceItemRenderer: freezed == toggleMenuServiceItemRenderer ? _self.toggleMenuServiceItemRenderer : toggleMenuServiceItemRenderer // ignore: cast_nullable_to_non_nullable
-as ToggleMenuServiceRenderer?,
+as MenuRendererItemMenuNavigationItemRenderer?,menuServiceItemRenderer: freezed == menuServiceItemRenderer ? _self.menuServiceItemRenderer : menuServiceItemRenderer // ignore: cast_nullable_to_non_nullable
+as MenuRendererItemMenuServiceItemRenderer?,toggleMenuServiceItemRenderer: freezed == toggleMenuServiceItemRenderer ? _self.toggleMenuServiceItemRenderer : toggleMenuServiceItemRenderer // ignore: cast_nullable_to_non_nullable
+as MenuRendererItemToggleMenuServiceRenderer?,
   ));
 }
-/// Create a copy of Item
+/// Create a copy of MenuRendererItem
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$MenuNavigationItemRendererCopyWith<$Res>? get menuNavigationItemRenderer {
+$MenuRendererItemMenuNavigationItemRendererCopyWith<$Res>? get menuNavigationItemRenderer {
     if (_self.menuNavigationItemRenderer == null) {
     return null;
   }
 
-  return $MenuNavigationItemRendererCopyWith<$Res>(_self.menuNavigationItemRenderer!, (value) {
+  return $MenuRendererItemMenuNavigationItemRendererCopyWith<$Res>(_self.menuNavigationItemRenderer!, (value) {
     return _then(_self.copyWith(menuNavigationItemRenderer: value));
   });
-}/// Create a copy of Item
+}/// Create a copy of MenuRendererItem
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$MenuServiceItemRendererCopyWith<$Res>? get menuServiceItemRenderer {
+$MenuRendererItemMenuServiceItemRendererCopyWith<$Res>? get menuServiceItemRenderer {
     if (_self.menuServiceItemRenderer == null) {
     return null;
   }
 
-  return $MenuServiceItemRendererCopyWith<$Res>(_self.menuServiceItemRenderer!, (value) {
+  return $MenuRendererItemMenuServiceItemRendererCopyWith<$Res>(_self.menuServiceItemRenderer!, (value) {
     return _then(_self.copyWith(menuServiceItemRenderer: value));
   });
-}/// Create a copy of Item
+}/// Create a copy of MenuRendererItem
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$ToggleMenuServiceRendererCopyWith<$Res>? get toggleMenuServiceItemRenderer {
+$MenuRendererItemToggleMenuServiceRendererCopyWith<$Res>? get toggleMenuServiceItemRenderer {
     if (_self.toggleMenuServiceItemRenderer == null) {
     return null;
   }
 
-  return $ToggleMenuServiceRendererCopyWith<$Res>(_self.toggleMenuServiceItemRenderer!, (value) {
+  return $MenuRendererItemToggleMenuServiceRendererCopyWith<$Res>(_self.toggleMenuServiceItemRenderer!, (value) {
     return _then(_self.copyWith(toggleMenuServiceItemRenderer: value));
   });
 }
 }
 
 
-/// Adds pattern-matching-related methods to [Item].
-extension ItemPatterns on Item {
+/// Adds pattern-matching-related methods to [MenuRendererItem].
+extension MenuRendererItemPatterns on MenuRendererItem {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -678,10 +678,10 @@ extension ItemPatterns on Item {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Item value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _MenuRendererItem value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _Item() when $default != null:
+case _MenuRendererItem() when $default != null:
 return $default(_that);case _:
   return orElse();
 
@@ -700,10 +700,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Item value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _MenuRendererItem value)  $default,){
 final _that = this;
 switch (_that) {
-case _Item():
+case _MenuRendererItem():
 return $default(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
@@ -718,10 +718,10 @@ return $default(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Item value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _MenuRendererItem value)?  $default,){
 final _that = this;
 switch (_that) {
-case _Item() when $default != null:
+case _MenuRendererItem() when $default != null:
 return $default(_that);case _:
   return null;
 
@@ -739,9 +739,9 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( MenuNavigationItemRenderer? menuNavigationItemRenderer,  MenuServiceItemRenderer? menuServiceItemRenderer,  ToggleMenuServiceRenderer? toggleMenuServiceItemRenderer)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( MenuRendererItemMenuNavigationItemRenderer? menuNavigationItemRenderer,  MenuRendererItemMenuServiceItemRenderer? menuServiceItemRenderer,  MenuRendererItemToggleMenuServiceRenderer? toggleMenuServiceItemRenderer)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _Item() when $default != null:
+case _MenuRendererItem() when $default != null:
 return $default(_that.menuNavigationItemRenderer,_that.menuServiceItemRenderer,_that.toggleMenuServiceItemRenderer);case _:
   return orElse();
 
@@ -760,9 +760,9 @@ return $default(_that.menuNavigationItemRenderer,_that.menuServiceItemRenderer,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( MenuNavigationItemRenderer? menuNavigationItemRenderer,  MenuServiceItemRenderer? menuServiceItemRenderer,  ToggleMenuServiceRenderer? toggleMenuServiceItemRenderer)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( MenuRendererItemMenuNavigationItemRenderer? menuNavigationItemRenderer,  MenuRendererItemMenuServiceItemRenderer? menuServiceItemRenderer,  MenuRendererItemToggleMenuServiceRenderer? toggleMenuServiceItemRenderer)  $default,) {final _that = this;
 switch (_that) {
-case _Item():
+case _MenuRendererItem():
 return $default(_that.menuNavigationItemRenderer,_that.menuServiceItemRenderer,_that.toggleMenuServiceItemRenderer);}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -777,9 +777,9 @@ return $default(_that.menuNavigationItemRenderer,_that.menuServiceItemRenderer,_
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( MenuNavigationItemRenderer? menuNavigationItemRenderer,  MenuServiceItemRenderer? menuServiceItemRenderer,  ToggleMenuServiceRenderer? toggleMenuServiceItemRenderer)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( MenuRendererItemMenuNavigationItemRenderer? menuNavigationItemRenderer,  MenuRendererItemMenuServiceItemRenderer? menuServiceItemRenderer,  MenuRendererItemToggleMenuServiceRenderer? toggleMenuServiceItemRenderer)?  $default,) {final _that = this;
 switch (_that) {
-case _Item() when $default != null:
+case _MenuRendererItem() when $default != null:
 return $default(_that.menuNavigationItemRenderer,_that.menuServiceItemRenderer,_that.toggleMenuServiceItemRenderer);case _:
   return null;
 
@@ -791,28 +791,28 @@ return $default(_that.menuNavigationItemRenderer,_that.menuServiceItemRenderer,_
 /// @nodoc
 @JsonSerializable()
 
-class _Item implements Item {
-  const _Item({this.menuNavigationItemRenderer, this.menuServiceItemRenderer, this.toggleMenuServiceItemRenderer});
-  factory _Item.fromJson(Map<String, dynamic> json) => _$ItemFromJson(json);
+class _MenuRendererItem implements MenuRendererItem {
+  const _MenuRendererItem({this.menuNavigationItemRenderer, this.menuServiceItemRenderer, this.toggleMenuServiceItemRenderer});
+  factory _MenuRendererItem.fromJson(Map<String, dynamic> json) => _$MenuRendererItemFromJson(json);
 
-@override final  MenuNavigationItemRenderer? menuNavigationItemRenderer;
-@override final  MenuServiceItemRenderer? menuServiceItemRenderer;
-@override final  ToggleMenuServiceRenderer? toggleMenuServiceItemRenderer;
+@override final  MenuRendererItemMenuNavigationItemRenderer? menuNavigationItemRenderer;
+@override final  MenuRendererItemMenuServiceItemRenderer? menuServiceItemRenderer;
+@override final  MenuRendererItemToggleMenuServiceRenderer? toggleMenuServiceItemRenderer;
 
-/// Create a copy of Item
+/// Create a copy of MenuRendererItem
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$ItemCopyWith<_Item> get copyWith => __$ItemCopyWithImpl<_Item>(this, _$identity);
+_$MenuRendererItemCopyWith<_MenuRendererItem> get copyWith => __$MenuRendererItemCopyWithImpl<_MenuRendererItem>(this, _$identity);
 
 @override
 Map<String, dynamic> toJson() {
-  return _$ItemToJson(this, );
+  return _$MenuRendererItemToJson(this, );
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Item&&(identical(other.menuNavigationItemRenderer, menuNavigationItemRenderer) || other.menuNavigationItemRenderer == menuNavigationItemRenderer)&&(identical(other.menuServiceItemRenderer, menuServiceItemRenderer) || other.menuServiceItemRenderer == menuServiceItemRenderer)&&(identical(other.toggleMenuServiceItemRenderer, toggleMenuServiceItemRenderer) || other.toggleMenuServiceItemRenderer == toggleMenuServiceItemRenderer));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MenuRendererItem&&(identical(other.menuNavigationItemRenderer, menuNavigationItemRenderer) || other.menuNavigationItemRenderer == menuNavigationItemRenderer)&&(identical(other.menuServiceItemRenderer, menuServiceItemRenderer) || other.menuServiceItemRenderer == menuServiceItemRenderer)&&(identical(other.toggleMenuServiceItemRenderer, toggleMenuServiceItemRenderer) || other.toggleMenuServiceItemRenderer == toggleMenuServiceItemRenderer));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -821,77 +821,77 @@ int get hashCode => Object.hash(runtimeType,menuNavigationItemRenderer,menuServi
 
 @override
 String toString() {
-  return 'Item(menuNavigationItemRenderer: $menuNavigationItemRenderer, menuServiceItemRenderer: $menuServiceItemRenderer, toggleMenuServiceItemRenderer: $toggleMenuServiceItemRenderer)';
+  return 'MenuRendererItem(menuNavigationItemRenderer: $menuNavigationItemRenderer, menuServiceItemRenderer: $menuServiceItemRenderer, toggleMenuServiceItemRenderer: $toggleMenuServiceItemRenderer)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$ItemCopyWith<$Res> implements $ItemCopyWith<$Res> {
-  factory _$ItemCopyWith(_Item value, $Res Function(_Item) _then) = __$ItemCopyWithImpl;
+abstract mixin class _$MenuRendererItemCopyWith<$Res> implements $MenuRendererItemCopyWith<$Res> {
+  factory _$MenuRendererItemCopyWith(_MenuRendererItem value, $Res Function(_MenuRendererItem) _then) = __$MenuRendererItemCopyWithImpl;
 @override @useResult
 $Res call({
- MenuNavigationItemRenderer? menuNavigationItemRenderer, MenuServiceItemRenderer? menuServiceItemRenderer, ToggleMenuServiceRenderer? toggleMenuServiceItemRenderer
+ MenuRendererItemMenuNavigationItemRenderer? menuNavigationItemRenderer, MenuRendererItemMenuServiceItemRenderer? menuServiceItemRenderer, MenuRendererItemToggleMenuServiceRenderer? toggleMenuServiceItemRenderer
 });
 
 
-@override $MenuNavigationItemRendererCopyWith<$Res>? get menuNavigationItemRenderer;@override $MenuServiceItemRendererCopyWith<$Res>? get menuServiceItemRenderer;@override $ToggleMenuServiceRendererCopyWith<$Res>? get toggleMenuServiceItemRenderer;
+@override $MenuRendererItemMenuNavigationItemRendererCopyWith<$Res>? get menuNavigationItemRenderer;@override $MenuRendererItemMenuServiceItemRendererCopyWith<$Res>? get menuServiceItemRenderer;@override $MenuRendererItemToggleMenuServiceRendererCopyWith<$Res>? get toggleMenuServiceItemRenderer;
 
 }
 /// @nodoc
-class __$ItemCopyWithImpl<$Res>
-    implements _$ItemCopyWith<$Res> {
-  __$ItemCopyWithImpl(this._self, this._then);
+class __$MenuRendererItemCopyWithImpl<$Res>
+    implements _$MenuRendererItemCopyWith<$Res> {
+  __$MenuRendererItemCopyWithImpl(this._self, this._then);
 
-  final _Item _self;
-  final $Res Function(_Item) _then;
+  final _MenuRendererItem _self;
+  final $Res Function(_MenuRendererItem) _then;
 
-/// Create a copy of Item
+/// Create a copy of MenuRendererItem
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? menuNavigationItemRenderer = freezed,Object? menuServiceItemRenderer = freezed,Object? toggleMenuServiceItemRenderer = freezed,}) {
-  return _then(_Item(
+  return _then(_MenuRendererItem(
 menuNavigationItemRenderer: freezed == menuNavigationItemRenderer ? _self.menuNavigationItemRenderer : menuNavigationItemRenderer // ignore: cast_nullable_to_non_nullable
-as MenuNavigationItemRenderer?,menuServiceItemRenderer: freezed == menuServiceItemRenderer ? _self.menuServiceItemRenderer : menuServiceItemRenderer // ignore: cast_nullable_to_non_nullable
-as MenuServiceItemRenderer?,toggleMenuServiceItemRenderer: freezed == toggleMenuServiceItemRenderer ? _self.toggleMenuServiceItemRenderer : toggleMenuServiceItemRenderer // ignore: cast_nullable_to_non_nullable
-as ToggleMenuServiceRenderer?,
+as MenuRendererItemMenuNavigationItemRenderer?,menuServiceItemRenderer: freezed == menuServiceItemRenderer ? _self.menuServiceItemRenderer : menuServiceItemRenderer // ignore: cast_nullable_to_non_nullable
+as MenuRendererItemMenuServiceItemRenderer?,toggleMenuServiceItemRenderer: freezed == toggleMenuServiceItemRenderer ? _self.toggleMenuServiceItemRenderer : toggleMenuServiceItemRenderer // ignore: cast_nullable_to_non_nullable
+as MenuRendererItemToggleMenuServiceRenderer?,
   ));
 }
 
-/// Create a copy of Item
+/// Create a copy of MenuRendererItem
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$MenuNavigationItemRendererCopyWith<$Res>? get menuNavigationItemRenderer {
+$MenuRendererItemMenuNavigationItemRendererCopyWith<$Res>? get menuNavigationItemRenderer {
     if (_self.menuNavigationItemRenderer == null) {
     return null;
   }
 
-  return $MenuNavigationItemRendererCopyWith<$Res>(_self.menuNavigationItemRenderer!, (value) {
+  return $MenuRendererItemMenuNavigationItemRendererCopyWith<$Res>(_self.menuNavigationItemRenderer!, (value) {
     return _then(_self.copyWith(menuNavigationItemRenderer: value));
   });
-}/// Create a copy of Item
+}/// Create a copy of MenuRendererItem
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$MenuServiceItemRendererCopyWith<$Res>? get menuServiceItemRenderer {
+$MenuRendererItemMenuServiceItemRendererCopyWith<$Res>? get menuServiceItemRenderer {
     if (_self.menuServiceItemRenderer == null) {
     return null;
   }
 
-  return $MenuServiceItemRendererCopyWith<$Res>(_self.menuServiceItemRenderer!, (value) {
+  return $MenuRendererItemMenuServiceItemRendererCopyWith<$Res>(_self.menuServiceItemRenderer!, (value) {
     return _then(_self.copyWith(menuServiceItemRenderer: value));
   });
-}/// Create a copy of Item
+}/// Create a copy of MenuRendererItem
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$ToggleMenuServiceRendererCopyWith<$Res>? get toggleMenuServiceItemRenderer {
+$MenuRendererItemToggleMenuServiceRendererCopyWith<$Res>? get toggleMenuServiceItemRenderer {
     if (_self.toggleMenuServiceItemRenderer == null) {
     return null;
   }
 
-  return $ToggleMenuServiceRendererCopyWith<$Res>(_self.toggleMenuServiceItemRenderer!, (value) {
+  return $MenuRendererItemToggleMenuServiceRendererCopyWith<$Res>(_self.toggleMenuServiceItemRenderer!, (value) {
     return _then(_self.copyWith(toggleMenuServiceItemRenderer: value));
   });
 }
@@ -899,22 +899,22 @@ $ToggleMenuServiceRendererCopyWith<$Res>? get toggleMenuServiceItemRenderer {
 
 
 /// @nodoc
-mixin _$MenuNavigationItemRenderer {
+mixin _$MenuRendererItemMenuNavigationItemRenderer {
 
  Runs get text; YoutubeIcon get icon; NavigationEndpoint get navigationEndpoint;
-/// Create a copy of MenuNavigationItemRenderer
+/// Create a copy of MenuRendererItemMenuNavigationItemRenderer
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$MenuNavigationItemRendererCopyWith<MenuNavigationItemRenderer> get copyWith => _$MenuNavigationItemRendererCopyWithImpl<MenuNavigationItemRenderer>(this as MenuNavigationItemRenderer, _$identity);
+$MenuRendererItemMenuNavigationItemRendererCopyWith<MenuRendererItemMenuNavigationItemRenderer> get copyWith => _$MenuRendererItemMenuNavigationItemRendererCopyWithImpl<MenuRendererItemMenuNavigationItemRenderer>(this as MenuRendererItemMenuNavigationItemRenderer, _$identity);
 
-  /// Serializes this MenuNavigationItemRenderer to a JSON map.
+  /// Serializes this MenuRendererItemMenuNavigationItemRenderer to a JSON map.
   Map<String, dynamic> toJson();
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MenuNavigationItemRenderer&&(identical(other.text, text) || other.text == text)&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.navigationEndpoint, navigationEndpoint) || other.navigationEndpoint == navigationEndpoint));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MenuRendererItemMenuNavigationItemRenderer&&(identical(other.text, text) || other.text == text)&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.navigationEndpoint, navigationEndpoint) || other.navigationEndpoint == navigationEndpoint));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -923,15 +923,15 @@ int get hashCode => Object.hash(runtimeType,text,icon,navigationEndpoint);
 
 @override
 String toString() {
-  return 'MenuNavigationItemRenderer(text: $text, icon: $icon, navigationEndpoint: $navigationEndpoint)';
+  return 'MenuRendererItemMenuNavigationItemRenderer(text: $text, icon: $icon, navigationEndpoint: $navigationEndpoint)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $MenuNavigationItemRendererCopyWith<$Res>  {
-  factory $MenuNavigationItemRendererCopyWith(MenuNavigationItemRenderer value, $Res Function(MenuNavigationItemRenderer) _then) = _$MenuNavigationItemRendererCopyWithImpl;
+abstract mixin class $MenuRendererItemMenuNavigationItemRendererCopyWith<$Res>  {
+  factory $MenuRendererItemMenuNavigationItemRendererCopyWith(MenuRendererItemMenuNavigationItemRenderer value, $Res Function(MenuRendererItemMenuNavigationItemRenderer) _then) = _$MenuRendererItemMenuNavigationItemRendererCopyWithImpl;
 @useResult
 $Res call({
  Runs text, YoutubeIcon icon, NavigationEndpoint navigationEndpoint
@@ -942,14 +942,14 @@ $RunsCopyWith<$Res> get text;$YoutubeIconCopyWith<$Res> get icon;$NavigationEndp
 
 }
 /// @nodoc
-class _$MenuNavigationItemRendererCopyWithImpl<$Res>
-    implements $MenuNavigationItemRendererCopyWith<$Res> {
-  _$MenuNavigationItemRendererCopyWithImpl(this._self, this._then);
+class _$MenuRendererItemMenuNavigationItemRendererCopyWithImpl<$Res>
+    implements $MenuRendererItemMenuNavigationItemRendererCopyWith<$Res> {
+  _$MenuRendererItemMenuNavigationItemRendererCopyWithImpl(this._self, this._then);
 
-  final MenuNavigationItemRenderer _self;
-  final $Res Function(MenuNavigationItemRenderer) _then;
+  final MenuRendererItemMenuNavigationItemRenderer _self;
+  final $Res Function(MenuRendererItemMenuNavigationItemRenderer) _then;
 
-/// Create a copy of MenuNavigationItemRenderer
+/// Create a copy of MenuRendererItemMenuNavigationItemRenderer
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? text = null,Object? icon = null,Object? navigationEndpoint = null,}) {
   return _then(_self.copyWith(
@@ -959,7 +959,7 @@ as YoutubeIcon,navigationEndpoint: null == navigationEndpoint ? _self.navigation
 as NavigationEndpoint,
   ));
 }
-/// Create a copy of MenuNavigationItemRenderer
+/// Create a copy of MenuRendererItemMenuNavigationItemRenderer
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
@@ -968,7 +968,7 @@ $RunsCopyWith<$Res> get text {
   return $RunsCopyWith<$Res>(_self.text, (value) {
     return _then(_self.copyWith(text: value));
   });
-}/// Create a copy of MenuNavigationItemRenderer
+}/// Create a copy of MenuRendererItemMenuNavigationItemRenderer
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
@@ -977,7 +977,7 @@ $YoutubeIconCopyWith<$Res> get icon {
   return $YoutubeIconCopyWith<$Res>(_self.icon, (value) {
     return _then(_self.copyWith(icon: value));
   });
-}/// Create a copy of MenuNavigationItemRenderer
+}/// Create a copy of MenuRendererItemMenuNavigationItemRenderer
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
@@ -990,8 +990,8 @@ $NavigationEndpointCopyWith<$Res> get navigationEndpoint {
 }
 
 
-/// Adds pattern-matching-related methods to [MenuNavigationItemRenderer].
-extension MenuNavigationItemRendererPatterns on MenuNavigationItemRenderer {
+/// Adds pattern-matching-related methods to [MenuRendererItemMenuNavigationItemRenderer].
+extension MenuRendererItemMenuNavigationItemRendererPatterns on MenuRendererItemMenuNavigationItemRenderer {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -1004,10 +1004,10 @@ extension MenuNavigationItemRendererPatterns on MenuNavigationItemRenderer {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _MenuNavigationItemRenderer value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _MenuRendererItemMenuNavigationItemRenderer value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _MenuNavigationItemRenderer() when $default != null:
+case _MenuRendererItemMenuNavigationItemRenderer() when $default != null:
 return $default(_that);case _:
   return orElse();
 
@@ -1026,10 +1026,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _MenuNavigationItemRenderer value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _MenuRendererItemMenuNavigationItemRenderer value)  $default,){
 final _that = this;
 switch (_that) {
-case _MenuNavigationItemRenderer():
+case _MenuRendererItemMenuNavigationItemRenderer():
 return $default(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
@@ -1044,10 +1044,10 @@ return $default(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _MenuNavigationItemRenderer value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _MenuRendererItemMenuNavigationItemRenderer value)?  $default,){
 final _that = this;
 switch (_that) {
-case _MenuNavigationItemRenderer() when $default != null:
+case _MenuRendererItemMenuNavigationItemRenderer() when $default != null:
 return $default(_that);case _:
   return null;
 
@@ -1067,7 +1067,7 @@ return $default(_that);case _:
 
 @optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Runs text,  YoutubeIcon icon,  NavigationEndpoint navigationEndpoint)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _MenuNavigationItemRenderer() when $default != null:
+case _MenuRendererItemMenuNavigationItemRenderer() when $default != null:
 return $default(_that.text,_that.icon,_that.navigationEndpoint);case _:
   return orElse();
 
@@ -1088,7 +1088,7 @@ return $default(_that.text,_that.icon,_that.navigationEndpoint);case _:
 
 @optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Runs text,  YoutubeIcon icon,  NavigationEndpoint navigationEndpoint)  $default,) {final _that = this;
 switch (_that) {
-case _MenuNavigationItemRenderer():
+case _MenuRendererItemMenuNavigationItemRenderer():
 return $default(_that.text,_that.icon,_that.navigationEndpoint);}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -1105,7 +1105,7 @@ return $default(_that.text,_that.icon,_that.navigationEndpoint);}
 
 @optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Runs text,  YoutubeIcon icon,  NavigationEndpoint navigationEndpoint)?  $default,) {final _that = this;
 switch (_that) {
-case _MenuNavigationItemRenderer() when $default != null:
+case _MenuRendererItemMenuNavigationItemRenderer() when $default != null:
 return $default(_that.text,_that.icon,_that.navigationEndpoint);case _:
   return null;
 
@@ -1117,28 +1117,28 @@ return $default(_that.text,_that.icon,_that.navigationEndpoint);case _:
 /// @nodoc
 @JsonSerializable()
 
-class _MenuNavigationItemRenderer implements MenuNavigationItemRenderer {
-  const _MenuNavigationItemRenderer({required this.text, required this.icon, required this.navigationEndpoint});
-  factory _MenuNavigationItemRenderer.fromJson(Map<String, dynamic> json) => _$MenuNavigationItemRendererFromJson(json);
+class _MenuRendererItemMenuNavigationItemRenderer implements MenuRendererItemMenuNavigationItemRenderer {
+  const _MenuRendererItemMenuNavigationItemRenderer({required this.text, required this.icon, required this.navigationEndpoint});
+  factory _MenuRendererItemMenuNavigationItemRenderer.fromJson(Map<String, dynamic> json) => _$MenuRendererItemMenuNavigationItemRendererFromJson(json);
 
 @override final  Runs text;
 @override final  YoutubeIcon icon;
 @override final  NavigationEndpoint navigationEndpoint;
 
-/// Create a copy of MenuNavigationItemRenderer
+/// Create a copy of MenuRendererItemMenuNavigationItemRenderer
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$MenuNavigationItemRendererCopyWith<_MenuNavigationItemRenderer> get copyWith => __$MenuNavigationItemRendererCopyWithImpl<_MenuNavigationItemRenderer>(this, _$identity);
+_$MenuRendererItemMenuNavigationItemRendererCopyWith<_MenuRendererItemMenuNavigationItemRenderer> get copyWith => __$MenuRendererItemMenuNavigationItemRendererCopyWithImpl<_MenuRendererItemMenuNavigationItemRenderer>(this, _$identity);
 
 @override
 Map<String, dynamic> toJson() {
-  return _$MenuNavigationItemRendererToJson(this, );
+  return _$MenuRendererItemMenuNavigationItemRendererToJson(this, );
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MenuNavigationItemRenderer&&(identical(other.text, text) || other.text == text)&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.navigationEndpoint, navigationEndpoint) || other.navigationEndpoint == navigationEndpoint));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MenuRendererItemMenuNavigationItemRenderer&&(identical(other.text, text) || other.text == text)&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.navigationEndpoint, navigationEndpoint) || other.navigationEndpoint == navigationEndpoint));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1147,15 +1147,15 @@ int get hashCode => Object.hash(runtimeType,text,icon,navigationEndpoint);
 
 @override
 String toString() {
-  return 'MenuNavigationItemRenderer(text: $text, icon: $icon, navigationEndpoint: $navigationEndpoint)';
+  return 'MenuRendererItemMenuNavigationItemRenderer(text: $text, icon: $icon, navigationEndpoint: $navigationEndpoint)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$MenuNavigationItemRendererCopyWith<$Res> implements $MenuNavigationItemRendererCopyWith<$Res> {
-  factory _$MenuNavigationItemRendererCopyWith(_MenuNavigationItemRenderer value, $Res Function(_MenuNavigationItemRenderer) _then) = __$MenuNavigationItemRendererCopyWithImpl;
+abstract mixin class _$MenuRendererItemMenuNavigationItemRendererCopyWith<$Res> implements $MenuRendererItemMenuNavigationItemRendererCopyWith<$Res> {
+  factory _$MenuRendererItemMenuNavigationItemRendererCopyWith(_MenuRendererItemMenuNavigationItemRenderer value, $Res Function(_MenuRendererItemMenuNavigationItemRenderer) _then) = __$MenuRendererItemMenuNavigationItemRendererCopyWithImpl;
 @override @useResult
 $Res call({
  Runs text, YoutubeIcon icon, NavigationEndpoint navigationEndpoint
@@ -1166,17 +1166,17 @@ $Res call({
 
 }
 /// @nodoc
-class __$MenuNavigationItemRendererCopyWithImpl<$Res>
-    implements _$MenuNavigationItemRendererCopyWith<$Res> {
-  __$MenuNavigationItemRendererCopyWithImpl(this._self, this._then);
+class __$MenuRendererItemMenuNavigationItemRendererCopyWithImpl<$Res>
+    implements _$MenuRendererItemMenuNavigationItemRendererCopyWith<$Res> {
+  __$MenuRendererItemMenuNavigationItemRendererCopyWithImpl(this._self, this._then);
 
-  final _MenuNavigationItemRenderer _self;
-  final $Res Function(_MenuNavigationItemRenderer) _then;
+  final _MenuRendererItemMenuNavigationItemRenderer _self;
+  final $Res Function(_MenuRendererItemMenuNavigationItemRenderer) _then;
 
-/// Create a copy of MenuNavigationItemRenderer
+/// Create a copy of MenuRendererItemMenuNavigationItemRenderer
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? text = null,Object? icon = null,Object? navigationEndpoint = null,}) {
-  return _then(_MenuNavigationItemRenderer(
+  return _then(_MenuRendererItemMenuNavigationItemRenderer(
 text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
 as Runs,icon: null == icon ? _self.icon : icon // ignore: cast_nullable_to_non_nullable
 as YoutubeIcon,navigationEndpoint: null == navigationEndpoint ? _self.navigationEndpoint : navigationEndpoint // ignore: cast_nullable_to_non_nullable
@@ -1184,7 +1184,7 @@ as NavigationEndpoint,
   ));
 }
 
-/// Create a copy of MenuNavigationItemRenderer
+/// Create a copy of MenuRendererItemMenuNavigationItemRenderer
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
@@ -1193,7 +1193,7 @@ $RunsCopyWith<$Res> get text {
   return $RunsCopyWith<$Res>(_self.text, (value) {
     return _then(_self.copyWith(text: value));
   });
-}/// Create a copy of MenuNavigationItemRenderer
+}/// Create a copy of MenuRendererItemMenuNavigationItemRenderer
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
@@ -1202,7 +1202,7 @@ $YoutubeIconCopyWith<$Res> get icon {
   return $YoutubeIconCopyWith<$Res>(_self.icon, (value) {
     return _then(_self.copyWith(icon: value));
   });
-}/// Create a copy of MenuNavigationItemRenderer
+}/// Create a copy of MenuRendererItemMenuNavigationItemRenderer
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
@@ -1216,22 +1216,22 @@ $NavigationEndpointCopyWith<$Res> get navigationEndpoint {
 
 
 /// @nodoc
-mixin _$MenuServiceItemRenderer {
+mixin _$MenuRendererItemMenuServiceItemRenderer {
 
  Runs get text; YoutubeIcon get icon; NavigationEndpoint get serviceEndpoint;
-/// Create a copy of MenuServiceItemRenderer
+/// Create a copy of MenuRendererItemMenuServiceItemRenderer
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$MenuServiceItemRendererCopyWith<MenuServiceItemRenderer> get copyWith => _$MenuServiceItemRendererCopyWithImpl<MenuServiceItemRenderer>(this as MenuServiceItemRenderer, _$identity);
+$MenuRendererItemMenuServiceItemRendererCopyWith<MenuRendererItemMenuServiceItemRenderer> get copyWith => _$MenuRendererItemMenuServiceItemRendererCopyWithImpl<MenuRendererItemMenuServiceItemRenderer>(this as MenuRendererItemMenuServiceItemRenderer, _$identity);
 
-  /// Serializes this MenuServiceItemRenderer to a JSON map.
+  /// Serializes this MenuRendererItemMenuServiceItemRenderer to a JSON map.
   Map<String, dynamic> toJson();
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MenuServiceItemRenderer&&(identical(other.text, text) || other.text == text)&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.serviceEndpoint, serviceEndpoint) || other.serviceEndpoint == serviceEndpoint));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MenuRendererItemMenuServiceItemRenderer&&(identical(other.text, text) || other.text == text)&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.serviceEndpoint, serviceEndpoint) || other.serviceEndpoint == serviceEndpoint));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1240,15 +1240,15 @@ int get hashCode => Object.hash(runtimeType,text,icon,serviceEndpoint);
 
 @override
 String toString() {
-  return 'MenuServiceItemRenderer(text: $text, icon: $icon, serviceEndpoint: $serviceEndpoint)';
+  return 'MenuRendererItemMenuServiceItemRenderer(text: $text, icon: $icon, serviceEndpoint: $serviceEndpoint)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $MenuServiceItemRendererCopyWith<$Res>  {
-  factory $MenuServiceItemRendererCopyWith(MenuServiceItemRenderer value, $Res Function(MenuServiceItemRenderer) _then) = _$MenuServiceItemRendererCopyWithImpl;
+abstract mixin class $MenuRendererItemMenuServiceItemRendererCopyWith<$Res>  {
+  factory $MenuRendererItemMenuServiceItemRendererCopyWith(MenuRendererItemMenuServiceItemRenderer value, $Res Function(MenuRendererItemMenuServiceItemRenderer) _then) = _$MenuRendererItemMenuServiceItemRendererCopyWithImpl;
 @useResult
 $Res call({
  Runs text, YoutubeIcon icon, NavigationEndpoint serviceEndpoint
@@ -1259,14 +1259,14 @@ $RunsCopyWith<$Res> get text;$YoutubeIconCopyWith<$Res> get icon;$NavigationEndp
 
 }
 /// @nodoc
-class _$MenuServiceItemRendererCopyWithImpl<$Res>
-    implements $MenuServiceItemRendererCopyWith<$Res> {
-  _$MenuServiceItemRendererCopyWithImpl(this._self, this._then);
+class _$MenuRendererItemMenuServiceItemRendererCopyWithImpl<$Res>
+    implements $MenuRendererItemMenuServiceItemRendererCopyWith<$Res> {
+  _$MenuRendererItemMenuServiceItemRendererCopyWithImpl(this._self, this._then);
 
-  final MenuServiceItemRenderer _self;
-  final $Res Function(MenuServiceItemRenderer) _then;
+  final MenuRendererItemMenuServiceItemRenderer _self;
+  final $Res Function(MenuRendererItemMenuServiceItemRenderer) _then;
 
-/// Create a copy of MenuServiceItemRenderer
+/// Create a copy of MenuRendererItemMenuServiceItemRenderer
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? text = null,Object? icon = null,Object? serviceEndpoint = null,}) {
   return _then(_self.copyWith(
@@ -1276,7 +1276,7 @@ as YoutubeIcon,serviceEndpoint: null == serviceEndpoint ? _self.serviceEndpoint 
 as NavigationEndpoint,
   ));
 }
-/// Create a copy of MenuServiceItemRenderer
+/// Create a copy of MenuRendererItemMenuServiceItemRenderer
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
@@ -1285,7 +1285,7 @@ $RunsCopyWith<$Res> get text {
   return $RunsCopyWith<$Res>(_self.text, (value) {
     return _then(_self.copyWith(text: value));
   });
-}/// Create a copy of MenuServiceItemRenderer
+}/// Create a copy of MenuRendererItemMenuServiceItemRenderer
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
@@ -1294,7 +1294,7 @@ $YoutubeIconCopyWith<$Res> get icon {
   return $YoutubeIconCopyWith<$Res>(_self.icon, (value) {
     return _then(_self.copyWith(icon: value));
   });
-}/// Create a copy of MenuServiceItemRenderer
+}/// Create a copy of MenuRendererItemMenuServiceItemRenderer
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
@@ -1307,8 +1307,8 @@ $NavigationEndpointCopyWith<$Res> get serviceEndpoint {
 }
 
 
-/// Adds pattern-matching-related methods to [MenuServiceItemRenderer].
-extension MenuServiceItemRendererPatterns on MenuServiceItemRenderer {
+/// Adds pattern-matching-related methods to [MenuRendererItemMenuServiceItemRenderer].
+extension MenuRendererItemMenuServiceItemRendererPatterns on MenuRendererItemMenuServiceItemRenderer {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -1321,10 +1321,10 @@ extension MenuServiceItemRendererPatterns on MenuServiceItemRenderer {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _MenuServiceItemRenderer value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _MenuRendererItemMenuServiceItemRenderer value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _MenuServiceItemRenderer() when $default != null:
+case _MenuRendererItemMenuServiceItemRenderer() when $default != null:
 return $default(_that);case _:
   return orElse();
 
@@ -1343,10 +1343,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _MenuServiceItemRenderer value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _MenuRendererItemMenuServiceItemRenderer value)  $default,){
 final _that = this;
 switch (_that) {
-case _MenuServiceItemRenderer():
+case _MenuRendererItemMenuServiceItemRenderer():
 return $default(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
@@ -1361,10 +1361,10 @@ return $default(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _MenuServiceItemRenderer value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _MenuRendererItemMenuServiceItemRenderer value)?  $default,){
 final _that = this;
 switch (_that) {
-case _MenuServiceItemRenderer() when $default != null:
+case _MenuRendererItemMenuServiceItemRenderer() when $default != null:
 return $default(_that);case _:
   return null;
 
@@ -1384,7 +1384,7 @@ return $default(_that);case _:
 
 @optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Runs text,  YoutubeIcon icon,  NavigationEndpoint serviceEndpoint)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _MenuServiceItemRenderer() when $default != null:
+case _MenuRendererItemMenuServiceItemRenderer() when $default != null:
 return $default(_that.text,_that.icon,_that.serviceEndpoint);case _:
   return orElse();
 
@@ -1405,7 +1405,7 @@ return $default(_that.text,_that.icon,_that.serviceEndpoint);case _:
 
 @optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Runs text,  YoutubeIcon icon,  NavigationEndpoint serviceEndpoint)  $default,) {final _that = this;
 switch (_that) {
-case _MenuServiceItemRenderer():
+case _MenuRendererItemMenuServiceItemRenderer():
 return $default(_that.text,_that.icon,_that.serviceEndpoint);}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -1422,7 +1422,7 @@ return $default(_that.text,_that.icon,_that.serviceEndpoint);}
 
 @optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Runs text,  YoutubeIcon icon,  NavigationEndpoint serviceEndpoint)?  $default,) {final _that = this;
 switch (_that) {
-case _MenuServiceItemRenderer() when $default != null:
+case _MenuRendererItemMenuServiceItemRenderer() when $default != null:
 return $default(_that.text,_that.icon,_that.serviceEndpoint);case _:
   return null;
 
@@ -1434,28 +1434,28 @@ return $default(_that.text,_that.icon,_that.serviceEndpoint);case _:
 /// @nodoc
 @JsonSerializable()
 
-class _MenuServiceItemRenderer implements MenuServiceItemRenderer {
-  const _MenuServiceItemRenderer({required this.text, required this.icon, required this.serviceEndpoint});
-  factory _MenuServiceItemRenderer.fromJson(Map<String, dynamic> json) => _$MenuServiceItemRendererFromJson(json);
+class _MenuRendererItemMenuServiceItemRenderer implements MenuRendererItemMenuServiceItemRenderer {
+  const _MenuRendererItemMenuServiceItemRenderer({required this.text, required this.icon, required this.serviceEndpoint});
+  factory _MenuRendererItemMenuServiceItemRenderer.fromJson(Map<String, dynamic> json) => _$MenuRendererItemMenuServiceItemRendererFromJson(json);
 
 @override final  Runs text;
 @override final  YoutubeIcon icon;
 @override final  NavigationEndpoint serviceEndpoint;
 
-/// Create a copy of MenuServiceItemRenderer
+/// Create a copy of MenuRendererItemMenuServiceItemRenderer
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$MenuServiceItemRendererCopyWith<_MenuServiceItemRenderer> get copyWith => __$MenuServiceItemRendererCopyWithImpl<_MenuServiceItemRenderer>(this, _$identity);
+_$MenuRendererItemMenuServiceItemRendererCopyWith<_MenuRendererItemMenuServiceItemRenderer> get copyWith => __$MenuRendererItemMenuServiceItemRendererCopyWithImpl<_MenuRendererItemMenuServiceItemRenderer>(this, _$identity);
 
 @override
 Map<String, dynamic> toJson() {
-  return _$MenuServiceItemRendererToJson(this, );
+  return _$MenuRendererItemMenuServiceItemRendererToJson(this, );
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MenuServiceItemRenderer&&(identical(other.text, text) || other.text == text)&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.serviceEndpoint, serviceEndpoint) || other.serviceEndpoint == serviceEndpoint));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MenuRendererItemMenuServiceItemRenderer&&(identical(other.text, text) || other.text == text)&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.serviceEndpoint, serviceEndpoint) || other.serviceEndpoint == serviceEndpoint));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1464,15 +1464,15 @@ int get hashCode => Object.hash(runtimeType,text,icon,serviceEndpoint);
 
 @override
 String toString() {
-  return 'MenuServiceItemRenderer(text: $text, icon: $icon, serviceEndpoint: $serviceEndpoint)';
+  return 'MenuRendererItemMenuServiceItemRenderer(text: $text, icon: $icon, serviceEndpoint: $serviceEndpoint)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$MenuServiceItemRendererCopyWith<$Res> implements $MenuServiceItemRendererCopyWith<$Res> {
-  factory _$MenuServiceItemRendererCopyWith(_MenuServiceItemRenderer value, $Res Function(_MenuServiceItemRenderer) _then) = __$MenuServiceItemRendererCopyWithImpl;
+abstract mixin class _$MenuRendererItemMenuServiceItemRendererCopyWith<$Res> implements $MenuRendererItemMenuServiceItemRendererCopyWith<$Res> {
+  factory _$MenuRendererItemMenuServiceItemRendererCopyWith(_MenuRendererItemMenuServiceItemRenderer value, $Res Function(_MenuRendererItemMenuServiceItemRenderer) _then) = __$MenuRendererItemMenuServiceItemRendererCopyWithImpl;
 @override @useResult
 $Res call({
  Runs text, YoutubeIcon icon, NavigationEndpoint serviceEndpoint
@@ -1483,17 +1483,17 @@ $Res call({
 
 }
 /// @nodoc
-class __$MenuServiceItemRendererCopyWithImpl<$Res>
-    implements _$MenuServiceItemRendererCopyWith<$Res> {
-  __$MenuServiceItemRendererCopyWithImpl(this._self, this._then);
+class __$MenuRendererItemMenuServiceItemRendererCopyWithImpl<$Res>
+    implements _$MenuRendererItemMenuServiceItemRendererCopyWith<$Res> {
+  __$MenuRendererItemMenuServiceItemRendererCopyWithImpl(this._self, this._then);
 
-  final _MenuServiceItemRenderer _self;
-  final $Res Function(_MenuServiceItemRenderer) _then;
+  final _MenuRendererItemMenuServiceItemRenderer _self;
+  final $Res Function(_MenuRendererItemMenuServiceItemRenderer) _then;
 
-/// Create a copy of MenuServiceItemRenderer
+/// Create a copy of MenuRendererItemMenuServiceItemRenderer
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? text = null,Object? icon = null,Object? serviceEndpoint = null,}) {
-  return _then(_MenuServiceItemRenderer(
+  return _then(_MenuRendererItemMenuServiceItemRenderer(
 text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
 as Runs,icon: null == icon ? _self.icon : icon // ignore: cast_nullable_to_non_nullable
 as YoutubeIcon,serviceEndpoint: null == serviceEndpoint ? _self.serviceEndpoint : serviceEndpoint // ignore: cast_nullable_to_non_nullable
@@ -1501,7 +1501,7 @@ as NavigationEndpoint,
   ));
 }
 
-/// Create a copy of MenuServiceItemRenderer
+/// Create a copy of MenuRendererItemMenuServiceItemRenderer
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
@@ -1510,7 +1510,7 @@ $RunsCopyWith<$Res> get text {
   return $RunsCopyWith<$Res>(_self.text, (value) {
     return _then(_self.copyWith(text: value));
   });
-}/// Create a copy of MenuServiceItemRenderer
+}/// Create a copy of MenuRendererItemMenuServiceItemRenderer
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
@@ -1519,7 +1519,7 @@ $YoutubeIconCopyWith<$Res> get icon {
   return $YoutubeIconCopyWith<$Res>(_self.icon, (value) {
     return _then(_self.copyWith(icon: value));
   });
-}/// Create a copy of MenuServiceItemRenderer
+}/// Create a copy of MenuRendererItemMenuServiceItemRenderer
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
@@ -1533,22 +1533,22 @@ $NavigationEndpointCopyWith<$Res> get serviceEndpoint {
 
 
 /// @nodoc
-mixin _$ToggleMenuServiceRenderer {
+mixin _$MenuRendererItemToggleMenuServiceRenderer {
 
  YoutubeIcon get defaultIcon; DefaultServiceEndpoint get defaultServiceEndpoint; ToggledServiceEndpoint? get toggledServiceEndpoint; bool get isSelected;
-/// Create a copy of ToggleMenuServiceRenderer
+/// Create a copy of MenuRendererItemToggleMenuServiceRenderer
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$ToggleMenuServiceRendererCopyWith<ToggleMenuServiceRenderer> get copyWith => _$ToggleMenuServiceRendererCopyWithImpl<ToggleMenuServiceRenderer>(this as ToggleMenuServiceRenderer, _$identity);
+$MenuRendererItemToggleMenuServiceRendererCopyWith<MenuRendererItemToggleMenuServiceRenderer> get copyWith => _$MenuRendererItemToggleMenuServiceRendererCopyWithImpl<MenuRendererItemToggleMenuServiceRenderer>(this as MenuRendererItemToggleMenuServiceRenderer, _$identity);
 
-  /// Serializes this ToggleMenuServiceRenderer to a JSON map.
+  /// Serializes this MenuRendererItemToggleMenuServiceRenderer to a JSON map.
   Map<String, dynamic> toJson();
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ToggleMenuServiceRenderer&&(identical(other.defaultIcon, defaultIcon) || other.defaultIcon == defaultIcon)&&(identical(other.defaultServiceEndpoint, defaultServiceEndpoint) || other.defaultServiceEndpoint == defaultServiceEndpoint)&&(identical(other.toggledServiceEndpoint, toggledServiceEndpoint) || other.toggledServiceEndpoint == toggledServiceEndpoint)&&(identical(other.isSelected, isSelected) || other.isSelected == isSelected));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MenuRendererItemToggleMenuServiceRenderer&&(identical(other.defaultIcon, defaultIcon) || other.defaultIcon == defaultIcon)&&(identical(other.defaultServiceEndpoint, defaultServiceEndpoint) || other.defaultServiceEndpoint == defaultServiceEndpoint)&&(identical(other.toggledServiceEndpoint, toggledServiceEndpoint) || other.toggledServiceEndpoint == toggledServiceEndpoint)&&(identical(other.isSelected, isSelected) || other.isSelected == isSelected));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1557,15 +1557,15 @@ int get hashCode => Object.hash(runtimeType,defaultIcon,defaultServiceEndpoint,t
 
 @override
 String toString() {
-  return 'ToggleMenuServiceRenderer(defaultIcon: $defaultIcon, defaultServiceEndpoint: $defaultServiceEndpoint, toggledServiceEndpoint: $toggledServiceEndpoint, isSelected: $isSelected)';
+  return 'MenuRendererItemToggleMenuServiceRenderer(defaultIcon: $defaultIcon, defaultServiceEndpoint: $defaultServiceEndpoint, toggledServiceEndpoint: $toggledServiceEndpoint, isSelected: $isSelected)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $ToggleMenuServiceRendererCopyWith<$Res>  {
-  factory $ToggleMenuServiceRendererCopyWith(ToggleMenuServiceRenderer value, $Res Function(ToggleMenuServiceRenderer) _then) = _$ToggleMenuServiceRendererCopyWithImpl;
+abstract mixin class $MenuRendererItemToggleMenuServiceRendererCopyWith<$Res>  {
+  factory $MenuRendererItemToggleMenuServiceRendererCopyWith(MenuRendererItemToggleMenuServiceRenderer value, $Res Function(MenuRendererItemToggleMenuServiceRenderer) _then) = _$MenuRendererItemToggleMenuServiceRendererCopyWithImpl;
 @useResult
 $Res call({
  YoutubeIcon defaultIcon, DefaultServiceEndpoint defaultServiceEndpoint, ToggledServiceEndpoint? toggledServiceEndpoint, bool isSelected
@@ -1576,14 +1576,14 @@ $YoutubeIconCopyWith<$Res> get defaultIcon;$DefaultServiceEndpointCopyWith<$Res>
 
 }
 /// @nodoc
-class _$ToggleMenuServiceRendererCopyWithImpl<$Res>
-    implements $ToggleMenuServiceRendererCopyWith<$Res> {
-  _$ToggleMenuServiceRendererCopyWithImpl(this._self, this._then);
+class _$MenuRendererItemToggleMenuServiceRendererCopyWithImpl<$Res>
+    implements $MenuRendererItemToggleMenuServiceRendererCopyWith<$Res> {
+  _$MenuRendererItemToggleMenuServiceRendererCopyWithImpl(this._self, this._then);
 
-  final ToggleMenuServiceRenderer _self;
-  final $Res Function(ToggleMenuServiceRenderer) _then;
+  final MenuRendererItemToggleMenuServiceRenderer _self;
+  final $Res Function(MenuRendererItemToggleMenuServiceRenderer) _then;
 
-/// Create a copy of ToggleMenuServiceRenderer
+/// Create a copy of MenuRendererItemToggleMenuServiceRenderer
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? defaultIcon = null,Object? defaultServiceEndpoint = null,Object? toggledServiceEndpoint = freezed,Object? isSelected = null,}) {
   return _then(_self.copyWith(
@@ -1594,7 +1594,7 @@ as ToggledServiceEndpoint?,isSelected: null == isSelected ? _self.isSelected : i
 as bool,
   ));
 }
-/// Create a copy of ToggleMenuServiceRenderer
+/// Create a copy of MenuRendererItemToggleMenuServiceRenderer
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
@@ -1603,7 +1603,7 @@ $YoutubeIconCopyWith<$Res> get defaultIcon {
   return $YoutubeIconCopyWith<$Res>(_self.defaultIcon, (value) {
     return _then(_self.copyWith(defaultIcon: value));
   });
-}/// Create a copy of ToggleMenuServiceRenderer
+}/// Create a copy of MenuRendererItemToggleMenuServiceRenderer
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
@@ -1612,7 +1612,7 @@ $DefaultServiceEndpointCopyWith<$Res> get defaultServiceEndpoint {
   return $DefaultServiceEndpointCopyWith<$Res>(_self.defaultServiceEndpoint, (value) {
     return _then(_self.copyWith(defaultServiceEndpoint: value));
   });
-}/// Create a copy of ToggleMenuServiceRenderer
+}/// Create a copy of MenuRendererItemToggleMenuServiceRenderer
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
@@ -1628,8 +1628,8 @@ $ToggledServiceEndpointCopyWith<$Res>? get toggledServiceEndpoint {
 }
 
 
-/// Adds pattern-matching-related methods to [ToggleMenuServiceRenderer].
-extension ToggleMenuServiceRendererPatterns on ToggleMenuServiceRenderer {
+/// Adds pattern-matching-related methods to [MenuRendererItemToggleMenuServiceRenderer].
+extension MenuRendererItemToggleMenuServiceRendererPatterns on MenuRendererItemToggleMenuServiceRenderer {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -1642,10 +1642,10 @@ extension ToggleMenuServiceRendererPatterns on ToggleMenuServiceRenderer {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ToggleMenuServiceRenderer value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _MenuRendererItemToggleMenuServiceRenderer value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _ToggleMenuServiceRenderer() when $default != null:
+case _MenuRendererItemToggleMenuServiceRenderer() when $default != null:
 return $default(_that);case _:
   return orElse();
 
@@ -1664,10 +1664,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ToggleMenuServiceRenderer value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _MenuRendererItemToggleMenuServiceRenderer value)  $default,){
 final _that = this;
 switch (_that) {
-case _ToggleMenuServiceRenderer():
+case _MenuRendererItemToggleMenuServiceRenderer():
 return $default(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
@@ -1682,10 +1682,10 @@ return $default(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ToggleMenuServiceRenderer value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _MenuRendererItemToggleMenuServiceRenderer value)?  $default,){
 final _that = this;
 switch (_that) {
-case _ToggleMenuServiceRenderer() when $default != null:
+case _MenuRendererItemToggleMenuServiceRenderer() when $default != null:
 return $default(_that);case _:
   return null;
 
@@ -1705,7 +1705,7 @@ return $default(_that);case _:
 
 @optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( YoutubeIcon defaultIcon,  DefaultServiceEndpoint defaultServiceEndpoint,  ToggledServiceEndpoint? toggledServiceEndpoint,  bool isSelected)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _ToggleMenuServiceRenderer() when $default != null:
+case _MenuRendererItemToggleMenuServiceRenderer() when $default != null:
 return $default(_that.defaultIcon,_that.defaultServiceEndpoint,_that.toggledServiceEndpoint,_that.isSelected);case _:
   return orElse();
 
@@ -1726,7 +1726,7 @@ return $default(_that.defaultIcon,_that.defaultServiceEndpoint,_that.toggledServ
 
 @optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( YoutubeIcon defaultIcon,  DefaultServiceEndpoint defaultServiceEndpoint,  ToggledServiceEndpoint? toggledServiceEndpoint,  bool isSelected)  $default,) {final _that = this;
 switch (_that) {
-case _ToggleMenuServiceRenderer():
+case _MenuRendererItemToggleMenuServiceRenderer():
 return $default(_that.defaultIcon,_that.defaultServiceEndpoint,_that.toggledServiceEndpoint,_that.isSelected);}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -1743,7 +1743,7 @@ return $default(_that.defaultIcon,_that.defaultServiceEndpoint,_that.toggledServ
 
 @optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( YoutubeIcon defaultIcon,  DefaultServiceEndpoint defaultServiceEndpoint,  ToggledServiceEndpoint? toggledServiceEndpoint,  bool isSelected)?  $default,) {final _that = this;
 switch (_that) {
-case _ToggleMenuServiceRenderer() when $default != null:
+case _MenuRendererItemToggleMenuServiceRenderer() when $default != null:
 return $default(_that.defaultIcon,_that.defaultServiceEndpoint,_that.toggledServiceEndpoint,_that.isSelected);case _:
   return null;
 
@@ -1755,29 +1755,29 @@ return $default(_that.defaultIcon,_that.defaultServiceEndpoint,_that.toggledServ
 /// @nodoc
 @JsonSerializable()
 
-class _ToggleMenuServiceRenderer implements ToggleMenuServiceRenderer {
-  const _ToggleMenuServiceRenderer({required this.defaultIcon, required this.defaultServiceEndpoint, this.toggledServiceEndpoint, this.isSelected = false});
-  factory _ToggleMenuServiceRenderer.fromJson(Map<String, dynamic> json) => _$ToggleMenuServiceRendererFromJson(json);
+class _MenuRendererItemToggleMenuServiceRenderer implements MenuRendererItemToggleMenuServiceRenderer {
+  const _MenuRendererItemToggleMenuServiceRenderer({required this.defaultIcon, required this.defaultServiceEndpoint, this.toggledServiceEndpoint, this.isSelected = false});
+  factory _MenuRendererItemToggleMenuServiceRenderer.fromJson(Map<String, dynamic> json) => _$MenuRendererItemToggleMenuServiceRendererFromJson(json);
 
 @override final  YoutubeIcon defaultIcon;
 @override final  DefaultServiceEndpoint defaultServiceEndpoint;
 @override final  ToggledServiceEndpoint? toggledServiceEndpoint;
 @override@JsonKey() final  bool isSelected;
 
-/// Create a copy of ToggleMenuServiceRenderer
+/// Create a copy of MenuRendererItemToggleMenuServiceRenderer
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$ToggleMenuServiceRendererCopyWith<_ToggleMenuServiceRenderer> get copyWith => __$ToggleMenuServiceRendererCopyWithImpl<_ToggleMenuServiceRenderer>(this, _$identity);
+_$MenuRendererItemToggleMenuServiceRendererCopyWith<_MenuRendererItemToggleMenuServiceRenderer> get copyWith => __$MenuRendererItemToggleMenuServiceRendererCopyWithImpl<_MenuRendererItemToggleMenuServiceRenderer>(this, _$identity);
 
 @override
 Map<String, dynamic> toJson() {
-  return _$ToggleMenuServiceRendererToJson(this, );
+  return _$MenuRendererItemToggleMenuServiceRendererToJson(this, );
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ToggleMenuServiceRenderer&&(identical(other.defaultIcon, defaultIcon) || other.defaultIcon == defaultIcon)&&(identical(other.defaultServiceEndpoint, defaultServiceEndpoint) || other.defaultServiceEndpoint == defaultServiceEndpoint)&&(identical(other.toggledServiceEndpoint, toggledServiceEndpoint) || other.toggledServiceEndpoint == toggledServiceEndpoint)&&(identical(other.isSelected, isSelected) || other.isSelected == isSelected));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MenuRendererItemToggleMenuServiceRenderer&&(identical(other.defaultIcon, defaultIcon) || other.defaultIcon == defaultIcon)&&(identical(other.defaultServiceEndpoint, defaultServiceEndpoint) || other.defaultServiceEndpoint == defaultServiceEndpoint)&&(identical(other.toggledServiceEndpoint, toggledServiceEndpoint) || other.toggledServiceEndpoint == toggledServiceEndpoint)&&(identical(other.isSelected, isSelected) || other.isSelected == isSelected));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1786,15 +1786,15 @@ int get hashCode => Object.hash(runtimeType,defaultIcon,defaultServiceEndpoint,t
 
 @override
 String toString() {
-  return 'ToggleMenuServiceRenderer(defaultIcon: $defaultIcon, defaultServiceEndpoint: $defaultServiceEndpoint, toggledServiceEndpoint: $toggledServiceEndpoint, isSelected: $isSelected)';
+  return 'MenuRendererItemToggleMenuServiceRenderer(defaultIcon: $defaultIcon, defaultServiceEndpoint: $defaultServiceEndpoint, toggledServiceEndpoint: $toggledServiceEndpoint, isSelected: $isSelected)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$ToggleMenuServiceRendererCopyWith<$Res> implements $ToggleMenuServiceRendererCopyWith<$Res> {
-  factory _$ToggleMenuServiceRendererCopyWith(_ToggleMenuServiceRenderer value, $Res Function(_ToggleMenuServiceRenderer) _then) = __$ToggleMenuServiceRendererCopyWithImpl;
+abstract mixin class _$MenuRendererItemToggleMenuServiceRendererCopyWith<$Res> implements $MenuRendererItemToggleMenuServiceRendererCopyWith<$Res> {
+  factory _$MenuRendererItemToggleMenuServiceRendererCopyWith(_MenuRendererItemToggleMenuServiceRenderer value, $Res Function(_MenuRendererItemToggleMenuServiceRenderer) _then) = __$MenuRendererItemToggleMenuServiceRendererCopyWithImpl;
 @override @useResult
 $Res call({
  YoutubeIcon defaultIcon, DefaultServiceEndpoint defaultServiceEndpoint, ToggledServiceEndpoint? toggledServiceEndpoint, bool isSelected
@@ -1805,17 +1805,17 @@ $Res call({
 
 }
 /// @nodoc
-class __$ToggleMenuServiceRendererCopyWithImpl<$Res>
-    implements _$ToggleMenuServiceRendererCopyWith<$Res> {
-  __$ToggleMenuServiceRendererCopyWithImpl(this._self, this._then);
+class __$MenuRendererItemToggleMenuServiceRendererCopyWithImpl<$Res>
+    implements _$MenuRendererItemToggleMenuServiceRendererCopyWith<$Res> {
+  __$MenuRendererItemToggleMenuServiceRendererCopyWithImpl(this._self, this._then);
 
-  final _ToggleMenuServiceRenderer _self;
-  final $Res Function(_ToggleMenuServiceRenderer) _then;
+  final _MenuRendererItemToggleMenuServiceRenderer _self;
+  final $Res Function(_MenuRendererItemToggleMenuServiceRenderer) _then;
 
-/// Create a copy of ToggleMenuServiceRenderer
+/// Create a copy of MenuRendererItemToggleMenuServiceRenderer
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? defaultIcon = null,Object? defaultServiceEndpoint = null,Object? toggledServiceEndpoint = freezed,Object? isSelected = null,}) {
-  return _then(_ToggleMenuServiceRenderer(
+  return _then(_MenuRendererItemToggleMenuServiceRenderer(
 defaultIcon: null == defaultIcon ? _self.defaultIcon : defaultIcon // ignore: cast_nullable_to_non_nullable
 as YoutubeIcon,defaultServiceEndpoint: null == defaultServiceEndpoint ? _self.defaultServiceEndpoint : defaultServiceEndpoint // ignore: cast_nullable_to_non_nullable
 as DefaultServiceEndpoint,toggledServiceEndpoint: freezed == toggledServiceEndpoint ? _self.toggledServiceEndpoint : toggledServiceEndpoint // ignore: cast_nullable_to_non_nullable
@@ -1824,7 +1824,7 @@ as bool,
   ));
 }
 
-/// Create a copy of ToggleMenuServiceRenderer
+/// Create a copy of MenuRendererItemToggleMenuServiceRenderer
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
@@ -1833,7 +1833,7 @@ $YoutubeIconCopyWith<$Res> get defaultIcon {
   return $YoutubeIconCopyWith<$Res>(_self.defaultIcon, (value) {
     return _then(_self.copyWith(defaultIcon: value));
   });
-}/// Create a copy of ToggleMenuServiceRenderer
+}/// Create a copy of MenuRendererItemToggleMenuServiceRenderer
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
@@ -1842,7 +1842,7 @@ $DefaultServiceEndpointCopyWith<$Res> get defaultServiceEndpoint {
   return $DefaultServiceEndpointCopyWith<$Res>(_self.defaultServiceEndpoint, (value) {
     return _then(_self.copyWith(defaultServiceEndpoint: value));
   });
-}/// Create a copy of ToggleMenuServiceRenderer
+}/// Create a copy of MenuRendererItemToggleMenuServiceRenderer
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
@@ -1859,22 +1859,22 @@ $ToggledServiceEndpointCopyWith<$Res>? get toggledServiceEndpoint {
 
 
 /// @nodoc
-mixin _$TopLevelButton {
+mixin _$MenuRendererTopLevelButton {
 
- ButtonRenderer? get buttonRenderer;
-/// Create a copy of TopLevelButton
+ MenuRendererTopLevelButtonButtonRenderer? get buttonRenderer;
+/// Create a copy of MenuRendererTopLevelButton
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$TopLevelButtonCopyWith<TopLevelButton> get copyWith => _$TopLevelButtonCopyWithImpl<TopLevelButton>(this as TopLevelButton, _$identity);
+$MenuRendererTopLevelButtonCopyWith<MenuRendererTopLevelButton> get copyWith => _$MenuRendererTopLevelButtonCopyWithImpl<MenuRendererTopLevelButton>(this as MenuRendererTopLevelButton, _$identity);
 
-  /// Serializes this TopLevelButton to a JSON map.
+  /// Serializes this MenuRendererTopLevelButton to a JSON map.
   Map<String, dynamic> toJson();
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is TopLevelButton&&(identical(other.buttonRenderer, buttonRenderer) || other.buttonRenderer == buttonRenderer));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MenuRendererTopLevelButton&&(identical(other.buttonRenderer, buttonRenderer) || other.buttonRenderer == buttonRenderer));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1883,58 +1883,58 @@ int get hashCode => Object.hash(runtimeType,buttonRenderer);
 
 @override
 String toString() {
-  return 'TopLevelButton(buttonRenderer: $buttonRenderer)';
+  return 'MenuRendererTopLevelButton(buttonRenderer: $buttonRenderer)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $TopLevelButtonCopyWith<$Res>  {
-  factory $TopLevelButtonCopyWith(TopLevelButton value, $Res Function(TopLevelButton) _then) = _$TopLevelButtonCopyWithImpl;
+abstract mixin class $MenuRendererTopLevelButtonCopyWith<$Res>  {
+  factory $MenuRendererTopLevelButtonCopyWith(MenuRendererTopLevelButton value, $Res Function(MenuRendererTopLevelButton) _then) = _$MenuRendererTopLevelButtonCopyWithImpl;
 @useResult
 $Res call({
- ButtonRenderer? buttonRenderer
+ MenuRendererTopLevelButtonButtonRenderer? buttonRenderer
 });
 
 
-$ButtonRendererCopyWith<$Res>? get buttonRenderer;
+$MenuRendererTopLevelButtonButtonRendererCopyWith<$Res>? get buttonRenderer;
 
 }
 /// @nodoc
-class _$TopLevelButtonCopyWithImpl<$Res>
-    implements $TopLevelButtonCopyWith<$Res> {
-  _$TopLevelButtonCopyWithImpl(this._self, this._then);
+class _$MenuRendererTopLevelButtonCopyWithImpl<$Res>
+    implements $MenuRendererTopLevelButtonCopyWith<$Res> {
+  _$MenuRendererTopLevelButtonCopyWithImpl(this._self, this._then);
 
-  final TopLevelButton _self;
-  final $Res Function(TopLevelButton) _then;
+  final MenuRendererTopLevelButton _self;
+  final $Res Function(MenuRendererTopLevelButton) _then;
 
-/// Create a copy of TopLevelButton
+/// Create a copy of MenuRendererTopLevelButton
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? buttonRenderer = freezed,}) {
   return _then(_self.copyWith(
 buttonRenderer: freezed == buttonRenderer ? _self.buttonRenderer : buttonRenderer // ignore: cast_nullable_to_non_nullable
-as ButtonRenderer?,
+as MenuRendererTopLevelButtonButtonRenderer?,
   ));
 }
-/// Create a copy of TopLevelButton
+/// Create a copy of MenuRendererTopLevelButton
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$ButtonRendererCopyWith<$Res>? get buttonRenderer {
+$MenuRendererTopLevelButtonButtonRendererCopyWith<$Res>? get buttonRenderer {
     if (_self.buttonRenderer == null) {
     return null;
   }
 
-  return $ButtonRendererCopyWith<$Res>(_self.buttonRenderer!, (value) {
+  return $MenuRendererTopLevelButtonButtonRendererCopyWith<$Res>(_self.buttonRenderer!, (value) {
     return _then(_self.copyWith(buttonRenderer: value));
   });
 }
 }
 
 
-/// Adds pattern-matching-related methods to [TopLevelButton].
-extension TopLevelButtonPatterns on TopLevelButton {
+/// Adds pattern-matching-related methods to [MenuRendererTopLevelButton].
+extension MenuRendererTopLevelButtonPatterns on MenuRendererTopLevelButton {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -1947,10 +1947,10 @@ extension TopLevelButtonPatterns on TopLevelButton {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _TopLevelButton value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _MenuRendererTopLevelButton value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _TopLevelButton() when $default != null:
+case _MenuRendererTopLevelButton() when $default != null:
 return $default(_that);case _:
   return orElse();
 
@@ -1969,10 +1969,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _TopLevelButton value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _MenuRendererTopLevelButton value)  $default,){
 final _that = this;
 switch (_that) {
-case _TopLevelButton():
+case _MenuRendererTopLevelButton():
 return $default(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
@@ -1987,10 +1987,10 @@ return $default(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _TopLevelButton value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _MenuRendererTopLevelButton value)?  $default,){
 final _that = this;
 switch (_that) {
-case _TopLevelButton() when $default != null:
+case _MenuRendererTopLevelButton() when $default != null:
 return $default(_that);case _:
   return null;
 
@@ -2008,9 +2008,9 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( ButtonRenderer? buttonRenderer)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( MenuRendererTopLevelButtonButtonRenderer? buttonRenderer)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _TopLevelButton() when $default != null:
+case _MenuRendererTopLevelButton() when $default != null:
 return $default(_that.buttonRenderer);case _:
   return orElse();
 
@@ -2029,9 +2029,9 @@ return $default(_that.buttonRenderer);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( ButtonRenderer? buttonRenderer)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( MenuRendererTopLevelButtonButtonRenderer? buttonRenderer)  $default,) {final _that = this;
 switch (_that) {
-case _TopLevelButton():
+case _MenuRendererTopLevelButton():
 return $default(_that.buttonRenderer);}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -2046,9 +2046,9 @@ return $default(_that.buttonRenderer);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( ButtonRenderer? buttonRenderer)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( MenuRendererTopLevelButtonButtonRenderer? buttonRenderer)?  $default,) {final _that = this;
 switch (_that) {
-case _TopLevelButton() when $default != null:
+case _MenuRendererTopLevelButton() when $default != null:
 return $default(_that.buttonRenderer);case _:
   return null;
 
@@ -2060,26 +2060,26 @@ return $default(_that.buttonRenderer);case _:
 /// @nodoc
 @JsonSerializable()
 
-class _TopLevelButton implements TopLevelButton {
-  const _TopLevelButton({this.buttonRenderer});
-  factory _TopLevelButton.fromJson(Map<String, dynamic> json) => _$TopLevelButtonFromJson(json);
+class _MenuRendererTopLevelButton implements MenuRendererTopLevelButton {
+  const _MenuRendererTopLevelButton({this.buttonRenderer});
+  factory _MenuRendererTopLevelButton.fromJson(Map<String, dynamic> json) => _$MenuRendererTopLevelButtonFromJson(json);
 
-@override final  ButtonRenderer? buttonRenderer;
+@override final  MenuRendererTopLevelButtonButtonRenderer? buttonRenderer;
 
-/// Create a copy of TopLevelButton
+/// Create a copy of MenuRendererTopLevelButton
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$TopLevelButtonCopyWith<_TopLevelButton> get copyWith => __$TopLevelButtonCopyWithImpl<_TopLevelButton>(this, _$identity);
+_$MenuRendererTopLevelButtonCopyWith<_MenuRendererTopLevelButton> get copyWith => __$MenuRendererTopLevelButtonCopyWithImpl<_MenuRendererTopLevelButton>(this, _$identity);
 
 @override
 Map<String, dynamic> toJson() {
-  return _$TopLevelButtonToJson(this, );
+  return _$MenuRendererTopLevelButtonToJson(this, );
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _TopLevelButton&&(identical(other.buttonRenderer, buttonRenderer) || other.buttonRenderer == buttonRenderer));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MenuRendererTopLevelButton&&(identical(other.buttonRenderer, buttonRenderer) || other.buttonRenderer == buttonRenderer));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2088,51 +2088,51 @@ int get hashCode => Object.hash(runtimeType,buttonRenderer);
 
 @override
 String toString() {
-  return 'TopLevelButton(buttonRenderer: $buttonRenderer)';
+  return 'MenuRendererTopLevelButton(buttonRenderer: $buttonRenderer)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$TopLevelButtonCopyWith<$Res> implements $TopLevelButtonCopyWith<$Res> {
-  factory _$TopLevelButtonCopyWith(_TopLevelButton value, $Res Function(_TopLevelButton) _then) = __$TopLevelButtonCopyWithImpl;
+abstract mixin class _$MenuRendererTopLevelButtonCopyWith<$Res> implements $MenuRendererTopLevelButtonCopyWith<$Res> {
+  factory _$MenuRendererTopLevelButtonCopyWith(_MenuRendererTopLevelButton value, $Res Function(_MenuRendererTopLevelButton) _then) = __$MenuRendererTopLevelButtonCopyWithImpl;
 @override @useResult
 $Res call({
- ButtonRenderer? buttonRenderer
+ MenuRendererTopLevelButtonButtonRenderer? buttonRenderer
 });
 
 
-@override $ButtonRendererCopyWith<$Res>? get buttonRenderer;
+@override $MenuRendererTopLevelButtonButtonRendererCopyWith<$Res>? get buttonRenderer;
 
 }
 /// @nodoc
-class __$TopLevelButtonCopyWithImpl<$Res>
-    implements _$TopLevelButtonCopyWith<$Res> {
-  __$TopLevelButtonCopyWithImpl(this._self, this._then);
+class __$MenuRendererTopLevelButtonCopyWithImpl<$Res>
+    implements _$MenuRendererTopLevelButtonCopyWith<$Res> {
+  __$MenuRendererTopLevelButtonCopyWithImpl(this._self, this._then);
 
-  final _TopLevelButton _self;
-  final $Res Function(_TopLevelButton) _then;
+  final _MenuRendererTopLevelButton _self;
+  final $Res Function(_MenuRendererTopLevelButton) _then;
 
-/// Create a copy of TopLevelButton
+/// Create a copy of MenuRendererTopLevelButton
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? buttonRenderer = freezed,}) {
-  return _then(_TopLevelButton(
+  return _then(_MenuRendererTopLevelButton(
 buttonRenderer: freezed == buttonRenderer ? _self.buttonRenderer : buttonRenderer // ignore: cast_nullable_to_non_nullable
-as ButtonRenderer?,
+as MenuRendererTopLevelButtonButtonRenderer?,
   ));
 }
 
-/// Create a copy of TopLevelButton
+/// Create a copy of MenuRendererTopLevelButton
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$ButtonRendererCopyWith<$Res>? get buttonRenderer {
+$MenuRendererTopLevelButtonButtonRendererCopyWith<$Res>? get buttonRenderer {
     if (_self.buttonRenderer == null) {
     return null;
   }
 
-  return $ButtonRendererCopyWith<$Res>(_self.buttonRenderer!, (value) {
+  return $MenuRendererTopLevelButtonButtonRendererCopyWith<$Res>(_self.buttonRenderer!, (value) {
     return _then(_self.copyWith(buttonRenderer: value));
   });
 }
@@ -2140,22 +2140,22 @@ $ButtonRendererCopyWith<$Res>? get buttonRenderer {
 
 
 /// @nodoc
-mixin _$ButtonRenderer {
+mixin _$MenuRendererTopLevelButtonButtonRenderer {
 
  YoutubeIcon get icon; NavigationEndpoint get navigationEndpoint;
-/// Create a copy of ButtonRenderer
+/// Create a copy of MenuRendererTopLevelButtonButtonRenderer
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$ButtonRendererCopyWith<ButtonRenderer> get copyWith => _$ButtonRendererCopyWithImpl<ButtonRenderer>(this as ButtonRenderer, _$identity);
+$MenuRendererTopLevelButtonButtonRendererCopyWith<MenuRendererTopLevelButtonButtonRenderer> get copyWith => _$MenuRendererTopLevelButtonButtonRendererCopyWithImpl<MenuRendererTopLevelButtonButtonRenderer>(this as MenuRendererTopLevelButtonButtonRenderer, _$identity);
 
-  /// Serializes this ButtonRenderer to a JSON map.
+  /// Serializes this MenuRendererTopLevelButtonButtonRenderer to a JSON map.
   Map<String, dynamic> toJson();
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ButtonRenderer&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.navigationEndpoint, navigationEndpoint) || other.navigationEndpoint == navigationEndpoint));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MenuRendererTopLevelButtonButtonRenderer&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.navigationEndpoint, navigationEndpoint) || other.navigationEndpoint == navigationEndpoint));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2164,15 +2164,15 @@ int get hashCode => Object.hash(runtimeType,icon,navigationEndpoint);
 
 @override
 String toString() {
-  return 'ButtonRenderer(icon: $icon, navigationEndpoint: $navigationEndpoint)';
+  return 'MenuRendererTopLevelButtonButtonRenderer(icon: $icon, navigationEndpoint: $navigationEndpoint)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $ButtonRendererCopyWith<$Res>  {
-  factory $ButtonRendererCopyWith(ButtonRenderer value, $Res Function(ButtonRenderer) _then) = _$ButtonRendererCopyWithImpl;
+abstract mixin class $MenuRendererTopLevelButtonButtonRendererCopyWith<$Res>  {
+  factory $MenuRendererTopLevelButtonButtonRendererCopyWith(MenuRendererTopLevelButtonButtonRenderer value, $Res Function(MenuRendererTopLevelButtonButtonRenderer) _then) = _$MenuRendererTopLevelButtonButtonRendererCopyWithImpl;
 @useResult
 $Res call({
  YoutubeIcon icon, NavigationEndpoint navigationEndpoint
@@ -2183,14 +2183,14 @@ $YoutubeIconCopyWith<$Res> get icon;$NavigationEndpointCopyWith<$Res> get naviga
 
 }
 /// @nodoc
-class _$ButtonRendererCopyWithImpl<$Res>
-    implements $ButtonRendererCopyWith<$Res> {
-  _$ButtonRendererCopyWithImpl(this._self, this._then);
+class _$MenuRendererTopLevelButtonButtonRendererCopyWithImpl<$Res>
+    implements $MenuRendererTopLevelButtonButtonRendererCopyWith<$Res> {
+  _$MenuRendererTopLevelButtonButtonRendererCopyWithImpl(this._self, this._then);
 
-  final ButtonRenderer _self;
-  final $Res Function(ButtonRenderer) _then;
+  final MenuRendererTopLevelButtonButtonRenderer _self;
+  final $Res Function(MenuRendererTopLevelButtonButtonRenderer) _then;
 
-/// Create a copy of ButtonRenderer
+/// Create a copy of MenuRendererTopLevelButtonButtonRenderer
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? icon = null,Object? navigationEndpoint = null,}) {
   return _then(_self.copyWith(
@@ -2199,7 +2199,7 @@ as YoutubeIcon,navigationEndpoint: null == navigationEndpoint ? _self.navigation
 as NavigationEndpoint,
   ));
 }
-/// Create a copy of ButtonRenderer
+/// Create a copy of MenuRendererTopLevelButtonButtonRenderer
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
@@ -2208,7 +2208,7 @@ $YoutubeIconCopyWith<$Res> get icon {
   return $YoutubeIconCopyWith<$Res>(_self.icon, (value) {
     return _then(_self.copyWith(icon: value));
   });
-}/// Create a copy of ButtonRenderer
+}/// Create a copy of MenuRendererTopLevelButtonButtonRenderer
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
@@ -2221,8 +2221,8 @@ $NavigationEndpointCopyWith<$Res> get navigationEndpoint {
 }
 
 
-/// Adds pattern-matching-related methods to [ButtonRenderer].
-extension ButtonRendererPatterns on ButtonRenderer {
+/// Adds pattern-matching-related methods to [MenuRendererTopLevelButtonButtonRenderer].
+extension MenuRendererTopLevelButtonButtonRendererPatterns on MenuRendererTopLevelButtonButtonRenderer {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -2235,10 +2235,10 @@ extension ButtonRendererPatterns on ButtonRenderer {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ButtonRenderer value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _MenuRendererTopLevelButtonButtonRenderer value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _ButtonRenderer() when $default != null:
+case _MenuRendererTopLevelButtonButtonRenderer() when $default != null:
 return $default(_that);case _:
   return orElse();
 
@@ -2257,10 +2257,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ButtonRenderer value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _MenuRendererTopLevelButtonButtonRenderer value)  $default,){
 final _that = this;
 switch (_that) {
-case _ButtonRenderer():
+case _MenuRendererTopLevelButtonButtonRenderer():
 return $default(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
@@ -2275,10 +2275,10 @@ return $default(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ButtonRenderer value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _MenuRendererTopLevelButtonButtonRenderer value)?  $default,){
 final _that = this;
 switch (_that) {
-case _ButtonRenderer() when $default != null:
+case _MenuRendererTopLevelButtonButtonRenderer() when $default != null:
 return $default(_that);case _:
   return null;
 
@@ -2298,7 +2298,7 @@ return $default(_that);case _:
 
 @optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( YoutubeIcon icon,  NavigationEndpoint navigationEndpoint)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _ButtonRenderer() when $default != null:
+case _MenuRendererTopLevelButtonButtonRenderer() when $default != null:
 return $default(_that.icon,_that.navigationEndpoint);case _:
   return orElse();
 
@@ -2319,7 +2319,7 @@ return $default(_that.icon,_that.navigationEndpoint);case _:
 
 @optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( YoutubeIcon icon,  NavigationEndpoint navigationEndpoint)  $default,) {final _that = this;
 switch (_that) {
-case _ButtonRenderer():
+case _MenuRendererTopLevelButtonButtonRenderer():
 return $default(_that.icon,_that.navigationEndpoint);}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -2336,7 +2336,7 @@ return $default(_that.icon,_that.navigationEndpoint);}
 
 @optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( YoutubeIcon icon,  NavigationEndpoint navigationEndpoint)?  $default,) {final _that = this;
 switch (_that) {
-case _ButtonRenderer() when $default != null:
+case _MenuRendererTopLevelButtonButtonRenderer() when $default != null:
 return $default(_that.icon,_that.navigationEndpoint);case _:
   return null;
 
@@ -2348,27 +2348,27 @@ return $default(_that.icon,_that.navigationEndpoint);case _:
 /// @nodoc
 @JsonSerializable()
 
-class _ButtonRenderer implements ButtonRenderer {
-  const _ButtonRenderer({required this.icon, required this.navigationEndpoint});
-  factory _ButtonRenderer.fromJson(Map<String, dynamic> json) => _$ButtonRendererFromJson(json);
+class _MenuRendererTopLevelButtonButtonRenderer implements MenuRendererTopLevelButtonButtonRenderer {
+  const _MenuRendererTopLevelButtonButtonRenderer({required this.icon, required this.navigationEndpoint});
+  factory _MenuRendererTopLevelButtonButtonRenderer.fromJson(Map<String, dynamic> json) => _$MenuRendererTopLevelButtonButtonRendererFromJson(json);
 
 @override final  YoutubeIcon icon;
 @override final  NavigationEndpoint navigationEndpoint;
 
-/// Create a copy of ButtonRenderer
+/// Create a copy of MenuRendererTopLevelButtonButtonRenderer
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$ButtonRendererCopyWith<_ButtonRenderer> get copyWith => __$ButtonRendererCopyWithImpl<_ButtonRenderer>(this, _$identity);
+_$MenuRendererTopLevelButtonButtonRendererCopyWith<_MenuRendererTopLevelButtonButtonRenderer> get copyWith => __$MenuRendererTopLevelButtonButtonRendererCopyWithImpl<_MenuRendererTopLevelButtonButtonRenderer>(this, _$identity);
 
 @override
 Map<String, dynamic> toJson() {
-  return _$ButtonRendererToJson(this, );
+  return _$MenuRendererTopLevelButtonButtonRendererToJson(this, );
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ButtonRenderer&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.navigationEndpoint, navigationEndpoint) || other.navigationEndpoint == navigationEndpoint));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MenuRendererTopLevelButtonButtonRenderer&&(identical(other.icon, icon) || other.icon == icon)&&(identical(other.navigationEndpoint, navigationEndpoint) || other.navigationEndpoint == navigationEndpoint));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2377,15 +2377,15 @@ int get hashCode => Object.hash(runtimeType,icon,navigationEndpoint);
 
 @override
 String toString() {
-  return 'ButtonRenderer(icon: $icon, navigationEndpoint: $navigationEndpoint)';
+  return 'MenuRendererTopLevelButtonButtonRenderer(icon: $icon, navigationEndpoint: $navigationEndpoint)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$ButtonRendererCopyWith<$Res> implements $ButtonRendererCopyWith<$Res> {
-  factory _$ButtonRendererCopyWith(_ButtonRenderer value, $Res Function(_ButtonRenderer) _then) = __$ButtonRendererCopyWithImpl;
+abstract mixin class _$MenuRendererTopLevelButtonButtonRendererCopyWith<$Res> implements $MenuRendererTopLevelButtonButtonRendererCopyWith<$Res> {
+  factory _$MenuRendererTopLevelButtonButtonRendererCopyWith(_MenuRendererTopLevelButtonButtonRenderer value, $Res Function(_MenuRendererTopLevelButtonButtonRenderer) _then) = __$MenuRendererTopLevelButtonButtonRendererCopyWithImpl;
 @override @useResult
 $Res call({
  YoutubeIcon icon, NavigationEndpoint navigationEndpoint
@@ -2396,24 +2396,24 @@ $Res call({
 
 }
 /// @nodoc
-class __$ButtonRendererCopyWithImpl<$Res>
-    implements _$ButtonRendererCopyWith<$Res> {
-  __$ButtonRendererCopyWithImpl(this._self, this._then);
+class __$MenuRendererTopLevelButtonButtonRendererCopyWithImpl<$Res>
+    implements _$MenuRendererTopLevelButtonButtonRendererCopyWith<$Res> {
+  __$MenuRendererTopLevelButtonButtonRendererCopyWithImpl(this._self, this._then);
 
-  final _ButtonRenderer _self;
-  final $Res Function(_ButtonRenderer) _then;
+  final _MenuRendererTopLevelButtonButtonRenderer _self;
+  final $Res Function(_MenuRendererTopLevelButtonButtonRenderer) _then;
 
-/// Create a copy of ButtonRenderer
+/// Create a copy of MenuRendererTopLevelButtonButtonRenderer
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? icon = null,Object? navigationEndpoint = null,}) {
-  return _then(_ButtonRenderer(
+  return _then(_MenuRendererTopLevelButtonButtonRenderer(
 icon: null == icon ? _self.icon : icon // ignore: cast_nullable_to_non_nullable
 as YoutubeIcon,navigationEndpoint: null == navigationEndpoint ? _self.navigationEndpoint : navigationEndpoint // ignore: cast_nullable_to_non_nullable
 as NavigationEndpoint,
   ));
 }
 
-/// Create a copy of ButtonRenderer
+/// Create a copy of MenuRendererTopLevelButtonButtonRenderer
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
@@ -2422,7 +2422,7 @@ $YoutubeIconCopyWith<$Res> get icon {
   return $YoutubeIconCopyWith<$Res>(_self.icon, (value) {
     return _then(_self.copyWith(icon: value));
   });
-}/// Create a copy of ButtonRenderer
+}/// Create a copy of MenuRendererTopLevelButtonButtonRenderer
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')

@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
+import 'package:ytmusic_api/src/models/page/home_page.dart';
 import 'package:ytmusic_api/src/models/response/browse_response.dart';
 
 import 'innertube.dart';
@@ -277,7 +278,7 @@ class YTMusicClient {
 
   // ========== Browse ==========
 
-  YouTubeResult<BrowseResponse> home({String? continuation, String? params}) {
+  YouTubeResult<HomePage> home({String? continuation, String? params}) {
     return _innerTube
         .browse(
           YouTubeClient.webRemix,
@@ -285,10 +286,10 @@ class YTMusicClient {
           params: params,
         )
         .flatMap(
-          (r) => _parseResponse<BrowseResponse>(
-            r,
-            (val) => BrowseResponse.fromJson(val),
-          ),
+          (r) => _parseResponse<HomePage>(r, (val) {
+            final res = BrowseResponse.fromJson(val);
+            return HomePageX.fromBrowseResponse(res);
+          }),
         )
         .run();
   }
