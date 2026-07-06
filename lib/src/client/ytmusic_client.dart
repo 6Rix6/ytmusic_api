@@ -3,15 +3,7 @@ import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
-import 'package:ytmusic_api/src/models/page/home_page.dart';
-import 'package:ytmusic_api/src/models/response/browse_response.dart';
-import 'package:ytmusic_api/src/models/response/data/continuation/continuation.dart';
-
-import 'innertube.dart';
-import 'package:ytmusic_api/src/models/errors.dart';
-import 'package:ytmusic_api/src/models/request/youtube_client.dart';
-import 'package:ytmusic_api/src/models/request/youtube_locale.dart';
-import 'package:ytmusic_api/src/utils/utils.dart';
+import 'package:ytmusic_api/ytmusic_api.dart';
 
 typedef YouTubeResult<T> = Future<Either<InnerTubeFailure, T>>;
 
@@ -311,6 +303,40 @@ class YTMusicClient {
         .run();
   }
 
+  YouTubeResult<PlaylistPage> playlist(String playlistId) {
+    return _innerTube
+        .browse(
+          YouTubeClient.webRemix,
+          browseId: 'VL$playlistId',
+          setLogin: true,
+        )
+        .flatMap(
+          (r) => _parseResponse(r, (val) {
+            final res = BrowseResponse.fromJson(val);
+            return PlaylistPageX.fromBrowseResponse(res, playlistId);
+          }),
+        )
+        .run();
+  }
+
+  YouTubeResult<PlaylistContinuationPage> playlistContinuation(
+    String continuation,
+  ) {
+    return _innerTube
+        .browse(
+          YouTubeClient.webRemix,
+          continuation: continuation,
+          setLogin: true,
+        )
+        .flatMap(
+          (r) => _parseResponse(r, (val) {
+            final res = BrowseResponse.fromJson(val);
+            return PlaylistContinuationPageX.fromBrowseResponse(res);
+          }),
+        )
+        .run();
+  }
+
   TaskEither<InnerTubeFailure, T> _parseResponse<T>(
     Response<Map<String, dynamic>> r,
     T Function(Map<String, dynamic> data) parser,
@@ -329,7 +355,7 @@ class YTMusicClient {
   // ========== Uninplemented ==========
   // searchSuggestions / searchSummary / search / searchContinuation
   // album / albumSongs / artist / artistItems / artistItemsContinuation
-  // playlist / playlistContinuation / podcast / explore
+  // podcast / explore
   // newReleaseAlbums / moodAndGenres / browse / library / libraryContinuation
   // libraryRecentActivity / getChartsPage / musicHistory / podcastDiscover
   // libraryPodcastChannels / libraryPodcastEpisodes / savedPodcastShows

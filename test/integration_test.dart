@@ -27,7 +27,7 @@ void main() {
     (await client.getVisitorData()).match(
       (l) => log('failed to get visitorData: $l'),
       (r) {
-        log('Got visitor data ${r.substring(1, 20)}...');
+        log('Got visitor data ${r.substring(0, 20)}...');
         if (r.isNotEmpty) client.visitorData = r;
       },
     );
@@ -78,9 +78,10 @@ void main() {
         continuation = r.continuation!;
       } else {
         log('Continuation token not found. exit.');
-        return;
       }
     });
+
+    if (continuation == null) return;
 
     final continuationRes = await client.home(continuation: continuation!);
 
@@ -114,6 +115,54 @@ void main() {
         log('${r.continuation!.substring(0, 20)}...');
         expect(r.continuation, isA<String>());
         expect(r.continuation, isNotEmpty);
+      }
+    });
+  });
+
+  test('Playlist', () async {
+    final playlistId = 'PLWcbTERaaK62Uk-6q00BJTXw5thcXH8FC';
+    final res = await client.playlist(playlistId);
+
+    res.match((l) => fail('Expected success but got error: $l'), (r) {
+      _logHeader('Playlist info');
+      log('${r.songs.length} songs');
+      log('title: ${r.playlist.title}');
+
+      if (r.songsContinuation != null) {
+        log('song continuation: ${r.songsContinuation!.substring(0, 20)}...');
+      }
+
+      if (r.continuation != null) {
+        log('continuation: ${r.continuation!.substring(0, 20)}...');
+      }
+
+      expect(r.playlist.id, equals(playlistId));
+    });
+  });
+
+  test('Playlist song continuation', () async {
+    final playlistId = 'PLWcbTERaaK62Uk-6q00BJTXw5thcXH8FC';
+    final res = await client.playlist(playlistId);
+    String? continuation;
+
+    res.match((l) => fail('Expected success but got error: $l'), (r) {
+      if (r.songsContinuation == null) {
+        log('Continuation token not found. exit.');
+      } else {
+        continuation = r.songsContinuation;
+      }
+    });
+
+    if(continuation == null) return;
+
+    final continuationRes = await client.playlistContinuation(continuation!);
+
+    continuationRes.match((l) => fail('Expected success but got error: $l'), (
+      r,
+    ) {
+      log('${r.songs.length} songs');
+      if (r.continuation != null) {
+        log('continuation: ${r.continuation!.substring(0, 20)}...');
       }
     });
   });
