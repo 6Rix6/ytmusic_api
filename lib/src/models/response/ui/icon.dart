@@ -19,3 +19,7 @@ sealed class YoutubeIconStyle with _$YoutubeIconStyle {
   factory YoutubeIconStyle.fromJson(Map<String, dynamic> json) =>
       _$YoutubeIconStyleFromJson(json);
 }
+
+extension YoutubeIconX on YoutubeIcon {
+  bool isExplicit() => iconType == "MUSIC_EXPLICIT_BADGE";
+}
