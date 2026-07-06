@@ -7,6 +7,8 @@ import '../badges.dart';
 import '../menu.dart';
 import '../thumbnails.dart';
 
+import '../../../../utils/extensions.dart';
+
 part 'music_responsive_list_item_renderer.freezed.dart';
 part 'music_responsive_list_item_renderer.g.dart';
 
@@ -192,8 +194,4 @@ extension MusicResponsiveListItemRendererX on MusicResponsiveListItemRenderer {
       overlay?.musicItemThumbnailOverlayRenderer.content
           .musicPlayButtonRenderer.playNavigationEndpoint?.watchEndpoint
           ?.playlistSetVideoId;
-}
-
-extension _LetX<T> on T {
-  R? let<R>(R? Function(T) block) => block(this);
 }

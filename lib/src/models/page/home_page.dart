@@ -622,7 +622,3 @@ YTItem? _fromMusicTwoRowItemRenderer(MusicTwoRowItemRenderer renderer) {
 
   return null;
 }
-
-extension _LetX<T> on T {
-  R let<R>(R Function(T) block) => block(this);
-}
