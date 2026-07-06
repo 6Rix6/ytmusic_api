@@ -17,17 +17,23 @@ import '../../utils/extensions.dart';
 import '../../utils/utils.dart';
 
 part 'playlist_page.freezed.dart';
+part 'playlist_page.g.dart';
 
 @freezed
 sealed class PlaylistPage with _$PlaylistPage {
   const factory PlaylistPage({
     required PlaylistItem playlist,
     required List<SongItem> songs,
+
     /// Token to load the next batch of songs in the list.
     String? songsContinuation,
+
     /// Token to load the rest of the page content (e.g., related playlists).
     String? continuation,
   }) = _PlaylistPage;
+
+  factory PlaylistPage.fromJson(Map<String, dynamic> json) =>
+      _$PlaylistPageFromJson(json);
 }
 
 @freezed
@@ -36,6 +42,10 @@ sealed class PlaylistContinuationPage with _$PlaylistContinuationPage {
     required List<SongItem> songs,
     String? continuation,
   }) = _PlaylistContinuationPage;
+
+  
+  factory PlaylistContinuationPage.fromJson(Map<String, dynamic> json) =>
+      _$PlaylistContinuationPageFromJson(json);
 }
 
 extension PlaylistPageSongItemX on SongItem {

@@ -18,6 +18,7 @@ import '../../utils/extensions.dart';
 import '../../utils/page_helper.dart';
 
 part 'home_page.freezed.dart';
+part 'home_page.g.dart';
 
 @freezed
 sealed class HomePage with _$HomePage {
@@ -26,6 +27,9 @@ sealed class HomePage with _$HomePage {
     required List<HomePageSection> sections,
     String? continuation,
   }) = _HomePage;
+
+  factory HomePage.fromJson(Map<String, dynamic> json) =>
+      _$HomePageFromJson(json);
 }
 
 @freezed
@@ -35,6 +39,9 @@ sealed class HomePageChip with _$HomePageChip {
     BrowseEndpoint? endpoint,
     BrowseEndpoint? deselectEndPoint,
   }) = _HomePageChip;
+
+  factory HomePageChip.fromJson(Map<String, dynamic> json) =>
+      _$HomePageChipFromJson(json);
 }
 
 @freezed
@@ -46,6 +53,9 @@ sealed class HomePageSection with _$HomePageSection {
     BrowseEndpoint? endpoint,
     required List<YTItem> items,
   }) = _HomePageSection;
+
+  factory HomePageSection.fromJson(Map<String, dynamic> json) =>
+      _$HomePageSectionFromJson(json);
 }
 
 extension HomePageX on HomePage {

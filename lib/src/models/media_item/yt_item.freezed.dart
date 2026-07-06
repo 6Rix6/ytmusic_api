@@ -11,6 +11,46 @@ part of 'yt_item.dart';
 
 // dart format off
 T _$identity<T>(T value) => value;
+YTItem _$YTItemFromJson(
+  Map<String, dynamic> json
+) {
+        switch (json['runtimeType']) {
+                  case 'song':
+          return SongItem.fromJson(
+            json
+          );
+                case 'album':
+          return AlbumItem.fromJson(
+            json
+          );
+                case 'playlist':
+          return PlaylistItem.fromJson(
+            json
+          );
+                case 'artist':
+          return ArtistItem.fromJson(
+            json
+          );
+                case 'podcast':
+          return PodcastItem.fromJson(
+            json
+          );
+                case 'episode':
+          return EpisodeItem.fromJson(
+            json
+          );
+        
+          default:
+            throw CheckedFromJsonException(
+  json,
+  'runtimeType',
+  'YTItem',
+  'Invalid union type "${json['runtimeType']}"!'
+);
+        }
+      
+}
+
 /// @nodoc
 mixin _$YTItem {
 
@@ -21,6 +61,8 @@ mixin _$YTItem {
 @pragma('vm:prefer-inline')
 $YTItemCopyWith<YTItem> get copyWith => _$YTItemCopyWithImpl<YTItem>(this as YTItem, _$identity);
 
+  /// Serializes this YTItem to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -28,7 +70,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is YTItem&&(identical(other.title, title) || other.title == title)&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,title,thumbnail);
 
@@ -228,11 +270,11 @@ return episode(_that.id,_that.title,_that.author,_that.podcast,_that.duration,_t
 }
 
 /// @nodoc
-
+@JsonSerializable()
 
 class SongItem implements YTItem {
-  const SongItem({required this.id, required this.title, required final  List<Artist> artists, this.album, this.duration, this.musicVideoType, this.chartPosition, this.chartChange, required this.thumbnail, this.explicit = false, this.endpoint, this.setVideoId, this.libraryAddToken, this.libraryRemoveToken, this.historyRemoveToken, this.isEpisode = false, this.uploadEntityId}): _artists = artists;
-  
+  const SongItem({required this.id, required this.title, required final  List<Artist> artists, this.album, this.duration, this.musicVideoType, this.chartPosition, this.chartChange, required this.thumbnail, this.explicit = false, this.endpoint, this.setVideoId, this.libraryAddToken, this.libraryRemoveToken, this.historyRemoveToken, this.isEpisode = false, this.uploadEntityId, final  String? $type}): _artists = artists,$type = $type ?? 'song';
+  factory SongItem.fromJson(Map<String, dynamic> json) => _$SongItemFromJson(json);
 
  final  String id;
 @override final  String title;
@@ -258,20 +300,27 @@ class SongItem implements YTItem {
 @JsonKey() final  bool isEpisode;
  final  String? uploadEntityId;
 
+@JsonKey(name: 'runtimeType')
+final String $type;
+
+
 /// Create a copy of YTItem
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $SongItemCopyWith<SongItem> get copyWith => _$SongItemCopyWithImpl<SongItem>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$SongItemToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is SongItem&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&const DeepCollectionEquality().equals(other._artists, _artists)&&(identical(other.album, album) || other.album == album)&&(identical(other.duration, duration) || other.duration == duration)&&(identical(other.musicVideoType, musicVideoType) || other.musicVideoType == musicVideoType)&&(identical(other.chartPosition, chartPosition) || other.chartPosition == chartPosition)&&(identical(other.chartChange, chartChange) || other.chartChange == chartChange)&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail)&&(identical(other.explicit, explicit) || other.explicit == explicit)&&(identical(other.endpoint, endpoint) || other.endpoint == endpoint)&&(identical(other.setVideoId, setVideoId) || other.setVideoId == setVideoId)&&(identical(other.libraryAddToken, libraryAddToken) || other.libraryAddToken == libraryAddToken)&&(identical(other.libraryRemoveToken, libraryRemoveToken) || other.libraryRemoveToken == libraryRemoveToken)&&(identical(other.historyRemoveToken, historyRemoveToken) || other.historyRemoveToken == historyRemoveToken)&&(identical(other.isEpisode, isEpisode) || other.isEpisode == isEpisode)&&(identical(other.uploadEntityId, uploadEntityId) || other.uploadEntityId == uploadEntityId));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,id,title,const DeepCollectionEquality().hash(_artists),album,duration,musicVideoType,chartPosition,chartChange,thumbnail,explicit,endpoint,setVideoId,libraryAddToken,libraryRemoveToken,historyRemoveToken,isEpisode,uploadEntityId);
 
@@ -356,11 +405,11 @@ $WatchEndpointCopyWith<$Res>? get endpoint {
 }
 
 /// @nodoc
-
+@JsonSerializable()
 
 class AlbumItem implements YTItem {
-  const AlbumItem({required this.browseId, required this.playlistId, required this.title, final  List<Artist>? artists, this.year, required this.thumbnail, this.explicit = false}): _artists = artists;
-  
+  const AlbumItem({required this.browseId, required this.playlistId, required this.title, final  List<Artist>? artists, this.year, required this.thumbnail, this.explicit = false, final  String? $type}): _artists = artists,$type = $type ?? 'album';
+  factory AlbumItem.fromJson(Map<String, dynamic> json) => _$AlbumItemFromJson(json);
 
  final  String browseId;
  final  String playlistId;
@@ -378,20 +427,27 @@ class AlbumItem implements YTItem {
 @override final  String thumbnail;
 @JsonKey() final  bool explicit;
 
+@JsonKey(name: 'runtimeType')
+final String $type;
+
+
 /// Create a copy of YTItem
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $AlbumItemCopyWith<AlbumItem> get copyWith => _$AlbumItemCopyWithImpl<AlbumItem>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$AlbumItemToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is AlbumItem&&(identical(other.browseId, browseId) || other.browseId == browseId)&&(identical(other.playlistId, playlistId) || other.playlistId == playlistId)&&(identical(other.title, title) || other.title == title)&&const DeepCollectionEquality().equals(other._artists, _artists)&&(identical(other.year, year) || other.year == year)&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail)&&(identical(other.explicit, explicit) || other.explicit == explicit));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,browseId,playlistId,title,const DeepCollectionEquality().hash(_artists),year,thumbnail,explicit);
 
@@ -442,11 +498,11 @@ as bool,
 }
 
 /// @nodoc
-
+@JsonSerializable()
 
 class PlaylistItem implements YTItem {
-  const PlaylistItem({required this.id, required this.title, this.author, this.songCountText, this.thumbnail, this.playEndpoint, this.shuffleEndpoint, this.radioEndpoint, this.isEditable = false, this.isPodcast = false, this.description, this.authorAvatarUrl});
-  
+  const PlaylistItem({required this.id, required this.title, this.author, this.songCountText, this.thumbnail, this.playEndpoint, this.shuffleEndpoint, this.radioEndpoint, this.isEditable = false, this.isPodcast = false, this.description, this.authorAvatarUrl, final  String? $type}): $type = $type ?? 'playlist';
+  factory PlaylistItem.fromJson(Map<String, dynamic> json) => _$PlaylistItemFromJson(json);
 
  final  String id;
 @override final  String title;
@@ -461,20 +517,27 @@ class PlaylistItem implements YTItem {
  final  String? description;
  final  String? authorAvatarUrl;
 
+@JsonKey(name: 'runtimeType')
+final String $type;
+
+
 /// Create a copy of YTItem
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $PlaylistItemCopyWith<PlaylistItem> get copyWith => _$PlaylistItemCopyWithImpl<PlaylistItem>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$PlaylistItemToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is PlaylistItem&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.author, author) || other.author == author)&&(identical(other.songCountText, songCountText) || other.songCountText == songCountText)&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail)&&(identical(other.playEndpoint, playEndpoint) || other.playEndpoint == playEndpoint)&&(identical(other.shuffleEndpoint, shuffleEndpoint) || other.shuffleEndpoint == shuffleEndpoint)&&(identical(other.radioEndpoint, radioEndpoint) || other.radioEndpoint == radioEndpoint)&&(identical(other.isEditable, isEditable) || other.isEditable == isEditable)&&(identical(other.isPodcast, isPodcast) || other.isPodcast == isPodcast)&&(identical(other.description, description) || other.description == description)&&(identical(other.authorAvatarUrl, authorAvatarUrl) || other.authorAvatarUrl == authorAvatarUrl));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,id,title,author,songCountText,thumbnail,playEndpoint,shuffleEndpoint,radioEndpoint,isEditable,isPodcast,description,authorAvatarUrl);
 
@@ -578,11 +641,11 @@ $WatchEndpointCopyWith<$Res>? get radioEndpoint {
 }
 
 /// @nodoc
-
+@JsonSerializable()
 
 class ArtistItem implements YTItem {
-  const ArtistItem({required this.id, required this.title, this.thumbnail, this.channelId, this.playEndpoint, this.shuffleEndpoint, this.radioEndpoint, this.isProfile = false});
-  
+  const ArtistItem({required this.id, required this.title, this.thumbnail, this.channelId, this.playEndpoint, this.shuffleEndpoint, this.radioEndpoint, this.isProfile = false, final  String? $type}): $type = $type ?? 'artist';
+  factory ArtistItem.fromJson(Map<String, dynamic> json) => _$ArtistItemFromJson(json);
 
  final  String id;
 @override final  String title;
@@ -593,20 +656,27 @@ class ArtistItem implements YTItem {
  final  WatchEndpoint? radioEndpoint;
 @JsonKey() final  bool isProfile;
 
+@JsonKey(name: 'runtimeType')
+final String $type;
+
+
 /// Create a copy of YTItem
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $ArtistItemCopyWith<ArtistItem> get copyWith => _$ArtistItemCopyWithImpl<ArtistItem>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$ArtistItemToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is ArtistItem&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail)&&(identical(other.channelId, channelId) || other.channelId == channelId)&&(identical(other.playEndpoint, playEndpoint) || other.playEndpoint == playEndpoint)&&(identical(other.shuffleEndpoint, shuffleEndpoint) || other.shuffleEndpoint == shuffleEndpoint)&&(identical(other.radioEndpoint, radioEndpoint) || other.radioEndpoint == radioEndpoint)&&(identical(other.isProfile, isProfile) || other.isProfile == isProfile));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,id,title,thumbnail,channelId,playEndpoint,shuffleEndpoint,radioEndpoint,isProfile);
 
@@ -694,11 +764,11 @@ $WatchEndpointCopyWith<$Res>? get radioEndpoint {
 }
 
 /// @nodoc
-
+@JsonSerializable()
 
 class PodcastItem implements YTItem {
-  const PodcastItem({required this.id, required this.title, this.author, this.episodeCountText, this.thumbnail, this.playEndpoint, this.shuffleEndpoint, this.libraryAddToken, this.libraryRemoveToken, this.channelId});
-  
+  const PodcastItem({required this.id, required this.title, this.author, this.episodeCountText, this.thumbnail, this.playEndpoint, this.shuffleEndpoint, this.libraryAddToken, this.libraryRemoveToken, this.channelId, final  String? $type}): $type = $type ?? 'podcast';
+  factory PodcastItem.fromJson(Map<String, dynamic> json) => _$PodcastItemFromJson(json);
 
  final  String id;
 @override final  String title;
@@ -711,20 +781,27 @@ class PodcastItem implements YTItem {
  final  String? libraryRemoveToken;
  final  String? channelId;
 
+@JsonKey(name: 'runtimeType')
+final String $type;
+
+
 /// Create a copy of YTItem
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $PodcastItemCopyWith<PodcastItem> get copyWith => _$PodcastItemCopyWithImpl<PodcastItem>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$PodcastItemToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is PodcastItem&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.author, author) || other.author == author)&&(identical(other.episodeCountText, episodeCountText) || other.episodeCountText == episodeCountText)&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail)&&(identical(other.playEndpoint, playEndpoint) || other.playEndpoint == playEndpoint)&&(identical(other.shuffleEndpoint, shuffleEndpoint) || other.shuffleEndpoint == shuffleEndpoint)&&(identical(other.libraryAddToken, libraryAddToken) || other.libraryAddToken == libraryAddToken)&&(identical(other.libraryRemoveToken, libraryRemoveToken) || other.libraryRemoveToken == libraryRemoveToken)&&(identical(other.channelId, channelId) || other.channelId == channelId));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,id,title,author,episodeCountText,thumbnail,playEndpoint,shuffleEndpoint,libraryAddToken,libraryRemoveToken,channelId);
 
@@ -814,11 +891,11 @@ $WatchEndpointCopyWith<$Res>? get shuffleEndpoint {
 }
 
 /// @nodoc
-
+@JsonSerializable()
 
 class EpisodeItem implements YTItem {
-  const EpisodeItem({required this.id, required this.title, this.author, this.podcast, this.duration, this.publishDateText, required this.thumbnail, this.explicit = false, this.endpoint, this.libraryAddToken, this.libraryRemoveToken, this.markAsPlayedToken, this.markAsUnplayedToken});
-  
+  const EpisodeItem({required this.id, required this.title, this.author, this.podcast, this.duration, this.publishDateText, required this.thumbnail, this.explicit = false, this.endpoint, this.libraryAddToken, this.libraryRemoveToken, this.markAsPlayedToken, this.markAsUnplayedToken, final  String? $type}): $type = $type ?? 'episode';
+  factory EpisodeItem.fromJson(Map<String, dynamic> json) => _$EpisodeItemFromJson(json);
 
  final  String id;
 @override final  String title;
@@ -834,20 +911,27 @@ class EpisodeItem implements YTItem {
  final  String? markAsPlayedToken;
  final  String? markAsUnplayedToken;
 
+@JsonKey(name: 'runtimeType')
+final String $type;
+
+
 /// Create a copy of YTItem
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $EpisodeItemCopyWith<EpisodeItem> get copyWith => _$EpisodeItemCopyWithImpl<EpisodeItem>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$EpisodeItemToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is EpisodeItem&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.author, author) || other.author == author)&&(identical(other.podcast, podcast) || other.podcast == podcast)&&(identical(other.duration, duration) || other.duration == duration)&&(identical(other.publishDateText, publishDateText) || other.publishDateText == publishDateText)&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail)&&(identical(other.explicit, explicit) || other.explicit == explicit)&&(identical(other.endpoint, endpoint) || other.endpoint == endpoint)&&(identical(other.libraryAddToken, libraryAddToken) || other.libraryAddToken == libraryAddToken)&&(identical(other.libraryRemoveToken, libraryRemoveToken) || other.libraryRemoveToken == libraryRemoveToken)&&(identical(other.markAsPlayedToken, markAsPlayedToken) || other.markAsPlayedToken == markAsPlayedToken)&&(identical(other.markAsUnplayedToken, markAsUnplayedToken) || other.markAsUnplayedToken == markAsUnplayedToken));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,id,title,author,podcast,duration,publishDateText,thumbnail,explicit,endpoint,libraryAddToken,libraryRemoveToken,markAsPlayedToken,markAsUnplayedToken);
 
@@ -939,6 +1023,7 @@ $WatchEndpointCopyWith<$Res>? get endpoint {
 }
 }
 
+
 /// @nodoc
 mixin _$Artist {
 
@@ -949,6 +1034,8 @@ mixin _$Artist {
 @pragma('vm:prefer-inline')
 $ArtistCopyWith<Artist> get copyWith => _$ArtistCopyWithImpl<Artist>(this as Artist, _$identity);
 
+  /// Serializes this Artist to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -956,7 +1043,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is Artist&&(identical(other.name, name) || other.name == name)&&(identical(other.id, id) || other.id == id));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,name,id);
 
@@ -1126,11 +1213,11 @@ return $default(_that.name,_that.id);case _:
 }
 
 /// @nodoc
-
+@JsonSerializable()
 
 class _Artist implements Artist {
   const _Artist({required this.name, this.id});
-  
+  factory _Artist.fromJson(Map<String, dynamic> json) => _$ArtistFromJson(json);
 
 @override final  String name;
 @override final  String? id;
@@ -1141,14 +1228,17 @@ class _Artist implements Artist {
 @pragma('vm:prefer-inline')
 _$ArtistCopyWith<_Artist> get copyWith => __$ArtistCopyWithImpl<_Artist>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$ArtistToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is _Artist&&(identical(other.name, name) || other.name == name)&&(identical(other.id, id) || other.id == id));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,name,id);
 
@@ -1193,6 +1283,7 @@ as String?,
 
 }
 
+
 /// @nodoc
 mixin _$Album {
 
@@ -1203,6 +1294,8 @@ mixin _$Album {
 @pragma('vm:prefer-inline')
 $AlbumCopyWith<Album> get copyWith => _$AlbumCopyWithImpl<Album>(this as Album, _$identity);
 
+  /// Serializes this Album to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -1210,7 +1303,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is Album&&(identical(other.name, name) || other.name == name)&&(identical(other.id, id) || other.id == id));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,name,id);
 
@@ -1380,11 +1473,11 @@ return $default(_that.name,_that.id);case _:
 }
 
 /// @nodoc
-
+@JsonSerializable()
 
 class _Album implements Album {
   const _Album({required this.name, required this.id});
-  
+  factory _Album.fromJson(Map<String, dynamic> json) => _$AlbumFromJson(json);
 
 @override final  String name;
 @override final  String id;
@@ -1395,14 +1488,17 @@ class _Album implements Album {
 @pragma('vm:prefer-inline')
 _$AlbumCopyWith<_Album> get copyWith => __$AlbumCopyWithImpl<_Album>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$AlbumToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is _Album&&(identical(other.name, name) || other.name == name)&&(identical(other.id, id) || other.id == id));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,name,id);
 

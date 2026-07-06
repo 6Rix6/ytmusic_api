@@ -11,11 +11,12 @@ part of 'playlist_page.dart';
 
 // dart format off
 T _$identity<T>(T value) => value;
+
 /// @nodoc
 mixin _$PlaylistPage {
 
  PlaylistItem get playlist; List<SongItem> get songs;/// Token to load the next batch of songs in the list.
- String? get songsContinuation;/// Token to load the rest of the page content (e.g., related sections).
+ String? get songsContinuation;/// Token to load the rest of the page content (e.g., related playlists).
  String? get continuation;
 /// Create a copy of PlaylistPage
 /// with the given fields replaced by the non-null parameter values.
@@ -23,6 +24,8 @@ mixin _$PlaylistPage {
 @pragma('vm:prefer-inline')
 $PlaylistPageCopyWith<PlaylistPage> get copyWith => _$PlaylistPageCopyWithImpl<PlaylistPage>(this as PlaylistPage, _$identity);
 
+  /// Serializes this PlaylistPage to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -30,7 +33,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is PlaylistPage&&const DeepCollectionEquality().equals(other.playlist, playlist)&&const DeepCollectionEquality().equals(other.songs, songs)&&(identical(other.songsContinuation, songsContinuation) || other.songsContinuation == songsContinuation)&&(identical(other.continuation, continuation) || other.continuation == continuation));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(playlist),const DeepCollectionEquality().hash(songs),songsContinuation,continuation);
 
@@ -202,11 +205,11 @@ return $default(_that.playlist,_that.songs,_that.songsContinuation,_that.continu
 }
 
 /// @nodoc
-
+@JsonSerializable()
 
 class _PlaylistPage implements PlaylistPage {
   const _PlaylistPage({required this.playlist, required final  List<SongItem> songs, this.songsContinuation, this.continuation}): _songs = songs;
-  
+  factory _PlaylistPage.fromJson(Map<String, dynamic> json) => _$PlaylistPageFromJson(json);
 
 @override final  PlaylistItem playlist;
  final  List<SongItem> _songs;
@@ -218,7 +221,7 @@ class _PlaylistPage implements PlaylistPage {
 
 /// Token to load the next batch of songs in the list.
 @override final  String? songsContinuation;
-/// Token to load the rest of the page content (e.g., related sections).
+/// Token to load the rest of the page content (e.g., related playlists).
 @override final  String? continuation;
 
 /// Create a copy of PlaylistPage
@@ -227,14 +230,17 @@ class _PlaylistPage implements PlaylistPage {
 @pragma('vm:prefer-inline')
 _$PlaylistPageCopyWith<_PlaylistPage> get copyWith => __$PlaylistPageCopyWithImpl<_PlaylistPage>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$PlaylistPageToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is _PlaylistPage&&const DeepCollectionEquality().equals(other.playlist, playlist)&&const DeepCollectionEquality().equals(other._songs, _songs)&&(identical(other.songsContinuation, songsContinuation) || other.songsContinuation == songsContinuation)&&(identical(other.continuation, continuation) || other.continuation == continuation));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(playlist),const DeepCollectionEquality().hash(_songs),songsContinuation,continuation);
 
@@ -281,6 +287,7 @@ as String?,
 
 }
 
+
 /// @nodoc
 mixin _$PlaylistContinuationPage {
 
@@ -291,6 +298,8 @@ mixin _$PlaylistContinuationPage {
 @pragma('vm:prefer-inline')
 $PlaylistContinuationPageCopyWith<PlaylistContinuationPage> get copyWith => _$PlaylistContinuationPageCopyWithImpl<PlaylistContinuationPage>(this as PlaylistContinuationPage, _$identity);
 
+  /// Serializes this PlaylistContinuationPage to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -298,7 +307,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is PlaylistContinuationPage&&const DeepCollectionEquality().equals(other.songs, songs)&&(identical(other.continuation, continuation) || other.continuation == continuation));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(songs),continuation);
 
@@ -468,11 +477,11 @@ return $default(_that.songs,_that.continuation);case _:
 }
 
 /// @nodoc
-
+@JsonSerializable()
 
 class _PlaylistContinuationPage implements PlaylistContinuationPage {
   const _PlaylistContinuationPage({required final  List<SongItem> songs, this.continuation}): _songs = songs;
-  
+  factory _PlaylistContinuationPage.fromJson(Map<String, dynamic> json) => _$PlaylistContinuationPageFromJson(json);
 
  final  List<SongItem> _songs;
 @override List<SongItem> get songs {
@@ -489,14 +498,17 @@ class _PlaylistContinuationPage implements PlaylistContinuationPage {
 @pragma('vm:prefer-inline')
 _$PlaylistContinuationPageCopyWith<_PlaylistContinuationPage> get copyWith => __$PlaylistContinuationPageCopyWithImpl<_PlaylistContinuationPage>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$PlaylistContinuationPageToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is _PlaylistContinuationPage&&const DeepCollectionEquality().equals(other._songs, _songs)&&(identical(other.continuation, continuation) || other.continuation == continuation));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_songs),continuation);
 

@@ -11,6 +11,7 @@ part of 'home_page.dart';
 
 // dart format off
 T _$identity<T>(T value) => value;
+
 /// @nodoc
 mixin _$HomePage {
 
@@ -21,6 +22,8 @@ mixin _$HomePage {
 @pragma('vm:prefer-inline')
 $HomePageCopyWith<HomePage> get copyWith => _$HomePageCopyWithImpl<HomePage>(this as HomePage, _$identity);
 
+  /// Serializes this HomePage to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -28,7 +31,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is HomePage&&const DeepCollectionEquality().equals(other.chips, chips)&&const DeepCollectionEquality().equals(other.sections, sections)&&(identical(other.continuation, continuation) || other.continuation == continuation));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(chips),const DeepCollectionEquality().hash(sections),continuation);
 
@@ -199,11 +202,11 @@ return $default(_that.chips,_that.sections,_that.continuation);case _:
 }
 
 /// @nodoc
-
+@JsonSerializable()
 
 class _HomePage implements HomePage {
   const _HomePage({final  List<HomePageChip>? chips, required final  List<HomePageSection> sections, this.continuation}): _chips = chips,_sections = sections;
-  
+  factory _HomePage.fromJson(Map<String, dynamic> json) => _$HomePageFromJson(json);
 
  final  List<HomePageChip>? _chips;
 @override List<HomePageChip>? get chips {
@@ -229,14 +232,17 @@ class _HomePage implements HomePage {
 @pragma('vm:prefer-inline')
 _$HomePageCopyWith<_HomePage> get copyWith => __$HomePageCopyWithImpl<_HomePage>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$HomePageToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is _HomePage&&const DeepCollectionEquality().equals(other._chips, _chips)&&const DeepCollectionEquality().equals(other._sections, _sections)&&(identical(other.continuation, continuation) || other.continuation == continuation));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_chips),const DeepCollectionEquality().hash(_sections),continuation);
 
@@ -282,6 +288,7 @@ as String?,
 
 }
 
+
 /// @nodoc
 mixin _$HomePageChip {
 
@@ -292,6 +299,8 @@ mixin _$HomePageChip {
 @pragma('vm:prefer-inline')
 $HomePageChipCopyWith<HomePageChip> get copyWith => _$HomePageChipCopyWithImpl<HomePageChip>(this as HomePageChip, _$identity);
 
+  /// Serializes this HomePageChip to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -299,7 +308,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is HomePageChip&&(identical(other.title, title) || other.title == title)&&(identical(other.endpoint, endpoint) || other.endpoint == endpoint)&&(identical(other.deselectEndPoint, deselectEndPoint) || other.deselectEndPoint == deselectEndPoint));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,title,endpoint,deselectEndPoint);
 
@@ -494,11 +503,11 @@ return $default(_that.title,_that.endpoint,_that.deselectEndPoint);case _:
 }
 
 /// @nodoc
-
+@JsonSerializable()
 
 class _HomePageChip implements HomePageChip {
   const _HomePageChip({required this.title, this.endpoint, this.deselectEndPoint});
-  
+  factory _HomePageChip.fromJson(Map<String, dynamic> json) => _$HomePageChipFromJson(json);
 
 @override final  String title;
 @override final  BrowseEndpoint? endpoint;
@@ -510,14 +519,17 @@ class _HomePageChip implements HomePageChip {
 @pragma('vm:prefer-inline')
 _$HomePageChipCopyWith<_HomePageChip> get copyWith => __$HomePageChipCopyWithImpl<_HomePageChip>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$HomePageChipToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is _HomePageChip&&(identical(other.title, title) || other.title == title)&&(identical(other.endpoint, endpoint) || other.endpoint == endpoint)&&(identical(other.deselectEndPoint, deselectEndPoint) || other.deselectEndPoint == deselectEndPoint));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,title,endpoint,deselectEndPoint);
 
@@ -587,6 +599,7 @@ $BrowseEndpointCopyWith<$Res>? get deselectEndPoint {
 }
 }
 
+
 /// @nodoc
 mixin _$HomePageSection {
 
@@ -597,6 +610,8 @@ mixin _$HomePageSection {
 @pragma('vm:prefer-inline')
 $HomePageSectionCopyWith<HomePageSection> get copyWith => _$HomePageSectionCopyWithImpl<HomePageSection>(this as HomePageSection, _$identity);
 
+  /// Serializes this HomePageSection to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
@@ -604,7 +619,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is HomePageSection&&(identical(other.title, title) || other.title == title)&&(identical(other.label, label) || other.label == label)&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail)&&(identical(other.endpoint, endpoint) || other.endpoint == endpoint)&&const DeepCollectionEquality().equals(other.items, items));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,title,label,thumbnail,endpoint,const DeepCollectionEquality().hash(items));
 
@@ -789,11 +804,11 @@ return $default(_that.title,_that.label,_that.thumbnail,_that.endpoint,_that.ite
 }
 
 /// @nodoc
-
+@JsonSerializable()
 
 class _HomePageSection implements HomePageSection {
   const _HomePageSection({required this.title, this.label, this.thumbnail, this.endpoint, required final  List<YTItem> items}): _items = items;
-  
+  factory _HomePageSection.fromJson(Map<String, dynamic> json) => _$HomePageSectionFromJson(json);
 
 @override final  String title;
 @override final  String? label;
@@ -813,14 +828,17 @@ class _HomePageSection implements HomePageSection {
 @pragma('vm:prefer-inline')
 _$HomePageSectionCopyWith<_HomePageSection> get copyWith => __$HomePageSectionCopyWithImpl<_HomePageSection>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$HomePageSectionToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is _HomePageSection&&(identical(other.title, title) || other.title == title)&&(identical(other.label, label) || other.label == label)&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail)&&(identical(other.endpoint, endpoint) || other.endpoint == endpoint)&&const DeepCollectionEquality().equals(other._items, _items));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,title,label,thumbnail,endpoint,const DeepCollectionEquality().hash(_items));
 

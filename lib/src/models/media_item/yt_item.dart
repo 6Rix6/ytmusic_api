@@ -4,6 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import '../response/data/endpoint/endpoint.dart';
 
 part 'yt_item.freezed.dart';
+part 'yt_item.g.dart';
 
 @freezed
 sealed class YTItem with _$YTItem {
@@ -91,16 +92,22 @@ sealed class YTItem with _$YTItem {
     String? markAsPlayedToken,
     String? markAsUnplayedToken,
   }) = EpisodeItem;
+
+  factory YTItem.fromJson(Map<String, dynamic> json) => _$YTItemFromJson(json);
 }
 
 @freezed
 sealed class Artist with _$Artist {
   const factory Artist({required String name, String? id}) = _Artist;
+
+  factory Artist.fromJson(Map<String, dynamic> json) => _$ArtistFromJson(json);
 }
 
 @freezed
 sealed class Album with _$Album {
   const factory Album({required String name, required String id}) = _Album;
+
+  factory Album.fromJson(Map<String, dynamic> json) => _$AlbumFromJson(json);
 }
 
 extension YTItemX on YTItem {
