@@ -35,6 +35,9 @@ _MusicResponsiveHeaderRenderer _$MusicResponsiveHeaderRendererFromJson(
   facepile: json['facepile'] == null
       ? null
       : FacepileWrapper.fromJson(json['facepile'] as Map<String, dynamic>),
+  subtitleBadge: (json['subtitleBadge'] as List<dynamic>?)
+      ?.map((e) => Badges.fromJson(e as Map<String, dynamic>))
+      .toList(),
 );
 
 Map<String, dynamic> _$MusicResponsiveHeaderRendererToJson(
@@ -48,6 +51,7 @@ Map<String, dynamic> _$MusicResponsiveHeaderRendererToJson(
   'straplineTextOne': instance.straplineTextOne,
   'description': instance.description,
   'facepile': instance.facepile,
+  'subtitleBadge': instance.subtitleBadge,
 };
 
 _MusicResponsiveHeaderRendererButton

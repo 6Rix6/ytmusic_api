@@ -6,6 +6,7 @@ import '../thumbnails.dart';
 import '../runs.dart';
 import '../menu.dart';
 import '../icon.dart';
+import '../badges.dart';
 import 'music_description_shelf_renderer.dart';
 
 part 'music_responsive_header_renderer.freezed.dart';
@@ -23,6 +24,7 @@ sealed class MusicResponsiveHeaderRenderer
     Runs? straplineTextOne,
     DescriptionWrapper? description,
     FacepileWrapper? facepile,
+    List<Badges>? subtitleBadge,
   }) = _MusicResponsiveHeaderRenderer;
 
   factory MusicResponsiveHeaderRenderer.fromJson(Map<String, dynamic> json) =>

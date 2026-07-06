@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$MusicResponsiveHeaderRenderer {
 
- ThumbnailRenderer? get thumbnail; List<MusicResponsiveHeaderRendererButton> get buttons; Runs get title; Runs get subtitle; Runs? get secondSubtitle; Runs? get straplineTextOne; DescriptionWrapper? get description; FacepileWrapper? get facepile;
+ ThumbnailRenderer? get thumbnail; List<MusicResponsiveHeaderRendererButton> get buttons; Runs get title; Runs get subtitle; Runs? get secondSubtitle; Runs? get straplineTextOne; DescriptionWrapper? get description; FacepileWrapper? get facepile; List<Badges>? get subtitleBadge;
 /// Create a copy of MusicResponsiveHeaderRenderer
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $MusicResponsiveHeaderRendererCopyWith<MusicResponsiveHeaderRenderer> get copyWi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MusicResponsiveHeaderRenderer&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail)&&const DeepCollectionEquality().equals(other.buttons, buttons)&&(identical(other.title, title) || other.title == title)&&(identical(other.subtitle, subtitle) || other.subtitle == subtitle)&&(identical(other.secondSubtitle, secondSubtitle) || other.secondSubtitle == secondSubtitle)&&(identical(other.straplineTextOne, straplineTextOne) || other.straplineTextOne == straplineTextOne)&&(identical(other.description, description) || other.description == description)&&(identical(other.facepile, facepile) || other.facepile == facepile));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MusicResponsiveHeaderRenderer&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail)&&const DeepCollectionEquality().equals(other.buttons, buttons)&&(identical(other.title, title) || other.title == title)&&(identical(other.subtitle, subtitle) || other.subtitle == subtitle)&&(identical(other.secondSubtitle, secondSubtitle) || other.secondSubtitle == secondSubtitle)&&(identical(other.straplineTextOne, straplineTextOne) || other.straplineTextOne == straplineTextOne)&&(identical(other.description, description) || other.description == description)&&(identical(other.facepile, facepile) || other.facepile == facepile)&&const DeepCollectionEquality().equals(other.subtitleBadge, subtitleBadge));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,thumbnail,const DeepCollectionEquality().hash(buttons),title,subtitle,secondSubtitle,straplineTextOne,description,facepile);
+int get hashCode => Object.hash(runtimeType,thumbnail,const DeepCollectionEquality().hash(buttons),title,subtitle,secondSubtitle,straplineTextOne,description,facepile,const DeepCollectionEquality().hash(subtitleBadge));
 
 @override
 String toString() {
-  return 'MusicResponsiveHeaderRenderer(thumbnail: $thumbnail, buttons: $buttons, title: $title, subtitle: $subtitle, secondSubtitle: $secondSubtitle, straplineTextOne: $straplineTextOne, description: $description, facepile: $facepile)';
+  return 'MusicResponsiveHeaderRenderer(thumbnail: $thumbnail, buttons: $buttons, title: $title, subtitle: $subtitle, secondSubtitle: $secondSubtitle, straplineTextOne: $straplineTextOne, description: $description, facepile: $facepile, subtitleBadge: $subtitleBadge)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $MusicResponsiveHeaderRendererCopyWith<$Res>  {
   factory $MusicResponsiveHeaderRendererCopyWith(MusicResponsiveHeaderRenderer value, $Res Function(MusicResponsiveHeaderRenderer) _then) = _$MusicResponsiveHeaderRendererCopyWithImpl;
 @useResult
 $Res call({
- ThumbnailRenderer? thumbnail, List<MusicResponsiveHeaderRendererButton> buttons, Runs title, Runs subtitle, Runs? secondSubtitle, Runs? straplineTextOne, DescriptionWrapper? description, FacepileWrapper? facepile
+ ThumbnailRenderer? thumbnail, List<MusicResponsiveHeaderRendererButton> buttons, Runs title, Runs subtitle, Runs? secondSubtitle, Runs? straplineTextOne, DescriptionWrapper? description, FacepileWrapper? facepile, List<Badges>? subtitleBadge
 });
 
 
@@ -65,7 +65,7 @@ class _$MusicResponsiveHeaderRendererCopyWithImpl<$Res>
 
 /// Create a copy of MusicResponsiveHeaderRenderer
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? thumbnail = freezed,Object? buttons = null,Object? title = null,Object? subtitle = null,Object? secondSubtitle = freezed,Object? straplineTextOne = freezed,Object? description = freezed,Object? facepile = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? thumbnail = freezed,Object? buttons = null,Object? title = null,Object? subtitle = null,Object? secondSubtitle = freezed,Object? straplineTextOne = freezed,Object? description = freezed,Object? facepile = freezed,Object? subtitleBadge = freezed,}) {
   return _then(_self.copyWith(
 thumbnail: freezed == thumbnail ? _self.thumbnail : thumbnail // ignore: cast_nullable_to_non_nullable
 as ThumbnailRenderer?,buttons: null == buttons ? _self.buttons : buttons // ignore: cast_nullable_to_non_nullable
@@ -75,7 +75,8 @@ as Runs,secondSubtitle: freezed == secondSubtitle ? _self.secondSubtitle : secon
 as Runs?,straplineTextOne: freezed == straplineTextOne ? _self.straplineTextOne : straplineTextOne // ignore: cast_nullable_to_non_nullable
 as Runs?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as DescriptionWrapper?,facepile: freezed == facepile ? _self.facepile : facepile // ignore: cast_nullable_to_non_nullable
-as FacepileWrapper?,
+as FacepileWrapper?,subtitleBadge: freezed == subtitleBadge ? _self.subtitleBadge : subtitleBadge // ignore: cast_nullable_to_non_nullable
+as List<Badges>?,
   ));
 }
 /// Create a copy of MusicResponsiveHeaderRenderer
@@ -235,10 +236,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( ThumbnailRenderer? thumbnail,  List<MusicResponsiveHeaderRendererButton> buttons,  Runs title,  Runs subtitle,  Runs? secondSubtitle,  Runs? straplineTextOne,  DescriptionWrapper? description,  FacepileWrapper? facepile)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( ThumbnailRenderer? thumbnail,  List<MusicResponsiveHeaderRendererButton> buttons,  Runs title,  Runs subtitle,  Runs? secondSubtitle,  Runs? straplineTextOne,  DescriptionWrapper? description,  FacepileWrapper? facepile,  List<Badges>? subtitleBadge)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _MusicResponsiveHeaderRenderer() when $default != null:
-return $default(_that.thumbnail,_that.buttons,_that.title,_that.subtitle,_that.secondSubtitle,_that.straplineTextOne,_that.description,_that.facepile);case _:
+return $default(_that.thumbnail,_that.buttons,_that.title,_that.subtitle,_that.secondSubtitle,_that.straplineTextOne,_that.description,_that.facepile,_that.subtitleBadge);case _:
   return orElse();
 
 }
@@ -256,10 +257,10 @@ return $default(_that.thumbnail,_that.buttons,_that.title,_that.subtitle,_that.s
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( ThumbnailRenderer? thumbnail,  List<MusicResponsiveHeaderRendererButton> buttons,  Runs title,  Runs subtitle,  Runs? secondSubtitle,  Runs? straplineTextOne,  DescriptionWrapper? description,  FacepileWrapper? facepile)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( ThumbnailRenderer? thumbnail,  List<MusicResponsiveHeaderRendererButton> buttons,  Runs title,  Runs subtitle,  Runs? secondSubtitle,  Runs? straplineTextOne,  DescriptionWrapper? description,  FacepileWrapper? facepile,  List<Badges>? subtitleBadge)  $default,) {final _that = this;
 switch (_that) {
 case _MusicResponsiveHeaderRenderer():
-return $default(_that.thumbnail,_that.buttons,_that.title,_that.subtitle,_that.secondSubtitle,_that.straplineTextOne,_that.description,_that.facepile);}
+return $default(_that.thumbnail,_that.buttons,_that.title,_that.subtitle,_that.secondSubtitle,_that.straplineTextOne,_that.description,_that.facepile,_that.subtitleBadge);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -273,10 +274,10 @@ return $default(_that.thumbnail,_that.buttons,_that.title,_that.subtitle,_that.s
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( ThumbnailRenderer? thumbnail,  List<MusicResponsiveHeaderRendererButton> buttons,  Runs title,  Runs subtitle,  Runs? secondSubtitle,  Runs? straplineTextOne,  DescriptionWrapper? description,  FacepileWrapper? facepile)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( ThumbnailRenderer? thumbnail,  List<MusicResponsiveHeaderRendererButton> buttons,  Runs title,  Runs subtitle,  Runs? secondSubtitle,  Runs? straplineTextOne,  DescriptionWrapper? description,  FacepileWrapper? facepile,  List<Badges>? subtitleBadge)?  $default,) {final _that = this;
 switch (_that) {
 case _MusicResponsiveHeaderRenderer() when $default != null:
-return $default(_that.thumbnail,_that.buttons,_that.title,_that.subtitle,_that.secondSubtitle,_that.straplineTextOne,_that.description,_that.facepile);case _:
+return $default(_that.thumbnail,_that.buttons,_that.title,_that.subtitle,_that.secondSubtitle,_that.straplineTextOne,_that.description,_that.facepile,_that.subtitleBadge);case _:
   return null;
 
 }
@@ -288,7 +289,7 @@ return $default(_that.thumbnail,_that.buttons,_that.title,_that.subtitle,_that.s
 @JsonSerializable()
 
 class _MusicResponsiveHeaderRenderer implements MusicResponsiveHeaderRenderer {
-  const _MusicResponsiveHeaderRenderer({this.thumbnail, required final  List<MusicResponsiveHeaderRendererButton> buttons, required this.title, required this.subtitle, this.secondSubtitle, this.straplineTextOne, this.description, this.facepile}): _buttons = buttons;
+  const _MusicResponsiveHeaderRenderer({this.thumbnail, required final  List<MusicResponsiveHeaderRendererButton> buttons, required this.title, required this.subtitle, this.secondSubtitle, this.straplineTextOne, this.description, this.facepile, final  List<Badges>? subtitleBadge}): _buttons = buttons,_subtitleBadge = subtitleBadge;
   factory _MusicResponsiveHeaderRenderer.fromJson(Map<String, dynamic> json) => _$MusicResponsiveHeaderRendererFromJson(json);
 
 @override final  ThumbnailRenderer? thumbnail;
@@ -305,6 +306,15 @@ class _MusicResponsiveHeaderRenderer implements MusicResponsiveHeaderRenderer {
 @override final  Runs? straplineTextOne;
 @override final  DescriptionWrapper? description;
 @override final  FacepileWrapper? facepile;
+ final  List<Badges>? _subtitleBadge;
+@override List<Badges>? get subtitleBadge {
+  final value = _subtitleBadge;
+  if (value == null) return null;
+  if (_subtitleBadge is EqualUnmodifiableListView) return _subtitleBadge;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(value);
+}
+
 
 /// Create a copy of MusicResponsiveHeaderRenderer
 /// with the given fields replaced by the non-null parameter values.
@@ -319,16 +329,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MusicResponsiveHeaderRenderer&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail)&&const DeepCollectionEquality().equals(other._buttons, _buttons)&&(identical(other.title, title) || other.title == title)&&(identical(other.subtitle, subtitle) || other.subtitle == subtitle)&&(identical(other.secondSubtitle, secondSubtitle) || other.secondSubtitle == secondSubtitle)&&(identical(other.straplineTextOne, straplineTextOne) || other.straplineTextOne == straplineTextOne)&&(identical(other.description, description) || other.description == description)&&(identical(other.facepile, facepile) || other.facepile == facepile));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MusicResponsiveHeaderRenderer&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail)&&const DeepCollectionEquality().equals(other._buttons, _buttons)&&(identical(other.title, title) || other.title == title)&&(identical(other.subtitle, subtitle) || other.subtitle == subtitle)&&(identical(other.secondSubtitle, secondSubtitle) || other.secondSubtitle == secondSubtitle)&&(identical(other.straplineTextOne, straplineTextOne) || other.straplineTextOne == straplineTextOne)&&(identical(other.description, description) || other.description == description)&&(identical(other.facepile, facepile) || other.facepile == facepile)&&const DeepCollectionEquality().equals(other._subtitleBadge, _subtitleBadge));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,thumbnail,const DeepCollectionEquality().hash(_buttons),title,subtitle,secondSubtitle,straplineTextOne,description,facepile);
+int get hashCode => Object.hash(runtimeType,thumbnail,const DeepCollectionEquality().hash(_buttons),title,subtitle,secondSubtitle,straplineTextOne,description,facepile,const DeepCollectionEquality().hash(_subtitleBadge));
 
 @override
 String toString() {
-  return 'MusicResponsiveHeaderRenderer(thumbnail: $thumbnail, buttons: $buttons, title: $title, subtitle: $subtitle, secondSubtitle: $secondSubtitle, straplineTextOne: $straplineTextOne, description: $description, facepile: $facepile)';
+  return 'MusicResponsiveHeaderRenderer(thumbnail: $thumbnail, buttons: $buttons, title: $title, subtitle: $subtitle, secondSubtitle: $secondSubtitle, straplineTextOne: $straplineTextOne, description: $description, facepile: $facepile, subtitleBadge: $subtitleBadge)';
 }
 
 
@@ -339,7 +349,7 @@ abstract mixin class _$MusicResponsiveHeaderRendererCopyWith<$Res> implements $M
   factory _$MusicResponsiveHeaderRendererCopyWith(_MusicResponsiveHeaderRenderer value, $Res Function(_MusicResponsiveHeaderRenderer) _then) = __$MusicResponsiveHeaderRendererCopyWithImpl;
 @override @useResult
 $Res call({
- ThumbnailRenderer? thumbnail, List<MusicResponsiveHeaderRendererButton> buttons, Runs title, Runs subtitle, Runs? secondSubtitle, Runs? straplineTextOne, DescriptionWrapper? description, FacepileWrapper? facepile
+ ThumbnailRenderer? thumbnail, List<MusicResponsiveHeaderRendererButton> buttons, Runs title, Runs subtitle, Runs? secondSubtitle, Runs? straplineTextOne, DescriptionWrapper? description, FacepileWrapper? facepile, List<Badges>? subtitleBadge
 });
 
 
@@ -356,7 +366,7 @@ class __$MusicResponsiveHeaderRendererCopyWithImpl<$Res>
 
 /// Create a copy of MusicResponsiveHeaderRenderer
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? thumbnail = freezed,Object? buttons = null,Object? title = null,Object? subtitle = null,Object? secondSubtitle = freezed,Object? straplineTextOne = freezed,Object? description = freezed,Object? facepile = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? thumbnail = freezed,Object? buttons = null,Object? title = null,Object? subtitle = null,Object? secondSubtitle = freezed,Object? straplineTextOne = freezed,Object? description = freezed,Object? facepile = freezed,Object? subtitleBadge = freezed,}) {
   return _then(_MusicResponsiveHeaderRenderer(
 thumbnail: freezed == thumbnail ? _self.thumbnail : thumbnail // ignore: cast_nullable_to_non_nullable
 as ThumbnailRenderer?,buttons: null == buttons ? _self._buttons : buttons // ignore: cast_nullable_to_non_nullable
@@ -366,7 +376,8 @@ as Runs,secondSubtitle: freezed == secondSubtitle ? _self.secondSubtitle : secon
 as Runs?,straplineTextOne: freezed == straplineTextOne ? _self.straplineTextOne : straplineTextOne // ignore: cast_nullable_to_non_nullable
 as Runs?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as DescriptionWrapper?,facepile: freezed == facepile ? _self.facepile : facepile // ignore: cast_nullable_to_non_nullable
-as FacepileWrapper?,
+as FacepileWrapper?,subtitleBadge: freezed == subtitleBadge ? _self._subtitleBadge : subtitleBadge // ignore: cast_nullable_to_non_nullable
+as List<Badges>?,
   ));
 }
 
