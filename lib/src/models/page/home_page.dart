@@ -84,6 +84,29 @@ extension HomePageX on HomePage {
     );
   }
 
+  static HomePage fromContinuationBrowseResponse(BrowseResponse response) {
+    final continuation = response
+        .continuationContents
+        ?.sectionListContinuation
+        ?.continuations
+        ?.getContinuation();
+
+    final sections =
+        response.continuationContents?.sectionListContinuation?.contents
+            .mapNotNull((c) => c.musicCarouselShelfRenderer)
+            .mapNotNull(
+              (c) => HomePageSectionX.fromMusicCarouselShelfRenderer(c),
+            )
+            .toList() ??
+        [];
+
+    return HomePage(
+      chips: null,
+      sections: sections,
+      continuation: continuation,
+    );
+  }
+
   HomePage filterExplicit([bool enabled = true]) {
     if (!enabled) return this;
     return copyWith(

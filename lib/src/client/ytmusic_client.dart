@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:ytmusic_api/src/models/page/home_page.dart';
 import 'package:ytmusic_api/src/models/response/browse_response.dart';
+import 'package:ytmusic_api/src/models/response/data/continuation/continuation.dart';
 
 import 'innertube.dart';
 import 'package:ytmusic_api/src/models/errors.dart';
@@ -279,6 +280,10 @@ class YTMusicClient {
   // ========== Browse ==========
 
   YouTubeResult<HomePage> home({String? continuation, String? params}) {
+    if (continuation != null) {
+      return _homeContinuation(continuation);
+    }
+
     return _innerTube
         .browse(
           YouTubeClient.webRemix,
@@ -286,9 +291,21 @@ class YTMusicClient {
           params: params,
         )
         .flatMap(
-          (r) => _parseResponse<HomePage>(r, (val) {
+          (r) => _parseResponse(r, (val) {
             final res = BrowseResponse.fromJson(val);
             return HomePageX.fromBrowseResponse(res);
+          }),
+        )
+        .run();
+  }
+
+  YouTubeResult<HomePage> _homeContinuation(String continuation) {
+    return _innerTube
+        .browse(YouTubeClient.webRemix, continuation: continuation)
+        .flatMap(
+          (r) => _parseResponse(r, (val) {
+            final res = BrowseResponse.fromJson(val);
+            return HomePageX.fromContinuationBrowseResponse(res);
           }),
         )
         .run();
@@ -312,7 +329,7 @@ class YTMusicClient {
   // ========== Uninplemented ==========
   // searchSuggestions / searchSummary / search / searchContinuation
   // album / albumSongs / artist / artistItems / artistItemsContinuation
-  // playlist / playlistContinuation / podcast / home / explore
+  // playlist / playlistContinuation / podcast / explore
   // newReleaseAlbums / moodAndGenres / browse / library / libraryContinuation
   // libraryRecentActivity / getChartsPage / musicHistory / podcastDiscover
   // libraryPodcastChannels / libraryPodcastEpisodes / savedPodcastShows
