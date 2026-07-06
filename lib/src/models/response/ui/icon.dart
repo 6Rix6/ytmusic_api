@@ -21,5 +21,8 @@ sealed class YoutubeIconStyle with _$YoutubeIconStyle {
 }
 
 extension YoutubeIconX on YoutubeIcon {
-  bool isExplicit() => iconType == "MUSIC_EXPLICIT_BADGE";
+  bool isExplicit() => iconType == 'MUSIC_EXPLICIT_BADGE';
+  bool isMix() => iconType == 'MIX';
+  bool isShuffle() => iconType == 'MUSIC_SHUFFLE';
+  bool isPlay() => iconType == 'PLAY_ARROW';
 }

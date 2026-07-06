@@ -43,7 +43,6 @@ sealed class PlaylistContinuationPage with _$PlaylistContinuationPage {
     String? continuation,
   }) = _PlaylistContinuationPage;
 
-  
   factory PlaylistContinuationPage.fromJson(Map<String, dynamic> json) =>
       _$PlaylistContinuationPageFromJson(json);
 }
@@ -299,7 +298,7 @@ extension PlaylistPageX on PlaylistPage {
                 ?.menuRenderer
                 ?.items
                 ?.firstWhereOrNull(
-                  (i) => i.menuNavigationItemRenderer?.icon.iconType == 'MIX',
+                  (i) => i.menuNavigationItemRenderer?.icon.isMix() ?? false,
                 )
                 ?.menuNavigationItemRenderer
                 ?.navigationEndpoint
@@ -309,7 +308,7 @@ extension PlaylistPageX on PlaylistPage {
                 ?.menuRenderer
                 ?.items
                 ?.firstWhereOrNull(
-                  (i) => i.menuNavigationItemRenderer?.icon.iconType == 'MIX',
+                  (i) => i.menuNavigationItemRenderer?.icon.isMix() ?? false,
                 )
                 ?.menuNavigationItemRenderer
                 ?.navigationEndpoint
