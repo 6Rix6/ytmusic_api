@@ -151,13 +151,11 @@ extension YTItemX on YTItem {
   };
 }
 
-/// SongItem 固有プロパティ (Kotlin: val isVideoSong)
 extension SongItemX on SongItem {
   bool get isVideoSong =>
       musicVideoType != null && musicVideoType != MusicVideoType.atv;
 }
 
-/// PodcastItem 固有メソッド (Kotlin: fun asPlaylistItem())
 extension PodcastItemX on PodcastItem {
   PlaylistItem asPlaylistItem() => PlaylistItem(
     id: id,
