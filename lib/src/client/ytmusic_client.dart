@@ -386,6 +386,24 @@ class YTMusicClient {
         .run();
   }
 
+  YouTubeResult<ArtistPage> artist(String browseId) {
+    return _innerTube
+        .browse(YouTubeClient.webRemix, browseId: browseId)
+        .flatMap(
+          (r) => _parseResponse(r, (val) {
+            final res = BrowseResponse.fromJson(val);
+            final page = ArtistPageX.fromBrowseResponse(res, browseId);
+
+            if (page == null) {
+              throw Exception('Faild to parse response.');
+            }
+
+            return page;
+          }),
+        )
+        .run();
+  }
+
   TaskEither<L, List<T>> _paginate<L, T, C>({
     required List<T> initialItems,
     required C? initialContinuation,
@@ -435,7 +453,7 @@ class YTMusicClient {
 
   // ========== Uninplemented ==========
   // searchSuggestions / searchSummary / search / searchContinuation
-  // artist / artistItems / artistItemsContinuation
+  // artistItems / artistItemsContinuation
   // podcast / explore
   // newReleaseAlbums / moodAndGenres / browse / library / libraryContinuation
   // libraryRecentActivity / getChartsPage / musicHistory / podcastDiscover

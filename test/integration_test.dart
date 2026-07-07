@@ -191,6 +191,17 @@ void main() {
     });
   });
 
+  test('Artist', () async {
+    final res = await client.artist('UCKXj93egWRbbjQiyWUhLYDA');
+
+    res.match((l) => fail('Expected success but got error: $l'), (r) {
+      _logHeader('Artist page info');
+      log('title: ${r.artist.title}');
+      log('description: ${r.description}');
+      log('${r.sections.length} sections');
+    });
+  });
+
   test('Get Visitor Data', () async {
     final res = await client.getVisitorData();
     res.match((l) => fail('Expected success but got error: $l'), (r) {

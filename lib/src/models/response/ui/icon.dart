@@ -25,4 +25,5 @@ extension YoutubeIconX on YoutubeIcon {
   bool isMix() => iconType == 'MIX';
   bool isShuffle() => iconType == 'MUSIC_SHUFFLE';
   bool isPlay() => iconType == 'PLAY_ARROW';
+  bool isSubscribe() => iconType == 'SUBSCRIBE';
 }
