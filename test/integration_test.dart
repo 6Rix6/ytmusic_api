@@ -153,7 +153,7 @@ void main() {
       }
     });
 
-    if(continuation == null) return;
+    if (continuation == null) return;
 
     final continuationRes = await client.playlistContinuation(continuation!);
 
@@ -163,6 +163,30 @@ void main() {
       log('${r.songs.length} songs');
       if (r.continuation != null) {
         log('continuation: ${r.continuation!.substring(0, 20)}...');
+      }
+    });
+  });
+
+  test('Album', () async {
+    final res = await client.album('MPREb_bPplUFy70Wq');
+
+    res.match((l) => fail('Expected success but got error: $l'), (r) {
+      _logHeader('Album info');
+      log('${r.songs.length} songs');
+      log('title: ${r.album.title}');
+      log('explicit: ${r.album.explicit}');
+    });
+  });
+
+  test('Almum songs', () async {
+    final res = await client.albumSongs(
+      'OLAK5uy_kJ1HWKok6HsVvhTAMzrXNvwX4XBYGKNuc',
+    );
+
+    res.match((l) => fail('Expected success but got error: $l'), (r) {
+      _logHeader('Album songs');
+      for (final song in r) {
+        log(song.title);
       }
     });
   });

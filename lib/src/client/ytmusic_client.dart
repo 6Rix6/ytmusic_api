@@ -304,12 +304,13 @@ class YTMusicClient {
   }
 
   YouTubeResult<PlaylistPage> playlist(String playlistId) {
+    var actualId = playlistId;
+    if (!actualId.startsWith('VL')) {
+      actualId = 'VL$actualId';
+    }
+
     return _innerTube
-        .browse(
-          YouTubeClient.webRemix,
-          browseId: 'VL$playlistId',
-          setLogin: true,
-        )
+        .browse(YouTubeClient.webRemix, browseId: actualId, setLogin: true)
         .flatMap(
           (r) => _parseResponse(r, (val) {
             final res = BrowseResponse.fromJson(val);
@@ -337,6 +338,86 @@ class YTMusicClient {
         .run();
   }
 
+  YouTubeResult<AlbumPage> album(String browseId, {bool withSongs = true}) {
+    return _innerTube
+        .browse(YouTubeClient.webRemix, browseId: browseId)
+        .flatMap(
+          (r) => _parseResponse(r, (val) {
+            final res = BrowseResponse.fromJson(val);
+            return AlbumPageX.fromBrowseResponse(res, browseId);
+          }),
+        )
+        .run();
+  }
+
+  YouTubeResult<List<SongItem>> albumSongs(
+    String playlistId, {
+    AlbumItem? album,
+  }) {
+    var actualId = playlistId;
+    if (!actualId.startsWith('VL')) {
+      actualId = 'VL$actualId';
+    }
+
+    return _innerTube
+        .browse(YouTubeClient.webRemix, browseId: actualId)
+        .flatMap(
+          (r) => _parseResponse(
+            r,
+            (val) => AlbumPageX.parseInitialShelf(val, album),
+          ),
+        )
+        .flatMap(
+          (initial) => _paginate<InnerTubeFailure, SongItem, String>(
+            initialItems: initial.$1,
+            initialContinuation: initial.$2,
+            fetchPage: (continuation) {
+              return _innerTube
+                  .browse(YouTubeClient.webRemix, continuation: continuation)
+                  .flatMap(
+                    (r) => _parseResponse(
+                      r,
+                      (val) => AlbumPageX.parseContinuationShelf(val, album),
+                    ),
+                  );
+            },
+          ),
+        )
+        .run();
+  }
+
+  TaskEither<L, List<T>> _paginate<L, T, C>({
+    required List<T> initialItems,
+    required C? initialContinuation,
+    required TaskEither<L, (List<T> items, C? next)> Function(C continuation)
+    fetchPage,
+    int maxRequests = 50,
+  }) {
+    TaskEither<L, List<T>> loop(
+      List<T> items,
+      C? continuation,
+      Set<C> seen,
+      int count,
+    ) {
+      if (continuation == null ||
+          count >= maxRequests ||
+          seen.contains(continuation)) {
+        return TaskEither.right(items);
+      }
+      return fetchPage(continuation).flatMap((page) {
+        final (newItems, next) = page;
+        return loop(
+          [...items, ...newItems],
+          next,
+          {...seen, continuation},
+          count + 1,
+        );
+      });
+    }
+
+    return loop(initialItems, initialContinuation, {}, 0);
+  }
+
   TaskEither<InnerTubeFailure, T> _parseResponse<T>(
     Response<Map<String, dynamic>> r,
     T Function(Map<String, dynamic> data) parser,
@@ -354,7 +435,7 @@ class YTMusicClient {
 
   // ========== Uninplemented ==========
   // searchSuggestions / searchSummary / search / searchContinuation
-  // album / albumSongs / artist / artistItems / artistItemsContinuation
+  // artist / artistItems / artistItemsContinuation
   // podcast / explore
   // newReleaseAlbums / moodAndGenres / browse / library / libraryContinuation
   // libraryRecentActivity / getChartsPage / musicHistory / podcastDiscover
@@ -362,7 +443,7 @@ class YTMusicClient {
   // newEpisodes / newEpisodesPlaylistInfo / episodesForLater / continueListening
   // getChannelId / createPlaylist / uploadCustomThumbnailLink
   // removeThumbnailPlaylist / player / next / lyrics / related / queue
-  // transcript / visitorData / accountInfo / feedback
+  // transcript / accountInfo / feedback
   // addSongToLibrary / removeSongFromLibrary / toggleSongLibrary
   // getMediaInfo / getTasteProfile / setTasteProfile / removeHistoryItems
   // resolveArtistIds / resolveArtistIdMap
