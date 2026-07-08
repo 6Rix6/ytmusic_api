@@ -12,6 +12,8 @@ import '../response/ui/music_renderer/music_two_row_item_renderer.dart';
 import '../response/ui/section_list_renderer.dart';
 import '../response/ui/thumbnails.dart';
 import '../response/ui/runs.dart';
+import '../response/ui/icon.dart';
+import '../enums/section_type.dart';
 
 import '../../utils/utils.dart';
 import '../../utils/extensions.dart';
@@ -52,6 +54,7 @@ sealed class HomePageSection with _$HomePageSection {
     String? thumbnail,
     BrowseEndpoint? endpoint,
     required List<YTItem> items,
+    required SectionType type,
   }) = _HomePageSection;
 
   factory HomePageSection.fromJson(Map<String, dynamic> json) =>
@@ -172,6 +175,12 @@ extension HomePageSectionX on HomePageSection {
 
     if (title == null) return null;
 
+    final sectionType =
+        renderer.contents.firstOrNull?.let(
+          (i) => SectionType.fromMusicCarouselShelfRendererContent(i),
+        ) ??
+        SectionType.towRowList;
+
     final items = <YTItem>[];
 
     items.addAll(
@@ -223,6 +232,7 @@ extension HomePageSectionX on HomePageSection {
           .navigationEndpoint
           .browseEndpoint,
       items: items,
+      type: sectionType,
     );
   }
 }
@@ -383,8 +393,7 @@ YTItem? _fromMusicTwoRowItemRenderer(MusicTwoRowItemRenderer renderer) {
       explicit:
           renderer.subtitleBadges?.any(
             (badge) =>
-                badge.musicInlineBadgeRenderer?.icon.iconType ==
-                'MUSIC_EXPLICIT_BADGE',
+                badge.musicInlineBadgeRenderer?.icon.isExplicit() ?? false,
           ) ??
           false,
     );

@@ -603,7 +603,7 @@ $BrowseEndpointCopyWith<$Res>? get deselectEndPoint {
 /// @nodoc
 mixin _$HomePageSection {
 
- String get title; String? get label; String? get thumbnail; BrowseEndpoint? get endpoint; List<YTItem> get items;
+ String get title; String? get label; String? get thumbnail; BrowseEndpoint? get endpoint; List<YTItem> get items; SectionType get type;
 /// Create a copy of HomePageSection
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -616,16 +616,16 @@ $HomePageSectionCopyWith<HomePageSection> get copyWith => _$HomePageSectionCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomePageSection&&(identical(other.title, title) || other.title == title)&&(identical(other.label, label) || other.label == label)&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail)&&(identical(other.endpoint, endpoint) || other.endpoint == endpoint)&&const DeepCollectionEquality().equals(other.items, items));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomePageSection&&(identical(other.title, title) || other.title == title)&&(identical(other.label, label) || other.label == label)&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail)&&(identical(other.endpoint, endpoint) || other.endpoint == endpoint)&&const DeepCollectionEquality().equals(other.items, items)&&(identical(other.type, type) || other.type == type));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,title,label,thumbnail,endpoint,const DeepCollectionEquality().hash(items));
+int get hashCode => Object.hash(runtimeType,title,label,thumbnail,endpoint,const DeepCollectionEquality().hash(items),type);
 
 @override
 String toString() {
-  return 'HomePageSection(title: $title, label: $label, thumbnail: $thumbnail, endpoint: $endpoint, items: $items)';
+  return 'HomePageSection(title: $title, label: $label, thumbnail: $thumbnail, endpoint: $endpoint, items: $items, type: $type)';
 }
 
 
@@ -636,7 +636,7 @@ abstract mixin class $HomePageSectionCopyWith<$Res>  {
   factory $HomePageSectionCopyWith(HomePageSection value, $Res Function(HomePageSection) _then) = _$HomePageSectionCopyWithImpl;
 @useResult
 $Res call({
- String title, String? label, String? thumbnail, BrowseEndpoint? endpoint, List<YTItem> items
+ String title, String? label, String? thumbnail, BrowseEndpoint? endpoint, List<YTItem> items, SectionType type
 });
 
 
@@ -653,14 +653,15 @@ class _$HomePageSectionCopyWithImpl<$Res>
 
 /// Create a copy of HomePageSection
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? title = null,Object? label = freezed,Object? thumbnail = freezed,Object? endpoint = freezed,Object? items = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? title = null,Object? label = freezed,Object? thumbnail = freezed,Object? endpoint = freezed,Object? items = null,Object? type = null,}) {
   return _then(_self.copyWith(
 title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,label: freezed == label ? _self.label : label // ignore: cast_nullable_to_non_nullable
 as String?,thumbnail: freezed == thumbnail ? _self.thumbnail : thumbnail // ignore: cast_nullable_to_non_nullable
 as String?,endpoint: freezed == endpoint ? _self.endpoint : endpoint // ignore: cast_nullable_to_non_nullable
 as BrowseEndpoint?,items: null == items ? _self.items : items // ignore: cast_nullable_to_non_nullable
-as List<YTItem>,
+as List<YTItem>,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
+as SectionType,
   ));
 }
 /// Create a copy of HomePageSection
@@ -754,10 +755,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String title,  String? label,  String? thumbnail,  BrowseEndpoint? endpoint,  List<YTItem> items)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String title,  String? label,  String? thumbnail,  BrowseEndpoint? endpoint,  List<YTItem> items,  SectionType type)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _HomePageSection() when $default != null:
-return $default(_that.title,_that.label,_that.thumbnail,_that.endpoint,_that.items);case _:
+return $default(_that.title,_that.label,_that.thumbnail,_that.endpoint,_that.items,_that.type);case _:
   return orElse();
 
 }
@@ -775,10 +776,10 @@ return $default(_that.title,_that.label,_that.thumbnail,_that.endpoint,_that.ite
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String title,  String? label,  String? thumbnail,  BrowseEndpoint? endpoint,  List<YTItem> items)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String title,  String? label,  String? thumbnail,  BrowseEndpoint? endpoint,  List<YTItem> items,  SectionType type)  $default,) {final _that = this;
 switch (_that) {
 case _HomePageSection():
-return $default(_that.title,_that.label,_that.thumbnail,_that.endpoint,_that.items);}
+return $default(_that.title,_that.label,_that.thumbnail,_that.endpoint,_that.items,_that.type);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -792,10 +793,10 @@ return $default(_that.title,_that.label,_that.thumbnail,_that.endpoint,_that.ite
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String title,  String? label,  String? thumbnail,  BrowseEndpoint? endpoint,  List<YTItem> items)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String title,  String? label,  String? thumbnail,  BrowseEndpoint? endpoint,  List<YTItem> items,  SectionType type)?  $default,) {final _that = this;
 switch (_that) {
 case _HomePageSection() when $default != null:
-return $default(_that.title,_that.label,_that.thumbnail,_that.endpoint,_that.items);case _:
+return $default(_that.title,_that.label,_that.thumbnail,_that.endpoint,_that.items,_that.type);case _:
   return null;
 
 }
@@ -807,7 +808,7 @@ return $default(_that.title,_that.label,_that.thumbnail,_that.endpoint,_that.ite
 @JsonSerializable()
 
 class _HomePageSection implements HomePageSection {
-  const _HomePageSection({required this.title, this.label, this.thumbnail, this.endpoint, required final  List<YTItem> items}): _items = items;
+  const _HomePageSection({required this.title, this.label, this.thumbnail, this.endpoint, required final  List<YTItem> items, required this.type}): _items = items;
   factory _HomePageSection.fromJson(Map<String, dynamic> json) => _$HomePageSectionFromJson(json);
 
 @override final  String title;
@@ -821,6 +822,7 @@ class _HomePageSection implements HomePageSection {
   return EqualUnmodifiableListView(_items);
 }
 
+@override final  SectionType type;
 
 /// Create a copy of HomePageSection
 /// with the given fields replaced by the non-null parameter values.
@@ -835,16 +837,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _HomePageSection&&(identical(other.title, title) || other.title == title)&&(identical(other.label, label) || other.label == label)&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail)&&(identical(other.endpoint, endpoint) || other.endpoint == endpoint)&&const DeepCollectionEquality().equals(other._items, _items));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _HomePageSection&&(identical(other.title, title) || other.title == title)&&(identical(other.label, label) || other.label == label)&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail)&&(identical(other.endpoint, endpoint) || other.endpoint == endpoint)&&const DeepCollectionEquality().equals(other._items, _items)&&(identical(other.type, type) || other.type == type));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,title,label,thumbnail,endpoint,const DeepCollectionEquality().hash(_items));
+int get hashCode => Object.hash(runtimeType,title,label,thumbnail,endpoint,const DeepCollectionEquality().hash(_items),type);
 
 @override
 String toString() {
-  return 'HomePageSection(title: $title, label: $label, thumbnail: $thumbnail, endpoint: $endpoint, items: $items)';
+  return 'HomePageSection(title: $title, label: $label, thumbnail: $thumbnail, endpoint: $endpoint, items: $items, type: $type)';
 }
 
 
@@ -855,7 +857,7 @@ abstract mixin class _$HomePageSectionCopyWith<$Res> implements $HomePageSection
   factory _$HomePageSectionCopyWith(_HomePageSection value, $Res Function(_HomePageSection) _then) = __$HomePageSectionCopyWithImpl;
 @override @useResult
 $Res call({
- String title, String? label, String? thumbnail, BrowseEndpoint? endpoint, List<YTItem> items
+ String title, String? label, String? thumbnail, BrowseEndpoint? endpoint, List<YTItem> items, SectionType type
 });
 
 
@@ -872,14 +874,15 @@ class __$HomePageSectionCopyWithImpl<$Res>
 
 /// Create a copy of HomePageSection
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? title = null,Object? label = freezed,Object? thumbnail = freezed,Object? endpoint = freezed,Object? items = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? title = null,Object? label = freezed,Object? thumbnail = freezed,Object? endpoint = freezed,Object? items = null,Object? type = null,}) {
   return _then(_HomePageSection(
 title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,label: freezed == label ? _self.label : label // ignore: cast_nullable_to_non_nullable
 as String?,thumbnail: freezed == thumbnail ? _self.thumbnail : thumbnail // ignore: cast_nullable_to_non_nullable
 as String?,endpoint: freezed == endpoint ? _self.endpoint : endpoint // ignore: cast_nullable_to_non_nullable
 as BrowseEndpoint?,items: null == items ? _self._items : items // ignore: cast_nullable_to_non_nullable
-as List<YTItem>,
+as List<YTItem>,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
+as SectionType,
   ));
 }
 

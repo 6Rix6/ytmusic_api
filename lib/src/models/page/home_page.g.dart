@@ -53,6 +53,7 @@ _HomePageSection _$HomePageSectionFromJson(Map<String, dynamic> json) =>
       items: (json['items'] as List<dynamic>)
           .map((e) => YTItem.fromJson(e as Map<String, dynamic>))
           .toList(),
+      type: $enumDecode(_$SectionTypeEnumMap, json['type']),
     );
 
 Map<String, dynamic> _$HomePageSectionToJson(_HomePageSection instance) =>
@@ -62,4 +63,7 @@ Map<String, dynamic> _$HomePageSectionToJson(_HomePageSection instance) =>
       'thumbnail': instance.thumbnail,
       'endpoint': instance.endpoint,
       'items': instance.items,
+      'type': _$SectionTypeEnumMap[instance.type]!,
     };
+
+const _$SectionTypeEnumMap = {SectionType.carousel: 'carousel'};
