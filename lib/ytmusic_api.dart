@@ -9,6 +9,7 @@ export 'src/models/enums/playlist_privacy.dart';
 export 'src/models/errors.dart';
 export 'src/models/media_item/yt_item.dart';
 export 'src/models/page/album_page.dart';
+export 'src/models/page/artist_items_page.dart';
 export 'src/models/page/artist_page.dart';
 export 'src/models/page/home_page.dart';
 export 'src/models/page/playlist_page.dart';

@@ -377,7 +377,8 @@ class YTMusicClient {
                   .flatMap(
                     (r) => _parseResponse(
                       r,
-                      (val) => AlbumPageParser.parseContinuationShelf(val, album),
+                      (val) =>
+                          AlbumPageParser.parseContinuationShelf(val, album),
                     ),
                   );
             },
@@ -397,6 +398,42 @@ class YTMusicClient {
             if (page == null) {
               throw Exception('Faild to parse response.');
             }
+
+            return page;
+          }),
+        )
+        .run();
+  }
+
+  YouTubeResult<ArtistItemsPage> artistItems(BrowseEndpoint endpoint) {
+    return _innerTube
+        .browse(
+          YouTubeClient.webRemix,
+          browseId: endpoint.browseId,
+          params: endpoint.params,
+        )
+        .flatMap(
+          (r) => _parseResponse(r, (val) {
+            final res = BrowseResponse.fromJson(val);
+            final page = ArtistItemsPageParser.fromBrowseResponse(res);
+
+            return page;
+          }),
+        )
+        .run();
+  }
+
+  
+  YouTubeResult<ArtistItemsContinuationPage> artistItemsContinuation(String continuation) {
+    return _innerTube
+        .browse(
+          YouTubeClient.webRemix,
+          continuation: continuation
+        )
+        .flatMap(
+          (r) => _parseResponse(r, (val) {
+            final res = BrowseResponse.fromJson(val);
+            final page = ArtistItemsPageParser.fromBrowseResponseContinuation(res);
 
             return page;
           }),
@@ -453,7 +490,6 @@ class YTMusicClient {
 
   // ========== Uninplemented ==========
   // searchSuggestions / searchSummary / search / searchContinuation
-  // artistItems / artistItemsContinuation
   // podcast / explore
   // newReleaseAlbums / moodAndGenres / browse / library / libraryContinuation
   // libraryRecentActivity / getChartsPage / musicHistory / podcastDiscover

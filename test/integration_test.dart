@@ -199,6 +199,63 @@ void main() {
       log('title: ${r.artist.title}');
       log('description: ${r.description}');
       log('${r.sections.length} sections');
+
+      for (final s in r.sections) {
+        _logHeader('Section Info');
+        log(s.title);
+        if (s.moreEndpoint != null) {
+          log(s.moreEndpoint!.browseId);
+          log(s.moreEndpoint!.params ?? '');
+        }
+      }
+    });
+  });
+
+  test('Artist items', () async {
+    final browseId = 'VLOLAK5uy_lhedNyfMM9gA_7tyDmE52Sbetv8Mki3Io';
+    final params = 'ggMCCAI%3D';
+
+    final endpoint = BrowseEndpoint(browseId: browseId, params: params);
+
+    final res = await client.artistItems(endpoint);
+
+    res.match((l) => fail('Expected success but got error: $l'), (r) {
+      _logHeader('Artist Items info');
+      log('title: ${r.title}');
+
+      for (final item in r.items) {
+        log(item.title);
+      }
+    });
+  });
+
+  test('Artist items continuation', () async {
+    final browseId = 'VLOLAK5uy_nZhY6F7fl9I2UvSwLVqQxPOymrVMRJEOQ';
+    final params = 'ggMCCAI%3D';
+
+    final endpoint = BrowseEndpoint(browseId: browseId, params: params);
+
+    final res = await client.artistItems(endpoint);
+    String? continuation;
+
+    res.match((l) => fail('Expected success but got error: $l'), (r) {
+      continuation = r.continuation;
+    });
+
+    if (continuation == null) {
+      log('Continuation token not found. exit.');
+    }
+
+    final continuationRes = await client.artistItemsContinuation(continuation!);
+
+    continuationRes.match((l) => fail('Expected success but got error: $l'), (
+      r,
+    ) {
+      _logHeader('Artist items continuation info');
+
+      for (final item in r.items) {
+        log(item.title);
+      }
     });
   });
 
