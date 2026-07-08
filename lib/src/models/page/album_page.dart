@@ -29,7 +29,7 @@ sealed class AlbumPage with _$AlbumPage {
       _$AlbumPageFromJson(json);
 }
 
-extension AlbumPageX on AlbumPage {
+class AlbumPageParser {
   static AlbumPage fromBrowseResponse(
     BrowseResponse response,
     String browseId,
@@ -98,7 +98,7 @@ extension AlbumPageX on AlbumPage {
                 .whereType<MusicTwoRowItemRenderer>()
                 .map(
                   (renderer) =>
-                      NewReleaseAlbumPage.fromMusicTwoRowItemRenderer(renderer),
+                      NewReleaseAlbumPageParser.fromMusicTwoRowItemRenderer(renderer),
                 )
                 .whereType<AlbumItem>()
                 .toList() ??
@@ -132,7 +132,7 @@ extension AlbumPageX on AlbumPage {
 
     final songs = shelfContents
         .getItems()
-        .map((it) => AlbumPageX.getSong(it, album: album))
+        .map((it) => AlbumPageParser.getSong(it, album: album))
         .whereType<SongItem>()
         .toList();
     final next = shelfContents.getContinuation();
@@ -151,7 +151,7 @@ extension AlbumPageX on AlbumPage {
             ?.appendContinuationItemsAction
             ?.continuationItems
             ?.getItems()
-            .map((it) => AlbumPageX.getSong(it, album: album))
+            .map((it) => AlbumPageParser.getSong(it, album: album))
             .whereType<SongItem>()
             .toList() ??
         const <SongItem>[];
@@ -417,7 +417,7 @@ extension AlbumPageX on AlbumPage {
   }
 }
 
-class NewReleaseAlbumPage {
+class NewReleaseAlbumPageParser {
   /// Parses [MusicTwoRowItemRenderer] into an [AlbumItem].
   /// Returns null if any required core metadata is missing.
   static AlbumItem? fromMusicTwoRowItemRenderer(

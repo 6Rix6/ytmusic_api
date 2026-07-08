@@ -58,7 +58,7 @@ sealed class HomePageSection with _$HomePageSection {
       _$HomePageSectionFromJson(json);
 }
 
-extension HomePageX on HomePage {
+extension HomePageParser on HomePage {
   static HomePage fromBrowseResponse(BrowseResponse response) {
     final sectionListRenderer = response
         .contents

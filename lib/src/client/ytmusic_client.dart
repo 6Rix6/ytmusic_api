@@ -285,7 +285,7 @@ class YTMusicClient {
         .flatMap(
           (r) => _parseResponse(r, (val) {
             final res = BrowseResponse.fromJson(val);
-            return HomePageX.fromBrowseResponse(res);
+            return HomePageParser.fromBrowseResponse(res);
           }),
         )
         .run();
@@ -297,7 +297,7 @@ class YTMusicClient {
         .flatMap(
           (r) => _parseResponse(r, (val) {
             final res = BrowseResponse.fromJson(val);
-            return HomePageX.fromContinuationBrowseResponse(res);
+            return HomePageParser.fromContinuationBrowseResponse(res);
           }),
         )
         .run();
@@ -314,7 +314,7 @@ class YTMusicClient {
         .flatMap(
           (r) => _parseResponse(r, (val) {
             final res = BrowseResponse.fromJson(val);
-            return PlaylistPageX.fromBrowseResponse(res, playlistId);
+            return PlaylistPageParser.fromBrowseResponse(res, playlistId);
           }),
         )
         .run();
@@ -332,7 +332,7 @@ class YTMusicClient {
         .flatMap(
           (r) => _parseResponse(r, (val) {
             final res = BrowseResponse.fromJson(val);
-            return PlaylistContinuationPageX.fromBrowseResponse(res);
+            return PlaylistContinuationPageParser.fromBrowseResponse(res);
           }),
         )
         .run();
@@ -344,7 +344,7 @@ class YTMusicClient {
         .flatMap(
           (r) => _parseResponse(r, (val) {
             final res = BrowseResponse.fromJson(val);
-            return AlbumPageX.fromBrowseResponse(res, browseId);
+            return AlbumPageParser.fromBrowseResponse(res, browseId);
           }),
         )
         .run();
@@ -364,7 +364,7 @@ class YTMusicClient {
         .flatMap(
           (r) => _parseResponse(
             r,
-            (val) => AlbumPageX.parseInitialShelf(val, album),
+            (val) => AlbumPageParser.parseInitialShelf(val, album),
           ),
         )
         .flatMap(
@@ -377,7 +377,7 @@ class YTMusicClient {
                   .flatMap(
                     (r) => _parseResponse(
                       r,
-                      (val) => AlbumPageX.parseContinuationShelf(val, album),
+                      (val) => AlbumPageParser.parseContinuationShelf(val, album),
                     ),
                   );
             },
@@ -392,7 +392,7 @@ class YTMusicClient {
         .flatMap(
           (r) => _parseResponse(r, (val) {
             final res = BrowseResponse.fromJson(val);
-            final page = ArtistPageX.fromBrowseResponse(res, browseId);
+            final page = ArtistPageParser.fromBrowseResponse(res, browseId);
 
             if (page == null) {
               throw Exception('Faild to parse response.');

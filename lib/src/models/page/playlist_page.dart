@@ -47,105 +47,7 @@ sealed class PlaylistContinuationPage with _$PlaylistContinuationPage {
       _$PlaylistContinuationPageFromJson(json);
 }
 
-extension PlaylistPageSongItemX on SongItem {
-  static SongItem? fromMusicResponsiveListItemRenderer(
-    MusicResponsiveListItemRenderer renderer,
-  ) {
-    if (renderer.videoId == null || renderer.playlistSetVideoId == null) {
-      return null;
-    }
-
-    final thumbnail = renderer.thumbnail?.musicThumbnailRenderer
-        ?.getThumbnailUrl();
-
-    if (thumbnail == null) {
-      return null;
-    }
-
-    final libraryTokens = PageHelper.extractLibraryTokensFromMenuItems(
-      renderer.menu?.menuRenderer.items,
-    );
-
-    final flexColumns = renderer.flexColumns;
-
-    final title = flexColumns
-        .firstOrNull
-        ?.musicResponsiveListItemFlexColumnRenderer
-        .text
-        ?.runs
-        ?.firstOrNull
-        ?.text;
-
-    if (title == null) {
-      return null;
-    }
-
-    final artists =
-        flexColumns
-            .getOrNull(1)
-            ?.musicResponsiveListItemFlexColumnRenderer
-            .text
-            ?.runs
-            ?.let((r) => PageHelper.extractArtists(r)) ??
-        [];
-
-    final album = flexColumns
-        .getOrNull(2)
-        ?.musicResponsiveListItemFlexColumnRenderer
-        .text
-        ?.runs
-        ?.firstOrNull
-        ?.let((r) {
-          final id = r.navigationEndpoint?.browseEndpoint?.browseId;
-          if (id == null) {
-            return null;
-          }
-
-          return Album(name: r.text, id: id);
-        });
-
-    final duration = flexColumns
-        .firstOrNull
-        ?.musicResponsiveListItemFlexColumnRenderer
-        .text
-        ?.runs
-        ?.firstOrNull
-        ?.text
-        .let((t) => parseTime(t));
-
-    final explicit =
-        renderer.badges?.any(
-          (b) => b.musicInlineBadgeRenderer?.icon.isExplicit() ?? false,
-        ) ??
-        false;
-
-    final endpoint = renderer
-        .overlay
-        ?.musicItemThumbnailOverlayRenderer
-        .content
-        .musicPlayButtonRenderer
-        .playNavigationEndpoint
-        ?.watchEndpoint;
-
-    return SongItem(
-      id: renderer.videoId!,
-      title: title,
-      artists: artists,
-      album: album,
-      duration: duration,
-      musicVideoType: renderer.musicVideoType,
-      thumbnail: thumbnail,
-      explicit: explicit,
-      endpoint: endpoint,
-      setVideoId: renderer.playlistSetVideoId!,
-      libraryAddToken: libraryTokens.addToken,
-      libraryRemoveToken: libraryTokens.removeToken,
-      isEpisode: renderer.isEpisode,
-    );
-  }
-}
-
-extension PlaylistPageX on PlaylistPage {
+class PlaylistPageParser {
   static PlaylistPage fromBrowseResponse(
     BrowseResponse response,
     String playlistId,
@@ -206,12 +108,7 @@ extension PlaylistPageX on PlaylistPage {
     final songs =
         songsContents
             ?.getItems()
-            .map(
-              (item) =>
-                  PlaylistPageSongItemX.fromMusicResponsiveListItemRenderer(
-                    item,
-                  ),
-            )
+            .map((item) => fromMusicResponsiveListItemRenderer(item))
             .whereType<SongItem>()
             .toList() ??
         <SongItem>[];
@@ -320,6 +217,102 @@ extension PlaylistPageX on PlaylistPage {
       songs: songs,
       songsContinuation: songsContinuation,
       continuation: continuation,
+    );
+  }
+
+  static SongItem? fromMusicResponsiveListItemRenderer(
+    MusicResponsiveListItemRenderer renderer,
+  ) {
+    if (renderer.videoId == null || renderer.playlistSetVideoId == null) {
+      return null;
+    }
+
+    final thumbnail = renderer.thumbnail?.musicThumbnailRenderer
+        ?.getThumbnailUrl();
+
+    if (thumbnail == null) {
+      return null;
+    }
+
+    final libraryTokens = PageHelper.extractLibraryTokensFromMenuItems(
+      renderer.menu?.menuRenderer.items,
+    );
+
+    final flexColumns = renderer.flexColumns;
+
+    final title = flexColumns
+        .firstOrNull
+        ?.musicResponsiveListItemFlexColumnRenderer
+        .text
+        ?.runs
+        ?.firstOrNull
+        ?.text;
+
+    if (title == null) {
+      return null;
+    }
+
+    final artists =
+        flexColumns
+            .getOrNull(1)
+            ?.musicResponsiveListItemFlexColumnRenderer
+            .text
+            ?.runs
+            ?.let((r) => PageHelper.extractArtists(r)) ??
+        [];
+
+    final album = flexColumns
+        .getOrNull(2)
+        ?.musicResponsiveListItemFlexColumnRenderer
+        .text
+        ?.runs
+        ?.firstOrNull
+        ?.let((r) {
+          final id = r.navigationEndpoint?.browseEndpoint?.browseId;
+          if (id == null) {
+            return null;
+          }
+
+          return Album(name: r.text, id: id);
+        });
+
+    final duration = flexColumns
+        .firstOrNull
+        ?.musicResponsiveListItemFlexColumnRenderer
+        .text
+        ?.runs
+        ?.firstOrNull
+        ?.text
+        .let((t) => parseTime(t));
+
+    final explicit =
+        renderer.badges?.any(
+          (b) => b.musicInlineBadgeRenderer?.icon.isExplicit() ?? false,
+        ) ??
+        false;
+
+    final endpoint = renderer
+        .overlay
+        ?.musicItemThumbnailOverlayRenderer
+        .content
+        .musicPlayButtonRenderer
+        .playNavigationEndpoint
+        ?.watchEndpoint;
+
+    return SongItem(
+      id: renderer.videoId!,
+      title: title,
+      artists: artists,
+      album: album,
+      duration: duration,
+      musicVideoType: renderer.musicVideoType,
+      thumbnail: thumbnail,
+      explicit: explicit,
+      endpoint: endpoint,
+      setVideoId: renderer.playlistSetVideoId!,
+      libraryAddToken: libraryTokens.addToken,
+      libraryRemoveToken: libraryTokens.removeToken,
+      isEpisode: renderer.isEpisode,
     );
   }
 
@@ -444,7 +437,7 @@ extension PlaylistPageX on PlaylistPage {
   }
 }
 
-extension PlaylistContinuationPageX on PlaylistContinuationPage {
+class PlaylistContinuationPageParser {
   static PlaylistContinuationPage fromBrowseResponse(BrowseResponse response) {
     final mainContents =
         response.continuationContents?.sectionListContinuation?.contents
@@ -487,9 +480,7 @@ extension PlaylistContinuationPageX on PlaylistContinuationPage {
     final songs = allContents
         .map((c) => c.musicResponsiveListItemRenderer)
         .whereType<MusicResponsiveListItemRenderer>()
-        .map(
-          (r) => PlaylistPageSongItemX.fromMusicResponsiveListItemRenderer(r),
-        )
+        .map((r) => PlaylistPageParser.fromMusicResponsiveListItemRenderer(r))
         .whereType<SongItem>()
         .toList();
 

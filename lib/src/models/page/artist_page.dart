@@ -48,7 +48,7 @@ sealed class ArtistPageSection with _$ArtistPageSection {
       _$ArtistPageSectionFromJson(json);
 }
 
-extension ArtistPageX on ArtistPage {
+class ArtistPageParser {
   static List<Run>? _mapRuns(List<Run>? runs) {
     return runs
         ?.map(
