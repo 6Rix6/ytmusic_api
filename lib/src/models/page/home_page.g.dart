@@ -66,4 +66,8 @@ Map<String, dynamic> _$HomePageSectionToJson(_HomePageSection instance) =>
       'type': _$SectionTypeEnumMap[instance.type]!,
     };
 
-const _$SectionTypeEnumMap = {SectionType.carousel: 'carousel'};
+const _$SectionTypeEnumMap = {
+  SectionType.twoRowList: 'twoRowList',
+  SectionType.responsiveList: 'responsiveList',
+  SectionType.multiRowList: 'multiRowList',
+};

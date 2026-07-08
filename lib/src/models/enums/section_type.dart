@@ -1,7 +1,7 @@
 import 'package:ytmusic_api/ytmusic_api.dart';
 
 enum SectionType {
-  towRowList,
+  twoRowList,
   responsiveList,
   multiRowList;
 
@@ -11,7 +11,7 @@ enum SectionType {
     MusicCarouselShelfRendererContent item,
   ) {
     if (item.musicTwoRowItemRenderer != null) {
-      return .towRowList;
+      return .twoRowList;
     }
 
     if (item.musicResponsiveListItemRenderer != null) {
@@ -22,6 +22,6 @@ enum SectionType {
       return .multiRowList;
     }
 
-    return .towRowList;
+    return .twoRowList;
   }
 }

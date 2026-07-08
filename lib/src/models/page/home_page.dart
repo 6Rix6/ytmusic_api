@@ -179,7 +179,7 @@ extension HomePageSectionX on HomePageSection {
         renderer.contents.firstOrNull?.let(
           (i) => SectionType.fromMusicCarouselShelfRendererContent(i),
         ) ??
-        SectionType.towRowList;
+        SectionType.twoRowList;
 
     final items = <YTItem>[];
 

@@ -423,17 +423,17 @@ class YTMusicClient {
         .run();
   }
 
-  
-  YouTubeResult<ArtistItemsContinuationPage> artistItemsContinuation(String continuation) {
+  YouTubeResult<ArtistItemsContinuationPage> artistItemsContinuation(
+    String continuation,
+  ) {
     return _innerTube
-        .browse(
-          YouTubeClient.webRemix,
-          continuation: continuation
-        )
+        .browse(YouTubeClient.webRemix, continuation: continuation)
         .flatMap(
           (r) => _parseResponse(r, (val) {
             final res = BrowseResponse.fromJson(val);
-            final page = ArtistItemsPageParser.fromBrowseResponseContinuation(res);
+            final page = ArtistItemsPageParser.fromBrowseResponseContinuation(
+              res,
+            );
 
             return page;
           }),
