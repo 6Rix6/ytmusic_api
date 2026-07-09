@@ -603,7 +603,7 @@ $BrowseEndpointCopyWith<$Res>? get deselectEndPoint {
 /// @nodoc
 mixin _$HomePageSection {
 
- String get title; String? get label; String? get thumbnail; BrowseEndpoint? get endpoint; List<YTItem> get items; SectionType get type;
+ String get title; String? get label; String? get thumbnail; BrowseEndpoint? get endpoint; List<HomePageSectionItem> get items; SectionType get type;
 /// Create a copy of HomePageSection
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -636,7 +636,7 @@ abstract mixin class $HomePageSectionCopyWith<$Res>  {
   factory $HomePageSectionCopyWith(HomePageSection value, $Res Function(HomePageSection) _then) = _$HomePageSectionCopyWithImpl;
 @useResult
 $Res call({
- String title, String? label, String? thumbnail, BrowseEndpoint? endpoint, List<YTItem> items, SectionType type
+ String title, String? label, String? thumbnail, BrowseEndpoint? endpoint, List<HomePageSectionItem> items, SectionType type
 });
 
 
@@ -660,7 +660,7 @@ as String,label: freezed == label ? _self.label : label // ignore: cast_nullable
 as String?,thumbnail: freezed == thumbnail ? _self.thumbnail : thumbnail // ignore: cast_nullable_to_non_nullable
 as String?,endpoint: freezed == endpoint ? _self.endpoint : endpoint // ignore: cast_nullable_to_non_nullable
 as BrowseEndpoint?,items: null == items ? _self.items : items // ignore: cast_nullable_to_non_nullable
-as List<YTItem>,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
+as List<HomePageSectionItem>,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as SectionType,
   ));
 }
@@ -755,7 +755,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String title,  String? label,  String? thumbnail,  BrowseEndpoint? endpoint,  List<YTItem> items,  SectionType type)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String title,  String? label,  String? thumbnail,  BrowseEndpoint? endpoint,  List<HomePageSectionItem> items,  SectionType type)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _HomePageSection() when $default != null:
 return $default(_that.title,_that.label,_that.thumbnail,_that.endpoint,_that.items,_that.type);case _:
@@ -776,7 +776,7 @@ return $default(_that.title,_that.label,_that.thumbnail,_that.endpoint,_that.ite
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String title,  String? label,  String? thumbnail,  BrowseEndpoint? endpoint,  List<YTItem> items,  SectionType type)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String title,  String? label,  String? thumbnail,  BrowseEndpoint? endpoint,  List<HomePageSectionItem> items,  SectionType type)  $default,) {final _that = this;
 switch (_that) {
 case _HomePageSection():
 return $default(_that.title,_that.label,_that.thumbnail,_that.endpoint,_that.items,_that.type);}
@@ -793,7 +793,7 @@ return $default(_that.title,_that.label,_that.thumbnail,_that.endpoint,_that.ite
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String title,  String? label,  String? thumbnail,  BrowseEndpoint? endpoint,  List<YTItem> items,  SectionType type)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String title,  String? label,  String? thumbnail,  BrowseEndpoint? endpoint,  List<HomePageSectionItem> items,  SectionType type)?  $default,) {final _that = this;
 switch (_that) {
 case _HomePageSection() when $default != null:
 return $default(_that.title,_that.label,_that.thumbnail,_that.endpoint,_that.items,_that.type);case _:
@@ -808,15 +808,15 @@ return $default(_that.title,_that.label,_that.thumbnail,_that.endpoint,_that.ite
 @JsonSerializable()
 
 class _HomePageSection implements HomePageSection {
-  const _HomePageSection({required this.title, this.label, this.thumbnail, this.endpoint, required final  List<YTItem> items, required this.type}): _items = items;
+  const _HomePageSection({required this.title, this.label, this.thumbnail, this.endpoint, required final  List<HomePageSectionItem> items, required this.type}): _items = items;
   factory _HomePageSection.fromJson(Map<String, dynamic> json) => _$HomePageSectionFromJson(json);
 
 @override final  String title;
 @override final  String? label;
 @override final  String? thumbnail;
 @override final  BrowseEndpoint? endpoint;
- final  List<YTItem> _items;
-@override List<YTItem> get items {
+ final  List<HomePageSectionItem> _items;
+@override List<HomePageSectionItem> get items {
   if (_items is EqualUnmodifiableListView) return _items;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_items);
@@ -857,7 +857,7 @@ abstract mixin class _$HomePageSectionCopyWith<$Res> implements $HomePageSection
   factory _$HomePageSectionCopyWith(_HomePageSection value, $Res Function(_HomePageSection) _then) = __$HomePageSectionCopyWithImpl;
 @override @useResult
 $Res call({
- String title, String? label, String? thumbnail, BrowseEndpoint? endpoint, List<YTItem> items, SectionType type
+ String title, String? label, String? thumbnail, BrowseEndpoint? endpoint, List<HomePageSectionItem> items, SectionType type
 });
 
 
@@ -881,7 +881,7 @@ as String,label: freezed == label ? _self.label : label // ignore: cast_nullable
 as String?,thumbnail: freezed == thumbnail ? _self.thumbnail : thumbnail // ignore: cast_nullable_to_non_nullable
 as String?,endpoint: freezed == endpoint ? _self.endpoint : endpoint // ignore: cast_nullable_to_non_nullable
 as BrowseEndpoint?,items: null == items ? _self._items : items // ignore: cast_nullable_to_non_nullable
-as List<YTItem>,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
+as List<HomePageSectionItem>,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as SectionType,
   ));
 }
@@ -897,6 +897,290 @@ $BrowseEndpointCopyWith<$Res>? get endpoint {
 
   return $BrowseEndpointCopyWith<$Res>(_self.endpoint!, (value) {
     return _then(_self.copyWith(endpoint: value));
+  });
+}
+}
+
+
+/// @nodoc
+mixin _$HomePageSectionItem {
+
+ YTItem get ytItem; List<Run> get subtitleRuns;
+/// Create a copy of HomePageSectionItem
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$HomePageSectionItemCopyWith<HomePageSectionItem> get copyWith => _$HomePageSectionItemCopyWithImpl<HomePageSectionItem>(this as HomePageSectionItem, _$identity);
+
+  /// Serializes this HomePageSectionItem to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomePageSectionItem&&(identical(other.ytItem, ytItem) || other.ytItem == ytItem)&&const DeepCollectionEquality().equals(other.subtitleRuns, subtitleRuns));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,ytItem,const DeepCollectionEquality().hash(subtitleRuns));
+
+@override
+String toString() {
+  return 'HomePageSectionItem(ytItem: $ytItem, subtitleRuns: $subtitleRuns)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $HomePageSectionItemCopyWith<$Res>  {
+  factory $HomePageSectionItemCopyWith(HomePageSectionItem value, $Res Function(HomePageSectionItem) _then) = _$HomePageSectionItemCopyWithImpl;
+@useResult
+$Res call({
+ YTItem ytItem, List<Run> subtitleRuns
+});
+
+
+$YTItemCopyWith<$Res> get ytItem;
+
+}
+/// @nodoc
+class _$HomePageSectionItemCopyWithImpl<$Res>
+    implements $HomePageSectionItemCopyWith<$Res> {
+  _$HomePageSectionItemCopyWithImpl(this._self, this._then);
+
+  final HomePageSectionItem _self;
+  final $Res Function(HomePageSectionItem) _then;
+
+/// Create a copy of HomePageSectionItem
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? ytItem = null,Object? subtitleRuns = null,}) {
+  return _then(_self.copyWith(
+ytItem: null == ytItem ? _self.ytItem : ytItem // ignore: cast_nullable_to_non_nullable
+as YTItem,subtitleRuns: null == subtitleRuns ? _self.subtitleRuns : subtitleRuns // ignore: cast_nullable_to_non_nullable
+as List<Run>,
+  ));
+}
+/// Create a copy of HomePageSectionItem
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$YTItemCopyWith<$Res> get ytItem {
+  
+  return $YTItemCopyWith<$Res>(_self.ytItem, (value) {
+    return _then(_self.copyWith(ytItem: value));
+  });
+}
+}
+
+
+/// Adds pattern-matching-related methods to [HomePageSectionItem].
+extension HomePageSectionItemPatterns on HomePageSectionItem {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _HomePageSectionItem value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _HomePageSectionItem() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _HomePageSectionItem value)  $default,){
+final _that = this;
+switch (_that) {
+case _HomePageSectionItem():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _HomePageSectionItem value)?  $default,){
+final _that = this;
+switch (_that) {
+case _HomePageSectionItem() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( YTItem ytItem,  List<Run> subtitleRuns)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _HomePageSectionItem() when $default != null:
+return $default(_that.ytItem,_that.subtitleRuns);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( YTItem ytItem,  List<Run> subtitleRuns)  $default,) {final _that = this;
+switch (_that) {
+case _HomePageSectionItem():
+return $default(_that.ytItem,_that.subtitleRuns);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( YTItem ytItem,  List<Run> subtitleRuns)?  $default,) {final _that = this;
+switch (_that) {
+case _HomePageSectionItem() when $default != null:
+return $default(_that.ytItem,_that.subtitleRuns);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _HomePageSectionItem implements HomePageSectionItem {
+  const _HomePageSectionItem({required this.ytItem, required final  List<Run> subtitleRuns}): _subtitleRuns = subtitleRuns;
+  factory _HomePageSectionItem.fromJson(Map<String, dynamic> json) => _$HomePageSectionItemFromJson(json);
+
+@override final  YTItem ytItem;
+ final  List<Run> _subtitleRuns;
+@override List<Run> get subtitleRuns {
+  if (_subtitleRuns is EqualUnmodifiableListView) return _subtitleRuns;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_subtitleRuns);
+}
+
+
+/// Create a copy of HomePageSectionItem
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$HomePageSectionItemCopyWith<_HomePageSectionItem> get copyWith => __$HomePageSectionItemCopyWithImpl<_HomePageSectionItem>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$HomePageSectionItemToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _HomePageSectionItem&&(identical(other.ytItem, ytItem) || other.ytItem == ytItem)&&const DeepCollectionEquality().equals(other._subtitleRuns, _subtitleRuns));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,ytItem,const DeepCollectionEquality().hash(_subtitleRuns));
+
+@override
+String toString() {
+  return 'HomePageSectionItem(ytItem: $ytItem, subtitleRuns: $subtitleRuns)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$HomePageSectionItemCopyWith<$Res> implements $HomePageSectionItemCopyWith<$Res> {
+  factory _$HomePageSectionItemCopyWith(_HomePageSectionItem value, $Res Function(_HomePageSectionItem) _then) = __$HomePageSectionItemCopyWithImpl;
+@override @useResult
+$Res call({
+ YTItem ytItem, List<Run> subtitleRuns
+});
+
+
+@override $YTItemCopyWith<$Res> get ytItem;
+
+}
+/// @nodoc
+class __$HomePageSectionItemCopyWithImpl<$Res>
+    implements _$HomePageSectionItemCopyWith<$Res> {
+  __$HomePageSectionItemCopyWithImpl(this._self, this._then);
+
+  final _HomePageSectionItem _self;
+  final $Res Function(_HomePageSectionItem) _then;
+
+/// Create a copy of HomePageSectionItem
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? ytItem = null,Object? subtitleRuns = null,}) {
+  return _then(_HomePageSectionItem(
+ytItem: null == ytItem ? _self.ytItem : ytItem // ignore: cast_nullable_to_non_nullable
+as YTItem,subtitleRuns: null == subtitleRuns ? _self._subtitleRuns : subtitleRuns // ignore: cast_nullable_to_non_nullable
+as List<Run>,
+  ));
+}
+
+/// Create a copy of HomePageSectionItem
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$YTItemCopyWith<$Res> get ytItem {
+  
+  return $YTItemCopyWith<$Res>(_self.ytItem, (value) {
+    return _then(_self.copyWith(ytItem: value));
   });
 }
 }

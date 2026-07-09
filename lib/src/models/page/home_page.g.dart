@@ -51,7 +51,7 @@ _HomePageSection _$HomePageSectionFromJson(Map<String, dynamic> json) =>
           ? null
           : BrowseEndpoint.fromJson(json['endpoint'] as Map<String, dynamic>),
       items: (json['items'] as List<dynamic>)
-          .map((e) => YTItem.fromJson(e as Map<String, dynamic>))
+          .map((e) => HomePageSectionItem.fromJson(e as Map<String, dynamic>))
           .toList(),
       type: $enumDecode(_$SectionTypeEnumMap, json['type']),
     );
@@ -70,4 +70,19 @@ const _$SectionTypeEnumMap = {
   SectionType.twoRowList: 'twoRowList',
   SectionType.responsiveList: 'responsiveList',
   SectionType.multiRowList: 'multiRowList',
+};
+
+_HomePageSectionItem _$HomePageSectionItemFromJson(Map<String, dynamic> json) =>
+    _HomePageSectionItem(
+      ytItem: YTItem.fromJson(json['ytItem'] as Map<String, dynamic>),
+      subtitleRuns: (json['subtitleRuns'] as List<dynamic>)
+          .map((e) => Run.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$HomePageSectionItemToJson(
+  _HomePageSectionItem instance,
+) => <String, dynamic>{
+  'ytItem': instance.ytItem,
+  'subtitleRuns': instance.subtitleRuns,
 };

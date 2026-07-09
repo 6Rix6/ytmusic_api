@@ -53,12 +53,23 @@ sealed class HomePageSection with _$HomePageSection {
     String? label,
     String? thumbnail,
     BrowseEndpoint? endpoint,
-    required List<YTItem> items,
+    required List<HomePageSectionItem> items,
     required SectionType type,
   }) = _HomePageSection;
 
   factory HomePageSection.fromJson(Map<String, dynamic> json) =>
       _$HomePageSectionFromJson(json);
+}
+
+@freezed
+sealed class HomePageSectionItem with _$HomePageSectionItem {
+  const factory HomePageSectionItem({
+    required YTItem ytItem,
+    required List<Run> subtitleRuns,
+  }) = _HomePageSectionItem;
+
+  factory HomePageSectionItem.fromJson(Map<String, dynamic> json) =>
+      _$HomePageSectionItemFromJson(json);
 }
 
 extension HomePageParser on HomePage {
@@ -181,14 +192,14 @@ extension HomePageSectionX on HomePageSection {
         ) ??
         SectionType.twoRowList;
 
-    final items = <YTItem>[];
+    final items = <HomePageSectionItem>[];
 
     items.addAll(
       renderer.contents
           .map((c) => c.musicTwoRowItemRenderer)
           .whereType<MusicTwoRowItemRenderer>()
           .map(_fromMusicTwoRowItemRenderer)
-          .whereType<YTItem>(),
+          .whereType<HomePageSectionItem>(),
     );
 
     items.addAll(
@@ -196,7 +207,7 @@ extension HomePageSectionX on HomePageSection {
           .map((c) => c.musicMultiRowListItemRenderer)
           .whereType<MusicMultiRowListItemRenderer>()
           .map(_fromMusicMultiRowListItemRenderer)
-          .whereType<EpisodeItem>(),
+          .whereType<HomePageSectionItem>(),
     );
 
     items.addAll(
@@ -204,7 +215,7 @@ extension HomePageSectionX on HomePageSection {
           .map((c) => c.musicResponsiveListItemRenderer)
           .whereType<MusicResponsiveListItemRenderer>()
           .map(_fromMusicResponsiveListItemRenderer)
-          .whereType<SongItem>(),
+          .whereType<HomePageSectionItem>(),
     );
 
     if (items.isEmpty) return null;
@@ -237,7 +248,7 @@ extension HomePageSectionX on HomePageSection {
   }
 }
 
-EpisodeItem? _fromMusicMultiRowListItemRenderer(
+HomePageSectionItem? _fromMusicMultiRowListItemRenderer(
   MusicMultiRowListItemRenderer renderer,
 ) {
   final subtitleRuns = renderer.subtitle?.runs?.splitBySeparator();
@@ -255,7 +266,7 @@ EpisodeItem? _fromMusicMultiRowListItemRenderer(
       ?.getThumbnailUrl();
   if (thumbnail == null) return null;
 
-  return EpisodeItem(
+  final item = EpisodeItem(
     id: videoId,
     title: title,
     author: null,
@@ -270,20 +281,25 @@ EpisodeItem? _fromMusicMultiRowListItemRenderer(
     libraryAddToken: libraryTokens.addToken,
     libraryRemoveToken: libraryTokens.removeToken,
   );
+
+  return HomePageSectionItem(
+    ytItem: item,
+    subtitleRuns: renderer.subtitle?.runs ?? [],
+  );
 }
 
-SongItem? _fromMusicResponsiveListItemRenderer(
+HomePageSectionItem? _fromMusicResponsiveListItemRenderer(
   MusicResponsiveListItemRenderer renderer,
 ) {
   // Quick picks uses musicResponsiveListItemRenderer for songs
   if (!renderer.isSong) return null;
 
-  final secondaryLine = renderer.flexColumns
+  final subtitleRuns = renderer.flexColumns
       .elementAtOrNull(1)
       ?.musicResponsiveListItemFlexColumnRenderer
       .text
-      ?.runs
-      ?.splitBySeparator();
+      ?.runs;
+  final secondaryLine = subtitleRuns?.splitBySeparator();
   if (secondaryLine == null) return null;
 
   final videoId = renderer.videoId;
@@ -320,7 +336,7 @@ SongItem? _fromMusicResponsiveListItemRenderer(
       ?.getThumbnailUrl();
   if (thumbnail == null) return null;
 
-  return SongItem(
+  final item = SongItem(
     id: videoId,
     title: title,
     artists: artists,
@@ -338,9 +354,13 @@ SongItem? _fromMusicResponsiveListItemRenderer(
         false,
     isEpisode: renderer.isEpisode,
   );
+
+  return HomePageSectionItem(ytItem: item, subtitleRuns: subtitleRuns ?? []);
 }
 
-YTItem? _fromMusicTwoRowItemRenderer(MusicTwoRowItemRenderer renderer) {
+HomePageSectionItem? _fromMusicTwoRowItemRenderer(
+  MusicTwoRowItemRenderer renderer,
+) {
   if (renderer.isSong) {
     final subtitleRuns = renderer.subtitle?.runs;
     if (subtitleRuns == null) return null;
@@ -383,7 +403,7 @@ YTItem? _fromMusicTwoRowItemRenderer(MusicTwoRowItemRenderer renderer) {
         ?.getThumbnailUrl();
     if (thumbnail == null) return null;
 
-    return SongItem(
+    final item = SongItem(
       id: videoId,
       title: title,
       artists: artists,
@@ -397,6 +417,8 @@ YTItem? _fromMusicTwoRowItemRenderer(MusicTwoRowItemRenderer renderer) {
           ) ??
           false,
     );
+
+    return HomePageSectionItem(ytItem: item, subtitleRuns: subtitleRuns);
   }
 
   if (renderer.isAlbum) {
@@ -420,7 +442,7 @@ YTItem? _fromMusicTwoRowItemRenderer(MusicTwoRowItemRenderer renderer) {
         ?.getThumbnailUrl();
     if (thumbnail == null) return null;
 
-    return AlbumItem(
+    final item = AlbumItem(
       browseId: browseId,
       playlistId: playlistId,
       title: title,
@@ -435,10 +457,14 @@ YTItem? _fromMusicTwoRowItemRenderer(MusicTwoRowItemRenderer renderer) {
       explicit:
           renderer.subtitleBadges?.any(
             (badge) =>
-                badge.musicInlineBadgeRenderer?.icon.iconType ==
-                'MUSIC_EXPLICIT_BADGE',
+                badge.musicInlineBadgeRenderer?.icon.isExplicit() ?? false,
           ) ??
           false,
+    );
+
+    return HomePageSectionItem(
+      ytItem: item,
+      subtitleRuns: renderer.subtitle?.runs ?? [],
     );
   }
 
@@ -480,7 +506,7 @@ YTItem? _fromMusicTwoRowItemRenderer(MusicTwoRowItemRenderer renderer) {
         ?.navigationEndpoint
         .watchPlaylistEndpoint;
 
-    return PlaylistItem(
+    final item = PlaylistItem(
       id: browseId.replaceFirst(RegExp(r'^VL'), ''),
       title: renderer.title.runs?.firstOrNull?.text ?? '',
       author: Artist(name: authorName, id: null),
@@ -489,6 +515,11 @@ YTItem? _fromMusicTwoRowItemRenderer(MusicTwoRowItemRenderer renderer) {
       playEndpoint: playEndpoint,
       shuffleEndpoint: shuffleEndpoint,
       radioEndpoint: radioEndpoint,
+    );
+
+    return HomePageSectionItem(
+      ytItem: item,
+      subtitleRuns: renderer.subtitle?.runs ?? [],
     );
   }
 
@@ -521,12 +552,17 @@ YTItem? _fromMusicTwoRowItemRenderer(MusicTwoRowItemRenderer renderer) {
         ?.navigationEndpoint
         .watchPlaylistEndpoint;
 
-    return ArtistItem(
+    final item = ArtistItem(
       id: id,
       title: title,
       thumbnail: thumbnail,
       shuffleEndpoint: shuffleEndpoint,
       radioEndpoint: radioEndpoint,
+    );
+
+    return HomePageSectionItem(
+      ytItem: item,
+      subtitleRuns: renderer.subtitle?.runs ?? [],
     );
   }
 
@@ -539,7 +575,7 @@ YTItem? _fromMusicTwoRowItemRenderer(MusicTwoRowItemRenderer renderer) {
 
     final authorRun = renderer.subtitle?.runs?.firstOrNull;
 
-    return PodcastItem(
+    final item = PodcastItem(
       id: id,
       title: title,
       author: authorRun != null
@@ -567,6 +603,11 @@ YTItem? _fromMusicTwoRowItemRenderer(MusicTwoRowItemRenderer renderer) {
           ?.menuNavigationItemRenderer
           ?.navigationEndpoint
           .watchPlaylistEndpoint,
+    );
+
+    return HomePageSectionItem(
+      ytItem: item,
+      subtitleRuns: renderer.subtitle?.runs ?? [],
     );
   }
 
@@ -605,7 +646,7 @@ YTItem? _fromMusicTwoRowItemRenderer(MusicTwoRowItemRenderer renderer) {
 
     final authorRun = subtitleRuns?.firstOrNull?.firstOrNull;
 
-    return EpisodeItem(
+    final item = EpisodeItem(
       id: videoId,
       title: titleText,
       author: authorRun != null
@@ -637,7 +678,27 @@ YTItem? _fromMusicTwoRowItemRenderer(MusicTwoRowItemRenderer renderer) {
       libraryAddToken: libraryTokens.addToken,
       libraryRemoveToken: libraryTokens.removeToken,
     );
+
+    return HomePageSectionItem(
+      ytItem: item,
+      subtitleRuns: renderer.subtitle?.runs ?? [],
+    );
   }
 
   return null;
+}
+
+extension ListHomePageSectionItemX on List<HomePageSectionItem> {
+  List<HomePageSectionItem> filterExplicit([bool enabled = true]) {
+    if (!enabled) return this;
+    return where((item) => !item.ytItem.explicit).toList();
+  }
+
+  List<HomePageSectionItem> filterVideoSongs([bool enabled = true]) {
+    if (!enabled) return this;
+    return whereNot(
+      (item) =>
+          item.ytItem is SongItem && (item.ytItem as SongItem).isVideoSong,
+    ).toList();
+  }
 }
