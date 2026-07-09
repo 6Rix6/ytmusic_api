@@ -188,7 +188,8 @@ class PageHelper {
     }
 
     final filtered = runs.where((run) {
-      return run.text.trim().isNotEmpty && run.text != ' • ';
+      // return run.text.trim().isNotEmpty && run.text != ' • ' && run.text != '、';
+      return run.navigationEndpoint != null;
     }).toList();
 
     final result = filtered
