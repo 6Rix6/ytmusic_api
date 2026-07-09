@@ -441,6 +441,20 @@ class YTMusicClient {
         .run();
   }
 
+  // ========== Search ==========
+
+  YouTubeResult<SearchPage> search(String query, {SearchFilter? filter}) {
+    return _innerTube
+        .search(YouTubeClient.webRemix, query: query, params: filter?.value)
+        .flatMap(
+          (r) => _parseResponse(r, (val) {
+            final res = SearchResponse.fromJson(val);
+            return SearchPageParser.fromSearchResponse(res);
+          }),
+        )
+        .run();
+  }
+
   TaskEither<L, List<T>> _paginate<L, T, C>({
     required List<T> initialItems,
     required C? initialContinuation,

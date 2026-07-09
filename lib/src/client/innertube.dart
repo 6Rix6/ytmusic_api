@@ -166,14 +166,14 @@ class InnerTube {
     return TaskEither.tryCatch(() => _withRetry(block), mapDioErrorToFailure);
   }
 
-  InnerTubeTask search(
+  InnerTubeTask<Map<String, dynamic>> search(
     YouTubeClient client, {
     String? query,
     String? params,
     String? continuation,
   }) {
     return _task(
-      () => _httpClient.post(
+      () => _httpClient.post<Map<String, dynamic>>(
         'search',
         queryParameters: {
           'prettyPrint': false,

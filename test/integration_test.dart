@@ -259,6 +259,17 @@ void main() {
     });
   });
 
+  test('Search', () async {
+    final res = await client.search('Yoasobi');
+
+    res.match((l) => fail('Expected success but got error: $l'), (r) {
+      _logHeader('Search result');
+      for (final item in r.items) {
+        log('${item.runtimeType}: ${item.title}');
+      }
+    });
+  });
+
   test('Get Visitor Data', () async {
     final res = await client.getVisitorData();
     res.match((l) => fail('Expected success but got error: $l'), (r) {
