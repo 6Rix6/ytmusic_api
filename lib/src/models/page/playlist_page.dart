@@ -191,7 +191,7 @@ class PlaylistPageParser {
                 .watchPlaylistEndpoint,
         radioEndpoint:
             header?.buttons
-                .getOrNull(2)
+                .elementAtOrNull(2)
                 ?.menuRenderer
                 ?.items
                 ?.firstWhereOrNull(
@@ -201,7 +201,7 @@ class PlaylistPageParser {
                 ?.navigationEndpoint
                 .watchPlaylistEndpoint ??
             response.header?.musicHeaderRenderer?.buttons
-                ?.getOrNull(2)
+                ?.elementAtOrNull(2)
                 ?.menuRenderer
                 ?.items
                 ?.firstWhereOrNull(
@@ -254,7 +254,7 @@ class PlaylistPageParser {
 
     final artists =
         flexColumns
-            .getOrNull(1)
+            .elementAtOrNull(1)
             ?.musicResponsiveListItemFlexColumnRenderer
             .text
             ?.runs
@@ -262,7 +262,7 @@ class PlaylistPageParser {
         [];
 
     final album = flexColumns
-        .getOrNull(2)
+        .elementAtOrNull(2)
         ?.musicResponsiveListItemFlexColumnRenderer
         .text
         ?.runs
@@ -341,7 +341,7 @@ class PlaylistPageParser {
     if (detailSubtitle != null) {
       final segments = detailSubtitle.splitBySeparator();
       final run =
-          segments.getOrNull(1)?.firstOrNull ??
+          segments.elementAtOrNull(1)?.firstOrNull ??
           segments.firstOrNull?.firstOrNull;
       final fromDetail = run?.let(
         (r) => Artist(

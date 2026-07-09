@@ -267,12 +267,12 @@ class ArtistItemsPageParser {
     }
 
     final artists = renderer.flexColumns
-        .getOrNull(1)
+        .elementAtOrNull(1)
         ?.musicResponsiveListItemFlexColumnRenderer
         .text
         ?.runs
         ?.splitBySeparator()
-        .getOrNull(0)
+        .elementAtOrNull(0)
         ?.splitArtistsByConjunction()
         .where((r) => r.text.isNotEmpty && r.text != '&' && r.text != ',')
         .map(
@@ -472,7 +472,7 @@ class ArtistItemsPageParser {
             id: authorRun.navigationEndpoint?.browseEndpoint?.browseId,
           );
 
-    final songCountText = renderer.subtitle?.runs?.getOrNull(4)?.text;
+    final songCountText = renderer.subtitle?.runs?.elementAtOrNull(4)?.text;
 
     final thumbnail = renderer.thumbnailRenderer.musicThumbnailRenderer
         ?.getThumbnailUrl();

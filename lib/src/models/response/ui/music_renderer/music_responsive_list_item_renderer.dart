@@ -26,8 +26,7 @@ sealed class MusicResponsiveListItemRenderer
     required NavigationEndpoint? navigationEndpoint,
   }) = _MusicResponsiveListItemRenderer;
 
-  factory MusicResponsiveListItemRenderer.fromJson(
-          Map<String, dynamic> json) =>
+  factory MusicResponsiveListItemRenderer.fromJson(Map<String, dynamic> json) =>
       _$MusicResponsiveListItemRendererFromJson(json);
 }
 
@@ -41,7 +40,7 @@ sealed class FlexColumn with _$FlexColumn {
   const factory FlexColumn({
     @JsonKey(readValue: _readFlexColumnRenderer)
     required MusicResponsiveListItemFlexColumnRenderer
-        musicResponsiveListItemFlexColumnRenderer,
+    musicResponsiveListItemFlexColumnRenderer,
   }) = _FlexColumn;
 
   factory FlexColumn.fromJson(Map<String, dynamic> json) =>
@@ -56,8 +55,8 @@ sealed class MusicResponsiveListItemFlexColumnRenderer
   }) = _MusicResponsiveListItemFlexColumnRenderer;
 
   factory MusicResponsiveListItemFlexColumnRenderer.fromJson(
-          Map<String, dynamic> json) =>
-      _$MusicResponsiveListItemFlexColumnRendererFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$MusicResponsiveListItemFlexColumnRendererFromJson(json);
 }
 
 @freezed
@@ -75,12 +74,13 @@ sealed class PlaylistItemData with _$PlaylistItemData {
 sealed class MusicResponsiveListItemRendererOverlay
     with _$MusicResponsiveListItemRendererOverlay {
   const factory MusicResponsiveListItemRendererOverlay({
-    required MusicItemThumbnailOverlayRenderer musicItemThumbnailOverlayRenderer,
+    required MusicItemThumbnailOverlayRenderer
+    musicItemThumbnailOverlayRenderer,
   }) = _MusicResponsiveListItemRendererOverlay;
 
   factory MusicResponsiveListItemRendererOverlay.fromJson(
-          Map<String, dynamic> json) =>
-      _$MusicResponsiveListItemRendererOverlayFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$MusicResponsiveListItemRendererOverlayFromJson(json);
 }
 
 @freezed
@@ -91,8 +91,8 @@ sealed class MusicItemThumbnailOverlayRenderer
   }) = _MusicItemThumbnailOverlayRenderer;
 
   factory MusicItemThumbnailOverlayRenderer.fromJson(
-          Map<String, dynamic> json) =>
-      _$MusicItemThumbnailOverlayRendererFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$MusicItemThumbnailOverlayRendererFromJson(json);
 }
 
 @freezed
@@ -103,8 +103,8 @@ sealed class MusicItemThumbnailOverlayRendererContent
   }) = _MusicItemThumbnailOverlayRendererContent;
 
   factory MusicItemThumbnailOverlayRendererContent.fromJson(
-          Map<String, dynamic> json) =>
-      _$MusicItemThumbnailOverlayRendererContentFromJson(json);
+    Map<String, dynamic> json,
+  ) => _$MusicItemThumbnailOverlayRendererContentFromJson(json);
 }
 
 @freezed
@@ -117,11 +117,9 @@ sealed class MusicPlayButtonRenderer with _$MusicPlayButtonRenderer {
       _$MusicPlayButtonRendererFromJson(json);
 }
 
-T? _getOrNull<T>(List<T> list, int index) =>
-    (index >= 0 && index < list.length) ? list[index] : null;
-
 extension MusicResponsiveListItemRendererX on MusicResponsiveListItemRenderer {
-  String? get _pageType => navigationEndpoint?.browseEndpoint
+  String? get _pageType => navigationEndpoint
+      ?.browseEndpoint
       ?.browseEndpointContextSupportedConfigs
       ?.browseEndpointContextMusicConfig
       .pageType;
@@ -130,8 +128,12 @@ extension MusicResponsiveListItemRendererX on MusicResponsiveListItemRenderer {
       navigationEndpoint == null ||
       navigationEndpoint?.watchEndpoint != null ||
       navigationEndpoint?.watchPlaylistEndpoint != null ||
-      overlay?.musicItemThumbnailOverlayRenderer.content
-              .musicPlayButtonRenderer.playNavigationEndpoint?.watchEndpoint !=
+      overlay
+              ?.musicItemThumbnailOverlayRenderer
+              .content
+              .musicPlayButtonRenderer
+              .playNavigationEndpoint
+              ?.watchEndpoint !=
           null;
 
   bool get isPlaylist => _pageType == MusicPageType.playlist;
@@ -152,46 +154,72 @@ extension MusicResponsiveListItemRendererX on MusicResponsiveListItemRenderer {
       return true;
     }
 
-    final firstSubtitleText = _getOrNull(flexColumns, 1)
-        ?.musicResponsiveListItemFlexColumnRenderer.text?.runs
+    final firstSubtitleText = flexColumns
+        .elementAtOrNull(1)
+        ?.musicResponsiveListItemFlexColumnRenderer
+        .text
+        ?.runs
         ?.let((runs) => runs.isNotEmpty ? runs.first.text : null);
     if (firstSubtitleText == 'Episode') {
       return true;
     }
 
-    final hasPodcastLink = _getOrNull(flexColumns, 1)
-            ?.musicResponsiveListItemFlexColumnRenderer.text?.runs
-            ?.any((run) =>
-                run.navigationEndpoint?.browseEndpoint
-                    ?.browseEndpointContextSupportedConfigs
-                    ?.browseEndpointContextMusicConfig
-                    .pageType ==
-                MusicPageType.podcastShowDetailPage) ==
+    final hasPodcastLink =
+        flexColumns
+            .elementAtOrNull(1)
+            ?.musicResponsiveListItemFlexColumnRenderer
+            .text
+            ?.runs
+            ?.any(
+              (run) =>
+                  run
+                      .navigationEndpoint
+                      ?.browseEndpoint
+                      ?.browseEndpointContextSupportedConfigs
+                      ?.browseEndpointContextMusicConfig
+                      .pageType ==
+                  MusicPageType.podcastShowDetailPage,
+            ) ==
         true;
     final hasVideoId = videoId != null;
     return hasPodcastLink && hasVideoId;
   }
 
   String? get musicVideoType =>
-      overlay?.musicItemThumbnailOverlayRenderer.content
-          .musicPlayButtonRenderer.playNavigationEndpoint?.musicVideoType ??
+      overlay
+          ?.musicItemThumbnailOverlayRenderer
+          .content
+          .musicPlayButtonRenderer
+          .playNavigationEndpoint
+          ?.musicVideoType ??
       navigationEndpoint?.musicVideoType;
 
   String? get videoId =>
       playlistItemData?.videoId ??
-      _getOrNull(flexColumns, 0)
-          ?.musicResponsiveListItemFlexColumnRenderer.text?.runs
+      flexColumns
+          .elementAtOrNull(0)
+          ?.musicResponsiveListItemFlexColumnRenderer
+          .text
+          ?.runs
           ?.let((runs) => runs.isNotEmpty ? runs.first : null)
           ?.navigationEndpoint
           ?.watchEndpoint
           ?.videoId ??
-      overlay?.musicItemThumbnailOverlayRenderer.content
-          .musicPlayButtonRenderer.playNavigationEndpoint?.watchEndpoint
+      overlay
+          ?.musicItemThumbnailOverlayRenderer
+          .content
+          .musicPlayButtonRenderer
+          .playNavigationEndpoint
+          ?.watchEndpoint
           ?.videoId;
 
   String? get playlistSetVideoId =>
       playlistItemData?.playlistSetVideoId ??
-      overlay?.musicItemThumbnailOverlayRenderer.content
-          .musicPlayButtonRenderer.playNavigationEndpoint?.watchEndpoint
+      overlay
+          ?.musicItemThumbnailOverlayRenderer
+          .content
+          .musicPlayButtonRenderer
+          .playNavigationEndpoint
+          ?.watchEndpoint
           ?.playlistSetVideoId;
 }
