@@ -290,7 +290,7 @@ $ButtonRendererCopyWith<$Res> get buttonRenderer {
 /// @nodoc
 mixin _$ButtonRenderer {
 
- Runs get text; NavigationEndpoint get navigationEndpoint; NavigationEndpoint? get command; YoutubeIcon? get icon;
+ Runs get text; NavigationEndpoint? get navigationEndpoint; NavigationEndpoint? get command; YoutubeIcon? get icon;
 /// Create a copy of ButtonRenderer
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -323,11 +323,11 @@ abstract mixin class $ButtonRendererCopyWith<$Res>  {
   factory $ButtonRendererCopyWith(ButtonRenderer value, $Res Function(ButtonRenderer) _then) = _$ButtonRendererCopyWithImpl;
 @useResult
 $Res call({
- Runs text, NavigationEndpoint navigationEndpoint, NavigationEndpoint? command, YoutubeIcon? icon
+ Runs text, NavigationEndpoint? navigationEndpoint, NavigationEndpoint? command, YoutubeIcon? icon
 });
 
 
-$RunsCopyWith<$Res> get text;$NavigationEndpointCopyWith<$Res> get navigationEndpoint;$NavigationEndpointCopyWith<$Res>? get command;$YoutubeIconCopyWith<$Res>? get icon;
+$RunsCopyWith<$Res> get text;$NavigationEndpointCopyWith<$Res>? get navigationEndpoint;$NavigationEndpointCopyWith<$Res>? get command;$YoutubeIconCopyWith<$Res>? get icon;
 
 }
 /// @nodoc
@@ -340,11 +340,11 @@ class _$ButtonRendererCopyWithImpl<$Res>
 
 /// Create a copy of ButtonRenderer
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? text = null,Object? navigationEndpoint = null,Object? command = freezed,Object? icon = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? text = null,Object? navigationEndpoint = freezed,Object? command = freezed,Object? icon = freezed,}) {
   return _then(_self.copyWith(
 text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
-as Runs,navigationEndpoint: null == navigationEndpoint ? _self.navigationEndpoint : navigationEndpoint // ignore: cast_nullable_to_non_nullable
-as NavigationEndpoint,command: freezed == command ? _self.command : command // ignore: cast_nullable_to_non_nullable
+as Runs,navigationEndpoint: freezed == navigationEndpoint ? _self.navigationEndpoint : navigationEndpoint // ignore: cast_nullable_to_non_nullable
+as NavigationEndpoint?,command: freezed == command ? _self.command : command // ignore: cast_nullable_to_non_nullable
 as NavigationEndpoint?,icon: freezed == icon ? _self.icon : icon // ignore: cast_nullable_to_non_nullable
 as YoutubeIcon?,
   ));
@@ -362,9 +362,12 @@ $RunsCopyWith<$Res> get text {
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$NavigationEndpointCopyWith<$Res> get navigationEndpoint {
-  
-  return $NavigationEndpointCopyWith<$Res>(_self.navigationEndpoint, (value) {
+$NavigationEndpointCopyWith<$Res>? get navigationEndpoint {
+    if (_self.navigationEndpoint == null) {
+    return null;
+  }
+
+  return $NavigationEndpointCopyWith<$Res>(_self.navigationEndpoint!, (value) {
     return _then(_self.copyWith(navigationEndpoint: value));
   });
 }/// Create a copy of ButtonRenderer
@@ -470,7 +473,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Runs text,  NavigationEndpoint navigationEndpoint,  NavigationEndpoint? command,  YoutubeIcon? icon)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Runs text,  NavigationEndpoint? navigationEndpoint,  NavigationEndpoint? command,  YoutubeIcon? icon)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ButtonRenderer() when $default != null:
 return $default(_that.text,_that.navigationEndpoint,_that.command,_that.icon);case _:
@@ -491,7 +494,7 @@ return $default(_that.text,_that.navigationEndpoint,_that.command,_that.icon);ca
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Runs text,  NavigationEndpoint navigationEndpoint,  NavigationEndpoint? command,  YoutubeIcon? icon)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Runs text,  NavigationEndpoint? navigationEndpoint,  NavigationEndpoint? command,  YoutubeIcon? icon)  $default,) {final _that = this;
 switch (_that) {
 case _ButtonRenderer():
 return $default(_that.text,_that.navigationEndpoint,_that.command,_that.icon);}
@@ -508,7 +511,7 @@ return $default(_that.text,_that.navigationEndpoint,_that.command,_that.icon);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Runs text,  NavigationEndpoint navigationEndpoint,  NavigationEndpoint? command,  YoutubeIcon? icon)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Runs text,  NavigationEndpoint? navigationEndpoint,  NavigationEndpoint? command,  YoutubeIcon? icon)?  $default,) {final _that = this;
 switch (_that) {
 case _ButtonRenderer() when $default != null:
 return $default(_that.text,_that.navigationEndpoint,_that.command,_that.icon);case _:
@@ -523,11 +526,11 @@ return $default(_that.text,_that.navigationEndpoint,_that.command,_that.icon);ca
 @JsonSerializable()
 
 class _ButtonRenderer implements ButtonRenderer {
-  const _ButtonRenderer({required this.text, required this.navigationEndpoint, this.command, this.icon});
+  const _ButtonRenderer({required this.text, this.navigationEndpoint, this.command, this.icon});
   factory _ButtonRenderer.fromJson(Map<String, dynamic> json) => _$ButtonRendererFromJson(json);
 
 @override final  Runs text;
-@override final  NavigationEndpoint navigationEndpoint;
+@override final  NavigationEndpoint? navigationEndpoint;
 @override final  NavigationEndpoint? command;
 @override final  YoutubeIcon? icon;
 
@@ -564,11 +567,11 @@ abstract mixin class _$ButtonRendererCopyWith<$Res> implements $ButtonRendererCo
   factory _$ButtonRendererCopyWith(_ButtonRenderer value, $Res Function(_ButtonRenderer) _then) = __$ButtonRendererCopyWithImpl;
 @override @useResult
 $Res call({
- Runs text, NavigationEndpoint navigationEndpoint, NavigationEndpoint? command, YoutubeIcon? icon
+ Runs text, NavigationEndpoint? navigationEndpoint, NavigationEndpoint? command, YoutubeIcon? icon
 });
 
 
-@override $RunsCopyWith<$Res> get text;@override $NavigationEndpointCopyWith<$Res> get navigationEndpoint;@override $NavigationEndpointCopyWith<$Res>? get command;@override $YoutubeIconCopyWith<$Res>? get icon;
+@override $RunsCopyWith<$Res> get text;@override $NavigationEndpointCopyWith<$Res>? get navigationEndpoint;@override $NavigationEndpointCopyWith<$Res>? get command;@override $YoutubeIconCopyWith<$Res>? get icon;
 
 }
 /// @nodoc
@@ -581,11 +584,11 @@ class __$ButtonRendererCopyWithImpl<$Res>
 
 /// Create a copy of ButtonRenderer
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? text = null,Object? navigationEndpoint = null,Object? command = freezed,Object? icon = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? text = null,Object? navigationEndpoint = freezed,Object? command = freezed,Object? icon = freezed,}) {
   return _then(_ButtonRenderer(
 text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
-as Runs,navigationEndpoint: null == navigationEndpoint ? _self.navigationEndpoint : navigationEndpoint // ignore: cast_nullable_to_non_nullable
-as NavigationEndpoint,command: freezed == command ? _self.command : command // ignore: cast_nullable_to_non_nullable
+as Runs,navigationEndpoint: freezed == navigationEndpoint ? _self.navigationEndpoint : navigationEndpoint // ignore: cast_nullable_to_non_nullable
+as NavigationEndpoint?,command: freezed == command ? _self.command : command // ignore: cast_nullable_to_non_nullable
 as NavigationEndpoint?,icon: freezed == icon ? _self.icon : icon // ignore: cast_nullable_to_non_nullable
 as YoutubeIcon?,
   ));
@@ -604,9 +607,12 @@ $RunsCopyWith<$Res> get text {
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$NavigationEndpointCopyWith<$Res> get navigationEndpoint {
-  
-  return $NavigationEndpointCopyWith<$Res>(_self.navigationEndpoint, (value) {
+$NavigationEndpointCopyWith<$Res>? get navigationEndpoint {
+    if (_self.navigationEndpoint == null) {
+    return null;
+  }
+
+  return $NavigationEndpointCopyWith<$Res>(_self.navigationEndpoint!, (value) {
     return _then(_self.copyWith(navigationEndpoint: value));
   });
 }/// Create a copy of ButtonRenderer

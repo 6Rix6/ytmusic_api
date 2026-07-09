@@ -19,9 +19,11 @@ Map<String, dynamic> _$ButtonToJson(_Button instance) => <String, dynamic>{
 _ButtonRenderer _$ButtonRendererFromJson(Map<String, dynamic> json) =>
     _ButtonRenderer(
       text: Runs.fromJson(json['text'] as Map<String, dynamic>),
-      navigationEndpoint: NavigationEndpoint.fromJson(
-        json['navigationEndpoint'] as Map<String, dynamic>,
-      ),
+      navigationEndpoint: json['navigationEndpoint'] == null
+          ? null
+          : NavigationEndpoint.fromJson(
+              json['navigationEndpoint'] as Map<String, dynamic>,
+            ),
       command: json['command'] == null
           ? null
           : NavigationEndpoint.fromJson(

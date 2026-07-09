@@ -170,7 +170,7 @@ class ArtistPageParser {
             ?.playButton
             ?.buttonRenderer
             .navigationEndpoint
-            .watchEndpoint ??
+            ?.watchEndpoint ??
         firstTabContents
             ?.firstOrNull
             ?.musicShelfRenderer
@@ -186,7 +186,7 @@ class ArtistPageParser {
         ?.startRadioButton
         ?.buttonRenderer
         .navigationEndpoint
-        .watchEndpoint;
+        ?.watchEndpoint;
 
     final artistItem = ArtistItem(
       id: browseId,
@@ -324,7 +324,7 @@ class ArtistPageParser {
           .moreContentButton
           ?.buttonRenderer
           .navigationEndpoint
-          .browseEndpoint,
+          ?.browseEndpoint,
     );
   }
 

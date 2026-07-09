@@ -230,7 +230,7 @@ extension HomePageSectionX on HomePageSection {
           .moreContentButton
           ?.buttonRenderer
           .navigationEndpoint
-          .browseEndpoint,
+          ?.browseEndpoint,
       items: items,
       type: sectionType,
     );

@@ -18,7 +18,7 @@ sealed class Button with _$Button {
 sealed class ButtonRenderer with _$ButtonRenderer {
   const factory ButtonRenderer({
     required Runs text,
-    required NavigationEndpoint navigationEndpoint,
+    NavigationEndpoint? navigationEndpoint,
     NavigationEndpoint? command,
     YoutubeIcon? icon,
   }) = _ButtonRenderer;
