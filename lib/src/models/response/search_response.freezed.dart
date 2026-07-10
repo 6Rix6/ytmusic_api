@@ -879,7 +879,7 @@ $MusicShelfContinuationCopyWith<$Res> get musicShelfContinuation {
 /// @nodoc
 mixin _$MusicShelfContinuation {
 
- List<SearchResponseContents> get contents; List<MusicShelfContinuationContent>? get continuations;
+ List<MusicShelfContinuationContent> get contents; List<Continuation>? get continuations;
 /// Create a copy of MusicShelfContinuation
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -912,7 +912,7 @@ abstract mixin class $MusicShelfContinuationCopyWith<$Res>  {
   factory $MusicShelfContinuationCopyWith(MusicShelfContinuation value, $Res Function(MusicShelfContinuation) _then) = _$MusicShelfContinuationCopyWithImpl;
 @useResult
 $Res call({
- List<SearchResponseContents> contents, List<MusicShelfContinuationContent>? continuations
+ List<MusicShelfContinuationContent> contents, List<Continuation>? continuations
 });
 
 
@@ -932,8 +932,8 @@ class _$MusicShelfContinuationCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') @override $Res call({Object? contents = null,Object? continuations = freezed,}) {
   return _then(_self.copyWith(
 contents: null == contents ? _self.contents : contents // ignore: cast_nullable_to_non_nullable
-as List<SearchResponseContents>,continuations: freezed == continuations ? _self.continuations : continuations // ignore: cast_nullable_to_non_nullable
-as List<MusicShelfContinuationContent>?,
+as List<MusicShelfContinuationContent>,continuations: freezed == continuations ? _self.continuations : continuations // ignore: cast_nullable_to_non_nullable
+as List<Continuation>?,
   ));
 }
 
@@ -1015,7 +1015,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<SearchResponseContents> contents,  List<MusicShelfContinuationContent>? continuations)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<MusicShelfContinuationContent> contents,  List<Continuation>? continuations)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _MusicShelfContinuation() when $default != null:
 return $default(_that.contents,_that.continuations);case _:
@@ -1036,7 +1036,7 @@ return $default(_that.contents,_that.continuations);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<SearchResponseContents> contents,  List<MusicShelfContinuationContent>? continuations)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<MusicShelfContinuationContent> contents,  List<Continuation>? continuations)  $default,) {final _that = this;
 switch (_that) {
 case _MusicShelfContinuation():
 return $default(_that.contents,_that.continuations);}
@@ -1053,7 +1053,7 @@ return $default(_that.contents,_that.continuations);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<SearchResponseContents> contents,  List<MusicShelfContinuationContent>? continuations)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<MusicShelfContinuationContent> contents,  List<Continuation>? continuations)?  $default,) {final _that = this;
 switch (_that) {
 case _MusicShelfContinuation() when $default != null:
 return $default(_that.contents,_that.continuations);case _:
@@ -1068,18 +1068,18 @@ return $default(_that.contents,_that.continuations);case _:
 @JsonSerializable()
 
 class _MusicShelfContinuation implements MusicShelfContinuation {
-  const _MusicShelfContinuation({required final  List<SearchResponseContents> contents, final  List<MusicShelfContinuationContent>? continuations}): _contents = contents,_continuations = continuations;
+  const _MusicShelfContinuation({required final  List<MusicShelfContinuationContent> contents, final  List<Continuation>? continuations}): _contents = contents,_continuations = continuations;
   factory _MusicShelfContinuation.fromJson(Map<String, dynamic> json) => _$MusicShelfContinuationFromJson(json);
 
- final  List<SearchResponseContents> _contents;
-@override List<SearchResponseContents> get contents {
+ final  List<MusicShelfContinuationContent> _contents;
+@override List<MusicShelfContinuationContent> get contents {
   if (_contents is EqualUnmodifiableListView) return _contents;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_contents);
 }
 
- final  List<MusicShelfContinuationContent>? _continuations;
-@override List<MusicShelfContinuationContent>? get continuations {
+ final  List<Continuation>? _continuations;
+@override List<Continuation>? get continuations {
   final value = _continuations;
   if (value == null) return null;
   if (_continuations is EqualUnmodifiableListView) return _continuations;
@@ -1121,7 +1121,7 @@ abstract mixin class _$MusicShelfContinuationCopyWith<$Res> implements $MusicShe
   factory _$MusicShelfContinuationCopyWith(_MusicShelfContinuation value, $Res Function(_MusicShelfContinuation) _then) = __$MusicShelfContinuationCopyWithImpl;
 @override @useResult
 $Res call({
- List<SearchResponseContents> contents, List<MusicShelfContinuationContent>? continuations
+ List<MusicShelfContinuationContent> contents, List<Continuation>? continuations
 });
 
 
@@ -1141,8 +1141,8 @@ class __$MusicShelfContinuationCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? contents = null,Object? continuations = freezed,}) {
   return _then(_MusicShelfContinuation(
 contents: null == contents ? _self._contents : contents // ignore: cast_nullable_to_non_nullable
-as List<SearchResponseContents>,continuations: freezed == continuations ? _self._continuations : continuations // ignore: cast_nullable_to_non_nullable
-as List<MusicShelfContinuationContent>?,
+as List<MusicShelfContinuationContent>,continuations: freezed == continuations ? _self._continuations : continuations // ignore: cast_nullable_to_non_nullable
+as List<Continuation>?,
   ));
 }
 

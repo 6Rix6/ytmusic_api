@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'data/continuation/continuation.dart';
 import 'ui/music_renderer/music_responsive_list_item_renderer.dart';
 import 'ui/tabs.dart';
 
@@ -41,8 +42,8 @@ sealed class SearchResponseContinuationContents with _$SearchResponseContinuatio
 @freezed
 sealed class MusicShelfContinuation with _$MusicShelfContinuation {
   const factory MusicShelfContinuation({
-    required List<SearchResponseContents> contents,
-    List<MusicShelfContinuationContent>? continuations,
+    required List<MusicShelfContinuationContent> contents,
+    List<Continuation>? continuations,
   }) = _MusicShelfContinuation;
 
   factory MusicShelfContinuation.fromJson(Map<String, dynamic> json) =>

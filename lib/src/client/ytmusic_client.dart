@@ -455,6 +455,18 @@ class YTMusicClient {
         .run();
   }
 
+  YouTubeResult<SearchPage> searchContinuation(String continuation) {
+    return _innerTube
+        .search(YouTubeClient.webRemix, continuation: continuation)
+        .flatMap(
+          (r) => _parseResponse(r, (val) {
+            final res = SearchResponse.fromJson(val);
+            return SearchPageParser.fromContinuationSearchResponse(res);
+          }),
+        )
+        .run();
+  }
+
   TaskEither<L, List<T>> _paginate<L, T, C>({
     required List<T> initialItems,
     required C? initialContinuation,
@@ -503,7 +515,7 @@ class YTMusicClient {
   }
 
   // ========== Uninplemented ==========
-  // searchSuggestions / searchSummary / search / searchContinuation
+  // searchSuggestions / searchSummary
   // podcast / explore
   // newReleaseAlbums / moodAndGenres / browse / library / libraryContinuation
   // libraryRecentActivity / getChartsPage / musicHistory / podcastDiscover

@@ -267,6 +267,10 @@ void main() {
       for (final item in r.items) {
         log('${item.runtimeType}: ${item.title}');
       }
+
+      if (r.continuation != null) {
+        log('continuation: ${r.continuation!.substring(0, 20)}...');
+      }
     });
   });
 

@@ -58,6 +58,23 @@ class SearchPageParser {
     return SearchPage(items: searchItems, continuation: searchContinuation);
   }
 
+  static SearchPage fromContinuationSearchResponse(SearchResponse response) {
+    final items =
+        response.continuationContents?.musicShelfContinuation.contents
+            .mapNotNull(
+              (item) => toYTItem(item.musicResponsiveListItemRenderer),
+            )
+            .toList() ??
+        [];
+
+    final continuation = items.isEmpty
+        ? null
+        : response.continuationContents?.musicShelfContinuation.continuations
+              ?.getContinuation();
+
+    return SearchPage(items: items, continuation: continuation);
+  }
+
   /// Converts a [MusicResponsiveListItemRenderer] into a [YTItem].
   /// Returns null if the renderer doesn't contain enough information
   /// to build a valid item.

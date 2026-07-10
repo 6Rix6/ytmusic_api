@@ -60,13 +60,13 @@ _MusicShelfContinuation _$MusicShelfContinuationFromJson(
   Map<String, dynamic> json,
 ) => _MusicShelfContinuation(
   contents: (json['contents'] as List<dynamic>)
-      .map((e) => SearchResponseContents.fromJson(e as Map<String, dynamic>))
-      .toList(),
-  continuations: (json['continuations'] as List<dynamic>?)
-      ?.map(
+      .map(
         (e) =>
             MusicShelfContinuationContent.fromJson(e as Map<String, dynamic>),
       )
+      .toList(),
+  continuations: (json['continuations'] as List<dynamic>?)
+      ?.map((e) => Continuation.fromJson(e as Map<String, dynamic>))
       .toList(),
 );
 
