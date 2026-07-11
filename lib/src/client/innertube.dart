@@ -190,7 +190,7 @@ class InnerTube {
     );
   }
 
-  InnerTubeTask player(
+  InnerTubeTask<Map<String, dynamic>> player(
     YouTubeClient client, {
     required String videoId,
     String? playlistId,
@@ -207,7 +207,7 @@ class InnerTube {
     }
 
     return _task(
-      () => _httpClient.post(
+      () => _httpClient.post<Map<String, dynamic>>(
         'player',
         queryParameters: {'prettyPrint': false},
         options: Options(headers: _ytHeaders(client, setLogin: true)),

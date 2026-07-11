@@ -22,7 +22,7 @@ _MusicCarouselShelfRenderer _$MusicCarouselShelfRendererFromJson(
       )
       .toList(),
   itemSize: json['itemSize'] as String,
-  numItemsPerColumn: _intFromStringOrInt(json['numItemsPerColumn']),
+  numItemsPerColumn: intOrNullFromStringOrInt(json['numItemsPerColumn']),
 );
 
 Map<String, dynamic> _$MusicCarouselShelfRendererToJson(

@@ -26,6 +26,7 @@ export 'src/models/response/data/endpoint/endpoint.dart';
 export 'src/models/response/data/endpoint/navigation_endpoint.dart';
 export 'src/models/response/data/endpoint/url_endpoint.dart';
 export 'src/models/response/data/response_context.dart';
+export 'src/models/response/player_response.dart';
 export 'src/models/response/search_response.dart';
 export 'src/models/response/ui/automix_preview_video_renderer.dart';
 export 'src/models/response/ui/badges.dart';

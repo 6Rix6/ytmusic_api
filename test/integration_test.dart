@@ -274,6 +274,14 @@ void main() {
     });
   });
 
+  test('Player', () async {
+    final res = await client.player(YouTubeClient.webRemix, 'HHrm77putKQ');
+
+    res.match((l) => fail('Expected success but got errori $l'), (r) {
+      print(r.toJson());
+    });
+  });
+
   test('Get Visitor Data', () async {
     final res = await client.getVisitorData();
     res.match((l) => fail('Expected success but got error: $l'), (r) {

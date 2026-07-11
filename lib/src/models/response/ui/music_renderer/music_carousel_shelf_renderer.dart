@@ -8,15 +8,10 @@ import 'music_responsive_list_item_renderer.dart';
 import 'music_navigation_button_renderer.dart';
 import 'music_multi_row_list_item_renderer.dart';
 
+import '../../../../utils/utils.dart';
+
 part 'music_carousel_shelf_renderer.freezed.dart';
 part 'music_carousel_shelf_renderer.g.dart';
-
-int? _intFromStringOrInt(dynamic value) {
-  if (value == null) return null;
-  if (value is int) return value;
-  if (value is String) return int.tryParse(value);
-  return null;
-}
 
 @freezed
 sealed class MusicCarouselShelfRenderer with _$MusicCarouselShelfRenderer {
@@ -24,7 +19,7 @@ sealed class MusicCarouselShelfRenderer with _$MusicCarouselShelfRenderer {
     MusicCarouselShelfRendererHeader? header,
     required List<MusicCarouselShelfRendererContent> contents,
     required String itemSize,
-    @JsonKey(fromJson: _intFromStringOrInt)
+    @JsonKey(fromJson: intOrNullFromStringOrInt)
     int? numItemsPerColumn,
   }) = _MusicCarouselShelfRenderer;
 

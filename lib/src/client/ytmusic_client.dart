@@ -467,6 +467,31 @@ class YTMusicClient {
         .run();
   }
 
+  // ========== Player ===========
+
+  YouTubeResult<PlayerResponse> player(
+    YouTubeClient client,
+    String videoId, {
+    String? playlistId,
+    int? signatureTimestamp,
+    String? poToken,
+  }) {
+    return _innerTube
+        .player(
+          client,
+          videoId: videoId,
+          playlistId: playlistId,
+          signatureTimestamp: signatureTimestamp,
+          poToken: poToken,
+        )
+        .flatMap(
+          (r) => _parseResponse(r, (val) {
+            return PlayerResponse.fromJson(val);
+          }),
+        )
+        .run();
+  }
+
   TaskEither<L, List<T>> _paginate<L, T, C>({
     required List<T> initialItems,
     required C? initialContinuation,

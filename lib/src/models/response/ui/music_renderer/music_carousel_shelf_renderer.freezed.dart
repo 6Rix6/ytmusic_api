@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$MusicCarouselShelfRenderer {
 
- MusicCarouselShelfRendererHeader? get header; List<MusicCarouselShelfRendererContent> get contents; String get itemSize;@JsonKey(fromJson: _intFromStringOrInt) int? get numItemsPerColumn;
+ MusicCarouselShelfRendererHeader? get header; List<MusicCarouselShelfRendererContent> get contents; String get itemSize;@JsonKey(fromJson: intOrNullFromStringOrInt) int? get numItemsPerColumn;
 /// Create a copy of MusicCarouselShelfRenderer
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +48,7 @@ abstract mixin class $MusicCarouselShelfRendererCopyWith<$Res>  {
   factory $MusicCarouselShelfRendererCopyWith(MusicCarouselShelfRenderer value, $Res Function(MusicCarouselShelfRenderer) _then) = _$MusicCarouselShelfRendererCopyWithImpl;
 @useResult
 $Res call({
- MusicCarouselShelfRendererHeader? header, List<MusicCarouselShelfRendererContent> contents, String itemSize,@JsonKey(fromJson: _intFromStringOrInt) int? numItemsPerColumn
+ MusicCarouselShelfRendererHeader? header, List<MusicCarouselShelfRendererContent> contents, String itemSize,@JsonKey(fromJson: intOrNullFromStringOrInt) int? numItemsPerColumn
 });
 
 
@@ -165,7 +165,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( MusicCarouselShelfRendererHeader? header,  List<MusicCarouselShelfRendererContent> contents,  String itemSize, @JsonKey(fromJson: _intFromStringOrInt)  int? numItemsPerColumn)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( MusicCarouselShelfRendererHeader? header,  List<MusicCarouselShelfRendererContent> contents,  String itemSize, @JsonKey(fromJson: intOrNullFromStringOrInt)  int? numItemsPerColumn)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _MusicCarouselShelfRenderer() when $default != null:
 return $default(_that.header,_that.contents,_that.itemSize,_that.numItemsPerColumn);case _:
@@ -186,7 +186,7 @@ return $default(_that.header,_that.contents,_that.itemSize,_that.numItemsPerColu
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( MusicCarouselShelfRendererHeader? header,  List<MusicCarouselShelfRendererContent> contents,  String itemSize, @JsonKey(fromJson: _intFromStringOrInt)  int? numItemsPerColumn)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( MusicCarouselShelfRendererHeader? header,  List<MusicCarouselShelfRendererContent> contents,  String itemSize, @JsonKey(fromJson: intOrNullFromStringOrInt)  int? numItemsPerColumn)  $default,) {final _that = this;
 switch (_that) {
 case _MusicCarouselShelfRenderer():
 return $default(_that.header,_that.contents,_that.itemSize,_that.numItemsPerColumn);}
@@ -203,7 +203,7 @@ return $default(_that.header,_that.contents,_that.itemSize,_that.numItemsPerColu
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( MusicCarouselShelfRendererHeader? header,  List<MusicCarouselShelfRendererContent> contents,  String itemSize, @JsonKey(fromJson: _intFromStringOrInt)  int? numItemsPerColumn)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( MusicCarouselShelfRendererHeader? header,  List<MusicCarouselShelfRendererContent> contents,  String itemSize, @JsonKey(fromJson: intOrNullFromStringOrInt)  int? numItemsPerColumn)?  $default,) {final _that = this;
 switch (_that) {
 case _MusicCarouselShelfRenderer() when $default != null:
 return $default(_that.header,_that.contents,_that.itemSize,_that.numItemsPerColumn);case _:
@@ -218,7 +218,7 @@ return $default(_that.header,_that.contents,_that.itemSize,_that.numItemsPerColu
 @JsonSerializable()
 
 class _MusicCarouselShelfRenderer implements MusicCarouselShelfRenderer {
-  const _MusicCarouselShelfRenderer({this.header, required final  List<MusicCarouselShelfRendererContent> contents, required this.itemSize, @JsonKey(fromJson: _intFromStringOrInt) this.numItemsPerColumn}): _contents = contents;
+  const _MusicCarouselShelfRenderer({this.header, required final  List<MusicCarouselShelfRendererContent> contents, required this.itemSize, @JsonKey(fromJson: intOrNullFromStringOrInt) this.numItemsPerColumn}): _contents = contents;
   factory _MusicCarouselShelfRenderer.fromJson(Map<String, dynamic> json) => _$MusicCarouselShelfRendererFromJson(json);
 
 @override final  MusicCarouselShelfRendererHeader? header;
@@ -230,7 +230,7 @@ class _MusicCarouselShelfRenderer implements MusicCarouselShelfRenderer {
 }
 
 @override final  String itemSize;
-@override@JsonKey(fromJson: _intFromStringOrInt) final  int? numItemsPerColumn;
+@override@JsonKey(fromJson: intOrNullFromStringOrInt) final  int? numItemsPerColumn;
 
 /// Create a copy of MusicCarouselShelfRenderer
 /// with the given fields replaced by the non-null parameter values.
@@ -265,7 +265,7 @@ abstract mixin class _$MusicCarouselShelfRendererCopyWith<$Res> implements $Musi
   factory _$MusicCarouselShelfRendererCopyWith(_MusicCarouselShelfRenderer value, $Res Function(_MusicCarouselShelfRenderer) _then) = __$MusicCarouselShelfRendererCopyWithImpl;
 @override @useResult
 $Res call({
- MusicCarouselShelfRendererHeader? header, List<MusicCarouselShelfRendererContent> contents, String itemSize,@JsonKey(fromJson: _intFromStringOrInt) int? numItemsPerColumn
+ MusicCarouselShelfRendererHeader? header, List<MusicCarouselShelfRendererContent> contents, String itemSize,@JsonKey(fromJson: intOrNullFromStringOrInt) int? numItemsPerColumn
 });
 
 
