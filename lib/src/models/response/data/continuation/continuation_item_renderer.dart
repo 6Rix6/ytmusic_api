@@ -6,7 +6,8 @@ part 'continuation_item_renderer.g.dart';
 @freezed
 sealed class ContinuationItemRenderer with _$ContinuationItemRenderer {
   const factory ContinuationItemRenderer({
-    required ContinuationEndpoint? continuationEndpoint,
+    ContinuationEndpoint? continuationEndpoint,
+    String? trigger,
   }) = _ContinuationItemRenderer;
 
   factory ContinuationItemRenderer.fromJson(Map<String, dynamic> json) =>
@@ -16,7 +17,8 @@ sealed class ContinuationItemRenderer with _$ContinuationItemRenderer {
 @freezed
 sealed class ContinuationEndpoint with _$ContinuationEndpoint {
   const factory ContinuationEndpoint({
-    required ContinuationCommand? continuationCommand,
+    ContinuationCommand? continuationCommand,
+    String? clickTrackingParams
   }) = _ContinuationEndpoint;
 
   factory ContinuationEndpoint.fromJson(Map<String, dynamic> json) =>
@@ -26,7 +28,8 @@ sealed class ContinuationEndpoint with _$ContinuationEndpoint {
 @freezed
 sealed class ContinuationCommand with _$ContinuationCommand {
   const factory ContinuationCommand({
-    required String? token,
+    String? token,
+    String? request
   }) = _ContinuationCommand;
 
   factory ContinuationCommand.fromJson(Map<String, dynamic> json) =>

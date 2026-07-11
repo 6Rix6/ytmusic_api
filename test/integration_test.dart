@@ -278,7 +278,64 @@ void main() {
     final res = await client.player(YouTubeClient.webRemix, 'HHrm77putKQ');
 
     res.match((l) => fail('Expected success but got errori $l'), (r) {
-      print(r.toJson());
+      _logHeader('Player info');
+      log('title: ${r.videoDetails?.title}');
+      log('author: ${r.videoDetails?.author}');
+    });
+  });
+
+  test('Next', () async {
+    final endpoint = WatchEndpoint(
+      videoId: 'L7Id3v46qSQ',
+      playlistId: 'OLAK5uy_ne_zId98INvEEb6g6T0nQ4fPmFgr5auFc',
+      playlistSetVideoId: 'CB6A0BED66342F4B',
+      index: 0,
+    );
+
+    final res = await client.next(endpoint);
+
+    res.match((l) => fail('Expected success but got error: $l'), (r) {
+      _logHeader('Next page info');
+      log('title: ${r.title}');
+      log('currentIndex: ${r.currentIndex}');
+      log('automix: ${r.automixEndpoint?.playlistId}');
+      for (final item in r.items) {
+        log(item.title);
+      }
+    });
+  });
+
+  test('Next Automix', () async {
+    final endpoint = WatchEndpoint(
+      videoId: 'L7Id3v46qSQ',
+      playlistId: 'OLAK5uy_ne_zId98INvEEb6g6T0nQ4fPmFgr5auFc',
+      playlistSetVideoId: 'CB6A0BED66342F4B',
+      index: 0,
+    );
+
+    final res = await client.next(endpoint);
+
+    WatchEndpoint? automixEndpoint;
+
+    res.match((l) => fail('Expected success but got error: $l'), (r) {
+      automixEndpoint = r.automixEndpoint;
+    });
+
+    if (automixEndpoint == null) {
+      log('Automix endpoint not found. exit.');
+      return;
+    }
+
+    final automixRes = await client.next(automixEndpoint!);
+
+    automixRes.match((l) => fail('Expected success but got error: $l'), (r) {
+      _logHeader('Next page info');
+      log('title: ${r.title}');
+      log('currentIndex: ${r.currentIndex}');
+      log('automix: ${r.automixEndpoint?.playlistId}');
+      for (final item in r.items) {
+        log(item.title);
+      }
     });
   });
 

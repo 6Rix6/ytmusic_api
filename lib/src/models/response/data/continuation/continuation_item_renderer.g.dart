@@ -14,11 +14,15 @@ _ContinuationItemRenderer _$ContinuationItemRendererFromJson(
       : ContinuationEndpoint.fromJson(
           json['continuationEndpoint'] as Map<String, dynamic>,
         ),
+  trigger: json['trigger'] as String?,
 );
 
 Map<String, dynamic> _$ContinuationItemRendererToJson(
   _ContinuationItemRenderer instance,
-) => <String, dynamic>{'continuationEndpoint': instance.continuationEndpoint};
+) => <String, dynamic>{
+  'continuationEndpoint': instance.continuationEndpoint,
+  'trigger': instance.trigger,
+};
 
 _ContinuationEndpoint _$ContinuationEndpointFromJson(
   Map<String, dynamic> json,
@@ -28,15 +32,22 @@ _ContinuationEndpoint _$ContinuationEndpointFromJson(
       : ContinuationCommand.fromJson(
           json['continuationCommand'] as Map<String, dynamic>,
         ),
+  clickTrackingParams: json['clickTrackingParams'] as String?,
 );
 
 Map<String, dynamic> _$ContinuationEndpointToJson(
   _ContinuationEndpoint instance,
-) => <String, dynamic>{'continuationCommand': instance.continuationCommand};
+) => <String, dynamic>{
+  'continuationCommand': instance.continuationCommand,
+  'clickTrackingParams': instance.clickTrackingParams,
+};
 
 _ContinuationCommand _$ContinuationCommandFromJson(Map<String, dynamic> json) =>
-    _ContinuationCommand(token: json['token'] as String?);
+    _ContinuationCommand(
+      token: json['token'] as String?,
+      request: json['request'] as String?,
+    );
 
 Map<String, dynamic> _$ContinuationCommandToJson(
   _ContinuationCommand instance,
-) => <String, dynamic>{'token': instance.token};
+) => <String, dynamic>{'token': instance.token, 'request': instance.request};

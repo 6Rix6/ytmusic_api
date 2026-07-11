@@ -277,7 +277,7 @@ class InnerTube {
     );
   }
 
-  InnerTubeTask next(
+  InnerTubeTask<Map<String, dynamic>> next(
     YouTubeClient client, {
     String? videoId,
     String? playlistId,
@@ -287,7 +287,7 @@ class InnerTube {
     String? continuation,
   }) {
     return _task(
-      () => _httpClient.post(
+      () => _httpClient.post<Map<String, dynamic>>(
         'next',
         queryParameters: {'prettyPrint': false},
         options: Options(headers: _ytHeaders(client, setLogin: true)),

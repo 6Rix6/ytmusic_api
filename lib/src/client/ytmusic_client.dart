@@ -492,6 +492,33 @@ class YTMusicClient {
         .run();
   }
 
+  // ========== Next ==========
+
+  YouTubeResult<NextPage> next(WatchEndpoint endpoint, {String? continuation}) {
+    return _innerTube
+        .next(
+          YouTubeClient.webRemix,
+          videoId: endpoint.videoId,
+          playlistId: endpoint.playlistId,
+          playlistSetVideoId: endpoint.playlistSetVideoId,
+          index: endpoint.index,
+          params: endpoint.params,
+          continuation: continuation,
+        )
+        .flatMap(
+          (r) => _parseResponse(r, (val) {
+            final res = NextResponse.fromJson(val);
+            final page = NextPageParser.fromNextResponse(res, endpoint);
+            if (page == null) {
+              throw Exception('Failed to parse next page');
+            }
+
+            return page;
+          }),
+        )
+        .run();
+  }
+
   TaskEither<L, List<T>> _paginate<L, T, C>({
     required List<T> initialItems,
     required C? initialContinuation,

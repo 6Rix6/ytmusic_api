@@ -208,12 +208,18 @@ _ItemSectionRendererContent _$ItemSectionRendererContentFromJson(
       : MusicResponsiveListItemRenderer.fromJson(
           json['musicResponsiveListItemRenderer'] as Map<String, dynamic>,
         ),
+  continuationItemRenderer: json['continuationItemRenderer'] == null
+      ? null
+      : ContinuationItemRenderer.fromJson(
+          json['continuationItemRenderer'] as Map<String, dynamic>,
+        ),
 );
 
 Map<String, dynamic> _$ItemSectionRendererContentToJson(
   _ItemSectionRendererContent instance,
 ) => <String, dynamic>{
   'musicResponsiveListItemRenderer': instance.musicResponsiveListItemRenderer,
+  'continuationItemRenderer': instance.continuationItemRenderer,
 };
 
 _ItemSectionRendererHeader _$ItemSectionRendererHeaderFromJson(

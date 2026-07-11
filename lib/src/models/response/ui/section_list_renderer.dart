@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../data/continuation/continuation.dart';
+import '../data/continuation/continuation_item_renderer.dart';
 import '../data/endpoint/navigation_endpoint.dart';
 import 'runs.dart';
 import 'grid_renderer.dart';
@@ -111,6 +112,7 @@ sealed class ItemSectionRenderer with _$ItemSectionRenderer {
 sealed class ItemSectionRendererContent with _$ItemSectionRendererContent {
   const factory ItemSectionRendererContent({
     MusicResponsiveListItemRenderer? musicResponsiveListItemRenderer,
+    ContinuationItemRenderer? continuationItemRenderer,
   }) = _ItemSectionRendererContent;
 
   factory ItemSectionRendererContent.fromJson(Map<String, dynamic> json) =>

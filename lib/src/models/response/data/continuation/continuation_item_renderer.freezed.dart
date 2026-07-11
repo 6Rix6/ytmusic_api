@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ContinuationItemRenderer {
 
- ContinuationEndpoint? get continuationEndpoint;
+ ContinuationEndpoint? get continuationEndpoint; String? get trigger;
 /// Create a copy of ContinuationItemRenderer
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $ContinuationItemRendererCopyWith<ContinuationItemRenderer> get copyWith => _$Co
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ContinuationItemRenderer&&(identical(other.continuationEndpoint, continuationEndpoint) || other.continuationEndpoint == continuationEndpoint));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ContinuationItemRenderer&&(identical(other.continuationEndpoint, continuationEndpoint) || other.continuationEndpoint == continuationEndpoint)&&(identical(other.trigger, trigger) || other.trigger == trigger));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,continuationEndpoint);
+int get hashCode => Object.hash(runtimeType,continuationEndpoint,trigger);
 
 @override
 String toString() {
-  return 'ContinuationItemRenderer(continuationEndpoint: $continuationEndpoint)';
+  return 'ContinuationItemRenderer(continuationEndpoint: $continuationEndpoint, trigger: $trigger)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $ContinuationItemRendererCopyWith<$Res>  {
   factory $ContinuationItemRendererCopyWith(ContinuationItemRenderer value, $Res Function(ContinuationItemRenderer) _then) = _$ContinuationItemRendererCopyWithImpl;
 @useResult
 $Res call({
- ContinuationEndpoint? continuationEndpoint
+ ContinuationEndpoint? continuationEndpoint, String? trigger
 });
 
 
@@ -65,10 +65,11 @@ class _$ContinuationItemRendererCopyWithImpl<$Res>
 
 /// Create a copy of ContinuationItemRenderer
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? continuationEndpoint = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? continuationEndpoint = freezed,Object? trigger = freezed,}) {
   return _then(_self.copyWith(
 continuationEndpoint: freezed == continuationEndpoint ? _self.continuationEndpoint : continuationEndpoint // ignore: cast_nullable_to_non_nullable
-as ContinuationEndpoint?,
+as ContinuationEndpoint?,trigger: freezed == trigger ? _self.trigger : trigger // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 /// Create a copy of ContinuationItemRenderer
@@ -162,10 +163,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( ContinuationEndpoint? continuationEndpoint)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( ContinuationEndpoint? continuationEndpoint,  String? trigger)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ContinuationItemRenderer() when $default != null:
-return $default(_that.continuationEndpoint);case _:
+return $default(_that.continuationEndpoint,_that.trigger);case _:
   return orElse();
 
 }
@@ -183,10 +184,10 @@ return $default(_that.continuationEndpoint);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( ContinuationEndpoint? continuationEndpoint)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( ContinuationEndpoint? continuationEndpoint,  String? trigger)  $default,) {final _that = this;
 switch (_that) {
 case _ContinuationItemRenderer():
-return $default(_that.continuationEndpoint);}
+return $default(_that.continuationEndpoint,_that.trigger);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -200,10 +201,10 @@ return $default(_that.continuationEndpoint);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( ContinuationEndpoint? continuationEndpoint)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( ContinuationEndpoint? continuationEndpoint,  String? trigger)?  $default,) {final _that = this;
 switch (_that) {
 case _ContinuationItemRenderer() when $default != null:
-return $default(_that.continuationEndpoint);case _:
+return $default(_that.continuationEndpoint,_that.trigger);case _:
   return null;
 
 }
@@ -215,10 +216,11 @@ return $default(_that.continuationEndpoint);case _:
 @JsonSerializable()
 
 class _ContinuationItemRenderer implements ContinuationItemRenderer {
-  const _ContinuationItemRenderer({required this.continuationEndpoint});
+  const _ContinuationItemRenderer({this.continuationEndpoint, this.trigger});
   factory _ContinuationItemRenderer.fromJson(Map<String, dynamic> json) => _$ContinuationItemRendererFromJson(json);
 
 @override final  ContinuationEndpoint? continuationEndpoint;
+@override final  String? trigger;
 
 /// Create a copy of ContinuationItemRenderer
 /// with the given fields replaced by the non-null parameter values.
@@ -233,16 +235,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ContinuationItemRenderer&&(identical(other.continuationEndpoint, continuationEndpoint) || other.continuationEndpoint == continuationEndpoint));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ContinuationItemRenderer&&(identical(other.continuationEndpoint, continuationEndpoint) || other.continuationEndpoint == continuationEndpoint)&&(identical(other.trigger, trigger) || other.trigger == trigger));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,continuationEndpoint);
+int get hashCode => Object.hash(runtimeType,continuationEndpoint,trigger);
 
 @override
 String toString() {
-  return 'ContinuationItemRenderer(continuationEndpoint: $continuationEndpoint)';
+  return 'ContinuationItemRenderer(continuationEndpoint: $continuationEndpoint, trigger: $trigger)';
 }
 
 
@@ -253,7 +255,7 @@ abstract mixin class _$ContinuationItemRendererCopyWith<$Res> implements $Contin
   factory _$ContinuationItemRendererCopyWith(_ContinuationItemRenderer value, $Res Function(_ContinuationItemRenderer) _then) = __$ContinuationItemRendererCopyWithImpl;
 @override @useResult
 $Res call({
- ContinuationEndpoint? continuationEndpoint
+ ContinuationEndpoint? continuationEndpoint, String? trigger
 });
 
 
@@ -270,10 +272,11 @@ class __$ContinuationItemRendererCopyWithImpl<$Res>
 
 /// Create a copy of ContinuationItemRenderer
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? continuationEndpoint = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? continuationEndpoint = freezed,Object? trigger = freezed,}) {
   return _then(_ContinuationItemRenderer(
 continuationEndpoint: freezed == continuationEndpoint ? _self.continuationEndpoint : continuationEndpoint // ignore: cast_nullable_to_non_nullable
-as ContinuationEndpoint?,
+as ContinuationEndpoint?,trigger: freezed == trigger ? _self.trigger : trigger // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
@@ -296,7 +299,7 @@ $ContinuationEndpointCopyWith<$Res>? get continuationEndpoint {
 /// @nodoc
 mixin _$ContinuationEndpoint {
 
- ContinuationCommand? get continuationCommand;
+ ContinuationCommand? get continuationCommand; String? get clickTrackingParams;
 /// Create a copy of ContinuationEndpoint
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -309,16 +312,16 @@ $ContinuationEndpointCopyWith<ContinuationEndpoint> get copyWith => _$Continuati
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ContinuationEndpoint&&(identical(other.continuationCommand, continuationCommand) || other.continuationCommand == continuationCommand));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ContinuationEndpoint&&(identical(other.continuationCommand, continuationCommand) || other.continuationCommand == continuationCommand)&&(identical(other.clickTrackingParams, clickTrackingParams) || other.clickTrackingParams == clickTrackingParams));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,continuationCommand);
+int get hashCode => Object.hash(runtimeType,continuationCommand,clickTrackingParams);
 
 @override
 String toString() {
-  return 'ContinuationEndpoint(continuationCommand: $continuationCommand)';
+  return 'ContinuationEndpoint(continuationCommand: $continuationCommand, clickTrackingParams: $clickTrackingParams)';
 }
 
 
@@ -329,7 +332,7 @@ abstract mixin class $ContinuationEndpointCopyWith<$Res>  {
   factory $ContinuationEndpointCopyWith(ContinuationEndpoint value, $Res Function(ContinuationEndpoint) _then) = _$ContinuationEndpointCopyWithImpl;
 @useResult
 $Res call({
- ContinuationCommand? continuationCommand
+ ContinuationCommand? continuationCommand, String? clickTrackingParams
 });
 
 
@@ -346,10 +349,11 @@ class _$ContinuationEndpointCopyWithImpl<$Res>
 
 /// Create a copy of ContinuationEndpoint
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? continuationCommand = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? continuationCommand = freezed,Object? clickTrackingParams = freezed,}) {
   return _then(_self.copyWith(
 continuationCommand: freezed == continuationCommand ? _self.continuationCommand : continuationCommand // ignore: cast_nullable_to_non_nullable
-as ContinuationCommand?,
+as ContinuationCommand?,clickTrackingParams: freezed == clickTrackingParams ? _self.clickTrackingParams : clickTrackingParams // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 /// Create a copy of ContinuationEndpoint
@@ -443,10 +447,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( ContinuationCommand? continuationCommand)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( ContinuationCommand? continuationCommand,  String? clickTrackingParams)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ContinuationEndpoint() when $default != null:
-return $default(_that.continuationCommand);case _:
+return $default(_that.continuationCommand,_that.clickTrackingParams);case _:
   return orElse();
 
 }
@@ -464,10 +468,10 @@ return $default(_that.continuationCommand);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( ContinuationCommand? continuationCommand)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( ContinuationCommand? continuationCommand,  String? clickTrackingParams)  $default,) {final _that = this;
 switch (_that) {
 case _ContinuationEndpoint():
-return $default(_that.continuationCommand);}
+return $default(_that.continuationCommand,_that.clickTrackingParams);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -481,10 +485,10 @@ return $default(_that.continuationCommand);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( ContinuationCommand? continuationCommand)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( ContinuationCommand? continuationCommand,  String? clickTrackingParams)?  $default,) {final _that = this;
 switch (_that) {
 case _ContinuationEndpoint() when $default != null:
-return $default(_that.continuationCommand);case _:
+return $default(_that.continuationCommand,_that.clickTrackingParams);case _:
   return null;
 
 }
@@ -496,10 +500,11 @@ return $default(_that.continuationCommand);case _:
 @JsonSerializable()
 
 class _ContinuationEndpoint implements ContinuationEndpoint {
-  const _ContinuationEndpoint({required this.continuationCommand});
+  const _ContinuationEndpoint({this.continuationCommand, this.clickTrackingParams});
   factory _ContinuationEndpoint.fromJson(Map<String, dynamic> json) => _$ContinuationEndpointFromJson(json);
 
 @override final  ContinuationCommand? continuationCommand;
+@override final  String? clickTrackingParams;
 
 /// Create a copy of ContinuationEndpoint
 /// with the given fields replaced by the non-null parameter values.
@@ -514,16 +519,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ContinuationEndpoint&&(identical(other.continuationCommand, continuationCommand) || other.continuationCommand == continuationCommand));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ContinuationEndpoint&&(identical(other.continuationCommand, continuationCommand) || other.continuationCommand == continuationCommand)&&(identical(other.clickTrackingParams, clickTrackingParams) || other.clickTrackingParams == clickTrackingParams));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,continuationCommand);
+int get hashCode => Object.hash(runtimeType,continuationCommand,clickTrackingParams);
 
 @override
 String toString() {
-  return 'ContinuationEndpoint(continuationCommand: $continuationCommand)';
+  return 'ContinuationEndpoint(continuationCommand: $continuationCommand, clickTrackingParams: $clickTrackingParams)';
 }
 
 
@@ -534,7 +539,7 @@ abstract mixin class _$ContinuationEndpointCopyWith<$Res> implements $Continuati
   factory _$ContinuationEndpointCopyWith(_ContinuationEndpoint value, $Res Function(_ContinuationEndpoint) _then) = __$ContinuationEndpointCopyWithImpl;
 @override @useResult
 $Res call({
- ContinuationCommand? continuationCommand
+ ContinuationCommand? continuationCommand, String? clickTrackingParams
 });
 
 
@@ -551,10 +556,11 @@ class __$ContinuationEndpointCopyWithImpl<$Res>
 
 /// Create a copy of ContinuationEndpoint
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? continuationCommand = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? continuationCommand = freezed,Object? clickTrackingParams = freezed,}) {
   return _then(_ContinuationEndpoint(
 continuationCommand: freezed == continuationCommand ? _self.continuationCommand : continuationCommand // ignore: cast_nullable_to_non_nullable
-as ContinuationCommand?,
+as ContinuationCommand?,clickTrackingParams: freezed == clickTrackingParams ? _self.clickTrackingParams : clickTrackingParams // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
@@ -577,7 +583,7 @@ $ContinuationCommandCopyWith<$Res>? get continuationCommand {
 /// @nodoc
 mixin _$ContinuationCommand {
 
- String? get token;
+ String? get token; String? get request;
 /// Create a copy of ContinuationCommand
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -590,16 +596,16 @@ $ContinuationCommandCopyWith<ContinuationCommand> get copyWith => _$Continuation
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ContinuationCommand&&(identical(other.token, token) || other.token == token));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ContinuationCommand&&(identical(other.token, token) || other.token == token)&&(identical(other.request, request) || other.request == request));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,token);
+int get hashCode => Object.hash(runtimeType,token,request);
 
 @override
 String toString() {
-  return 'ContinuationCommand(token: $token)';
+  return 'ContinuationCommand(token: $token, request: $request)';
 }
 
 
@@ -610,7 +616,7 @@ abstract mixin class $ContinuationCommandCopyWith<$Res>  {
   factory $ContinuationCommandCopyWith(ContinuationCommand value, $Res Function(ContinuationCommand) _then) = _$ContinuationCommandCopyWithImpl;
 @useResult
 $Res call({
- String? token
+ String? token, String? request
 });
 
 
@@ -627,9 +633,10 @@ class _$ContinuationCommandCopyWithImpl<$Res>
 
 /// Create a copy of ContinuationCommand
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? token = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? token = freezed,Object? request = freezed,}) {
   return _then(_self.copyWith(
 token: freezed == token ? _self.token : token // ignore: cast_nullable_to_non_nullable
+as String?,request: freezed == request ? _self.request : request // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
@@ -712,10 +719,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? token)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? token,  String? request)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ContinuationCommand() when $default != null:
-return $default(_that.token);case _:
+return $default(_that.token,_that.request);case _:
   return orElse();
 
 }
@@ -733,10 +740,10 @@ return $default(_that.token);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? token)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? token,  String? request)  $default,) {final _that = this;
 switch (_that) {
 case _ContinuationCommand():
-return $default(_that.token);}
+return $default(_that.token,_that.request);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -750,10 +757,10 @@ return $default(_that.token);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? token)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? token,  String? request)?  $default,) {final _that = this;
 switch (_that) {
 case _ContinuationCommand() when $default != null:
-return $default(_that.token);case _:
+return $default(_that.token,_that.request);case _:
   return null;
 
 }
@@ -765,10 +772,11 @@ return $default(_that.token);case _:
 @JsonSerializable()
 
 class _ContinuationCommand implements ContinuationCommand {
-  const _ContinuationCommand({required this.token});
+  const _ContinuationCommand({this.token, this.request});
   factory _ContinuationCommand.fromJson(Map<String, dynamic> json) => _$ContinuationCommandFromJson(json);
 
 @override final  String? token;
+@override final  String? request;
 
 /// Create a copy of ContinuationCommand
 /// with the given fields replaced by the non-null parameter values.
@@ -783,16 +791,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ContinuationCommand&&(identical(other.token, token) || other.token == token));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ContinuationCommand&&(identical(other.token, token) || other.token == token)&&(identical(other.request, request) || other.request == request));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,token);
+int get hashCode => Object.hash(runtimeType,token,request);
 
 @override
 String toString() {
-  return 'ContinuationCommand(token: $token)';
+  return 'ContinuationCommand(token: $token, request: $request)';
 }
 
 
@@ -803,7 +811,7 @@ abstract mixin class _$ContinuationCommandCopyWith<$Res> implements $Continuatio
   factory _$ContinuationCommandCopyWith(_ContinuationCommand value, $Res Function(_ContinuationCommand) _then) = __$ContinuationCommandCopyWithImpl;
 @override @useResult
 $Res call({
- String? token
+ String? token, String? request
 });
 
 
@@ -820,9 +828,10 @@ class __$ContinuationCommandCopyWithImpl<$Res>
 
 /// Create a copy of ContinuationCommand
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? token = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? token = freezed,Object? request = freezed,}) {
   return _then(_ContinuationCommand(
 token: freezed == token ? _self.token : token // ignore: cast_nullable_to_non_nullable
+as String?,request: freezed == request ? _self.request : request // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }

@@ -2267,7 +2267,7 @@ $ItemSectionRendererHeaderCopyWith<$Res>? get header {
 /// @nodoc
 mixin _$ItemSectionRendererContent {
 
- MusicResponsiveListItemRenderer? get musicResponsiveListItemRenderer;
+ MusicResponsiveListItemRenderer? get musicResponsiveListItemRenderer; ContinuationItemRenderer? get continuationItemRenderer;
 /// Create a copy of ItemSectionRendererContent
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2280,16 +2280,16 @@ $ItemSectionRendererContentCopyWith<ItemSectionRendererContent> get copyWith => 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ItemSectionRendererContent&&(identical(other.musicResponsiveListItemRenderer, musicResponsiveListItemRenderer) || other.musicResponsiveListItemRenderer == musicResponsiveListItemRenderer));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ItemSectionRendererContent&&(identical(other.musicResponsiveListItemRenderer, musicResponsiveListItemRenderer) || other.musicResponsiveListItemRenderer == musicResponsiveListItemRenderer)&&(identical(other.continuationItemRenderer, continuationItemRenderer) || other.continuationItemRenderer == continuationItemRenderer));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,musicResponsiveListItemRenderer);
+int get hashCode => Object.hash(runtimeType,musicResponsiveListItemRenderer,continuationItemRenderer);
 
 @override
 String toString() {
-  return 'ItemSectionRendererContent(musicResponsiveListItemRenderer: $musicResponsiveListItemRenderer)';
+  return 'ItemSectionRendererContent(musicResponsiveListItemRenderer: $musicResponsiveListItemRenderer, continuationItemRenderer: $continuationItemRenderer)';
 }
 
 
@@ -2300,11 +2300,11 @@ abstract mixin class $ItemSectionRendererContentCopyWith<$Res>  {
   factory $ItemSectionRendererContentCopyWith(ItemSectionRendererContent value, $Res Function(ItemSectionRendererContent) _then) = _$ItemSectionRendererContentCopyWithImpl;
 @useResult
 $Res call({
- MusicResponsiveListItemRenderer? musicResponsiveListItemRenderer
+ MusicResponsiveListItemRenderer? musicResponsiveListItemRenderer, ContinuationItemRenderer? continuationItemRenderer
 });
 
 
-$MusicResponsiveListItemRendererCopyWith<$Res>? get musicResponsiveListItemRenderer;
+$MusicResponsiveListItemRendererCopyWith<$Res>? get musicResponsiveListItemRenderer;$ContinuationItemRendererCopyWith<$Res>? get continuationItemRenderer;
 
 }
 /// @nodoc
@@ -2317,10 +2317,11 @@ class _$ItemSectionRendererContentCopyWithImpl<$Res>
 
 /// Create a copy of ItemSectionRendererContent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? musicResponsiveListItemRenderer = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? musicResponsiveListItemRenderer = freezed,Object? continuationItemRenderer = freezed,}) {
   return _then(_self.copyWith(
 musicResponsiveListItemRenderer: freezed == musicResponsiveListItemRenderer ? _self.musicResponsiveListItemRenderer : musicResponsiveListItemRenderer // ignore: cast_nullable_to_non_nullable
-as MusicResponsiveListItemRenderer?,
+as MusicResponsiveListItemRenderer?,continuationItemRenderer: freezed == continuationItemRenderer ? _self.continuationItemRenderer : continuationItemRenderer // ignore: cast_nullable_to_non_nullable
+as ContinuationItemRenderer?,
   ));
 }
 /// Create a copy of ItemSectionRendererContent
@@ -2334,6 +2335,18 @@ $MusicResponsiveListItemRendererCopyWith<$Res>? get musicResponsiveListItemRende
 
   return $MusicResponsiveListItemRendererCopyWith<$Res>(_self.musicResponsiveListItemRenderer!, (value) {
     return _then(_self.copyWith(musicResponsiveListItemRenderer: value));
+  });
+}/// Create a copy of ItemSectionRendererContent
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ContinuationItemRendererCopyWith<$Res>? get continuationItemRenderer {
+    if (_self.continuationItemRenderer == null) {
+    return null;
+  }
+
+  return $ContinuationItemRendererCopyWith<$Res>(_self.continuationItemRenderer!, (value) {
+    return _then(_self.copyWith(continuationItemRenderer: value));
   });
 }
 }
@@ -2414,10 +2427,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( MusicResponsiveListItemRenderer? musicResponsiveListItemRenderer)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( MusicResponsiveListItemRenderer? musicResponsiveListItemRenderer,  ContinuationItemRenderer? continuationItemRenderer)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ItemSectionRendererContent() when $default != null:
-return $default(_that.musicResponsiveListItemRenderer);case _:
+return $default(_that.musicResponsiveListItemRenderer,_that.continuationItemRenderer);case _:
   return orElse();
 
 }
@@ -2435,10 +2448,10 @@ return $default(_that.musicResponsiveListItemRenderer);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( MusicResponsiveListItemRenderer? musicResponsiveListItemRenderer)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( MusicResponsiveListItemRenderer? musicResponsiveListItemRenderer,  ContinuationItemRenderer? continuationItemRenderer)  $default,) {final _that = this;
 switch (_that) {
 case _ItemSectionRendererContent():
-return $default(_that.musicResponsiveListItemRenderer);}
+return $default(_that.musicResponsiveListItemRenderer,_that.continuationItemRenderer);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -2452,10 +2465,10 @@ return $default(_that.musicResponsiveListItemRenderer);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( MusicResponsiveListItemRenderer? musicResponsiveListItemRenderer)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( MusicResponsiveListItemRenderer? musicResponsiveListItemRenderer,  ContinuationItemRenderer? continuationItemRenderer)?  $default,) {final _that = this;
 switch (_that) {
 case _ItemSectionRendererContent() when $default != null:
-return $default(_that.musicResponsiveListItemRenderer);case _:
+return $default(_that.musicResponsiveListItemRenderer,_that.continuationItemRenderer);case _:
   return null;
 
 }
@@ -2467,10 +2480,11 @@ return $default(_that.musicResponsiveListItemRenderer);case _:
 @JsonSerializable()
 
 class _ItemSectionRendererContent implements ItemSectionRendererContent {
-  const _ItemSectionRendererContent({this.musicResponsiveListItemRenderer});
+  const _ItemSectionRendererContent({this.musicResponsiveListItemRenderer, this.continuationItemRenderer});
   factory _ItemSectionRendererContent.fromJson(Map<String, dynamic> json) => _$ItemSectionRendererContentFromJson(json);
 
 @override final  MusicResponsiveListItemRenderer? musicResponsiveListItemRenderer;
+@override final  ContinuationItemRenderer? continuationItemRenderer;
 
 /// Create a copy of ItemSectionRendererContent
 /// with the given fields replaced by the non-null parameter values.
@@ -2485,16 +2499,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ItemSectionRendererContent&&(identical(other.musicResponsiveListItemRenderer, musicResponsiveListItemRenderer) || other.musicResponsiveListItemRenderer == musicResponsiveListItemRenderer));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ItemSectionRendererContent&&(identical(other.musicResponsiveListItemRenderer, musicResponsiveListItemRenderer) || other.musicResponsiveListItemRenderer == musicResponsiveListItemRenderer)&&(identical(other.continuationItemRenderer, continuationItemRenderer) || other.continuationItemRenderer == continuationItemRenderer));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,musicResponsiveListItemRenderer);
+int get hashCode => Object.hash(runtimeType,musicResponsiveListItemRenderer,continuationItemRenderer);
 
 @override
 String toString() {
-  return 'ItemSectionRendererContent(musicResponsiveListItemRenderer: $musicResponsiveListItemRenderer)';
+  return 'ItemSectionRendererContent(musicResponsiveListItemRenderer: $musicResponsiveListItemRenderer, continuationItemRenderer: $continuationItemRenderer)';
 }
 
 
@@ -2505,11 +2519,11 @@ abstract mixin class _$ItemSectionRendererContentCopyWith<$Res> implements $Item
   factory _$ItemSectionRendererContentCopyWith(_ItemSectionRendererContent value, $Res Function(_ItemSectionRendererContent) _then) = __$ItemSectionRendererContentCopyWithImpl;
 @override @useResult
 $Res call({
- MusicResponsiveListItemRenderer? musicResponsiveListItemRenderer
+ MusicResponsiveListItemRenderer? musicResponsiveListItemRenderer, ContinuationItemRenderer? continuationItemRenderer
 });
 
 
-@override $MusicResponsiveListItemRendererCopyWith<$Res>? get musicResponsiveListItemRenderer;
+@override $MusicResponsiveListItemRendererCopyWith<$Res>? get musicResponsiveListItemRenderer;@override $ContinuationItemRendererCopyWith<$Res>? get continuationItemRenderer;
 
 }
 /// @nodoc
@@ -2522,10 +2536,11 @@ class __$ItemSectionRendererContentCopyWithImpl<$Res>
 
 /// Create a copy of ItemSectionRendererContent
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? musicResponsiveListItemRenderer = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? musicResponsiveListItemRenderer = freezed,Object? continuationItemRenderer = freezed,}) {
   return _then(_ItemSectionRendererContent(
 musicResponsiveListItemRenderer: freezed == musicResponsiveListItemRenderer ? _self.musicResponsiveListItemRenderer : musicResponsiveListItemRenderer // ignore: cast_nullable_to_non_nullable
-as MusicResponsiveListItemRenderer?,
+as MusicResponsiveListItemRenderer?,continuationItemRenderer: freezed == continuationItemRenderer ? _self.continuationItemRenderer : continuationItemRenderer // ignore: cast_nullable_to_non_nullable
+as ContinuationItemRenderer?,
   ));
 }
 
@@ -2540,6 +2555,18 @@ $MusicResponsiveListItemRendererCopyWith<$Res>? get musicResponsiveListItemRende
 
   return $MusicResponsiveListItemRendererCopyWith<$Res>(_self.musicResponsiveListItemRenderer!, (value) {
     return _then(_self.copyWith(musicResponsiveListItemRenderer: value));
+  });
+}/// Create a copy of ItemSectionRendererContent
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ContinuationItemRendererCopyWith<$Res>? get continuationItemRenderer {
+    if (_self.continuationItemRenderer == null) {
+    return null;
+  }
+
+  return $ContinuationItemRendererCopyWith<$Res>(_self.continuationItemRenderer!, (value) {
+    return _then(_self.copyWith(continuationItemRenderer: value));
   });
 }
 }
