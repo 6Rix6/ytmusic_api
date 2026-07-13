@@ -55,3 +55,30 @@ Map<String, dynamic> _$PlaylistPanelVideoRendererToJson(
   'menu': instance.menu,
   'navigationEndpoint': instance.navigationEndpoint,
 };
+
+_PlaylistPanelVideoWrapperRenderer _$PlaylistPanelVideoWrapperRendererFromJson(
+  Map<String, dynamic> json,
+) => _PlaylistPanelVideoWrapperRenderer(
+  primaryRenderer: PlaylistPanelVideoWrapperRendererPrimaryRenderer.fromJson(
+    json['primaryRenderer'] as Map<String, dynamic>,
+  ),
+);
+
+Map<String, dynamic> _$PlaylistPanelVideoWrapperRendererToJson(
+  _PlaylistPanelVideoWrapperRenderer instance,
+) => <String, dynamic>{'primaryRenderer': instance.primaryRenderer};
+
+_PlaylistPanelVideoWrapperRendererPrimaryRenderer
+_$PlaylistPanelVideoWrapperRendererPrimaryRendererFromJson(
+  Map<String, dynamic> json,
+) => _PlaylistPanelVideoWrapperRendererPrimaryRenderer(
+  playlistPanelVideoRenderer: PlaylistPanelVideoRenderer.fromJson(
+    json['playlistPanelVideoRenderer'] as Map<String, dynamic>,
+  ),
+);
+
+Map<String, dynamic> _$PlaylistPanelVideoWrapperRendererPrimaryRendererToJson(
+  _PlaylistPanelVideoWrapperRendererPrimaryRenderer instance,
+) => <String, dynamic>{
+  'playlistPanelVideoRenderer': instance.playlistPanelVideoRenderer,
+};

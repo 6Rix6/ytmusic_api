@@ -50,6 +50,12 @@ _PlaylistPanelRendererContent _$PlaylistPanelRendererContentFromJson(
       : PlaylistPanelVideoRenderer.fromJson(
           json['playlistPanelVideoRenderer'] as Map<String, dynamic>,
         ),
+  playlistPanelVideoWrapperRenderer:
+      json['playlistPanelVideoWrapperRenderer'] == null
+      ? null
+      : PlaylistPanelVideoWrapperRenderer.fromJson(
+          json['playlistPanelVideoWrapperRenderer'] as Map<String, dynamic>,
+        ),
   automixPreviewVideoRenderer: json['automixPreviewVideoRenderer'] == null
       ? null
       : AutomixPreviewVideoRenderer.fromJson(
@@ -61,5 +67,7 @@ Map<String, dynamic> _$PlaylistPanelRendererContentToJson(
   _PlaylistPanelRendererContent instance,
 ) => <String, dynamic>{
   'playlistPanelVideoRenderer': instance.playlistPanelVideoRenderer,
+  'playlistPanelVideoWrapperRenderer':
+      instance.playlistPanelVideoWrapperRenderer,
   'automixPreviewVideoRenderer': instance.automixPreviewVideoRenderer,
 };

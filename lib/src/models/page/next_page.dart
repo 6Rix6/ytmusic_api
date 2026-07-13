@@ -65,17 +65,15 @@ class NextPageParser {
         ?.firstOrNull
         ?.text;
 
-    if (title == null) {
-      return null;
-    }
-
-    final songs = playlistPanelRenderer.contents
-        .mapNotNull(
-          (content) => content.playlistPanelVideoRenderer?.let(
-            (r) => fromPlaylistPanelVideoRenderer(r),
-          ),
-        )
-        .toList();
+    final songs = playlistPanelRenderer.contents.mapNotNull((content) {
+      final r =
+          content.playlistPanelVideoRenderer ??
+          content
+              .playlistPanelVideoWrapperRenderer
+              ?.primaryRenderer
+              .playlistPanelVideoRenderer;
+      if (r != null) return fromPlaylistPanelVideoRenderer(r);
+    }).toList();
 
     int? currentIndex = playlistPanelRenderer.contents.indexWhere(
       (content) => content.playlistPanelVideoRenderer?.selected ?? false,
@@ -179,7 +177,9 @@ class NextPageParser {
 
     final album = longByLineRuns
         .elementAtOrNull(1)
-        ?.firstWhereOrNull((run) => run.navigationEndpoint?.browseEndpoint != null)
+        ?.firstWhereOrNull(
+          (run) => run.navigationEndpoint?.browseEndpoint != null,
+        )
         ?.let(
           (run) => Album(
             name: run.text,

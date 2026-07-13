@@ -29,3 +29,25 @@ sealed class PlaylistPanelVideoRenderer with _$PlaylistPanelVideoRenderer {
   factory PlaylistPanelVideoRenderer.fromJson(Map<String, dynamic> json) =>
       _$PlaylistPanelVideoRendererFromJson(json);
 }
+
+@freezed
+sealed class PlaylistPanelVideoWrapperRenderer
+    with _$PlaylistPanelVideoWrapperRenderer {
+  const factory PlaylistPanelVideoWrapperRenderer({
+    required PlaylistPanelVideoWrapperRendererPrimaryRenderer primaryRenderer,
+  }) = _PlaylistPanelVideoWrapperRenderer;
+
+  factory PlaylistPanelVideoWrapperRenderer.fromJson(
+    Map<String, dynamic> json,
+  ) => _$PlaylistPanelVideoWrapperRendererFromJson(json);
+}
+
+@freezed
+sealed class PlaylistPanelVideoWrapperRendererPrimaryRenderer with _$PlaylistPanelVideoWrapperRendererPrimaryRenderer {
+  const factory PlaylistPanelVideoWrapperRendererPrimaryRenderer({
+    required PlaylistPanelVideoRenderer playlistPanelVideoRenderer 
+  }) = _PlaylistPanelVideoWrapperRendererPrimaryRenderer;
+
+  factory PlaylistPanelVideoWrapperRendererPrimaryRenderer.fromJson(Map<String, dynamic> json) =>
+      _$PlaylistPanelVideoWrapperRendererPrimaryRendererFromJson(json);
+}

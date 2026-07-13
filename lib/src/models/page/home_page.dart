@@ -302,7 +302,7 @@ HomePageSectionItem? _fromMusicResponsiveListItemRenderer(
   final secondaryLine = subtitleRuns?.splitBySeparator();
   if (secondaryLine == null) return null;
 
-  final videoId = renderer.videoId;
+  final videoId = renderer.videoId ?? renderer.playlistItemData?.videoId;
   if (videoId == null) return null;
 
   final title = renderer
@@ -336,6 +336,15 @@ HomePageSectionItem? _fromMusicResponsiveListItemRenderer(
       ?.getThumbnailUrl();
   if (thumbnail == null) return null;
 
+  final endpoint = renderer
+      .menu
+      ?.menuRenderer
+      .items
+      ?.firstOrNull
+      ?.menuNavigationItemRenderer
+      ?.navigationEndpoint
+      .watchEndpoint;
+
   final item = SongItem(
     id: videoId,
     title: title,
@@ -347,12 +356,11 @@ HomePageSectionItem? _fromMusicResponsiveListItemRenderer(
     thumbnail: thumbnail,
     explicit:
         renderer.badges?.any(
-          (badge) =>
-              badge.musicInlineBadgeRenderer?.icon.iconType ==
-              'MUSIC_EXPLICIT_BADGE',
+          (badge) => badge.musicInlineBadgeRenderer?.icon.isExplicit() ?? false,
         ) ??
         false,
     isEpisode: renderer.isEpisode,
+    endpoint: endpoint,
   );
 
   return HomePageSectionItem(ytItem: item, subtitleRuns: subtitleRuns ?? []);
@@ -416,6 +424,7 @@ HomePageSectionItem? _fromMusicTwoRowItemRenderer(
                 badge.musicInlineBadgeRenderer?.icon.isExplicit() ?? false,
           ) ??
           false,
+      endpoint: renderer.navigationEndpoint.watchEndpoint,
     );
 
     return HomePageSectionItem(ytItem: item, subtitleRuns: subtitleRuns);

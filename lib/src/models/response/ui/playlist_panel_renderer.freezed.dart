@@ -355,7 +355,7 @@ $RunsCopyWith<$Res>? get shortBylineText {
 /// @nodoc
 mixin _$PlaylistPanelRendererContent {
 
- PlaylistPanelVideoRenderer? get playlistPanelVideoRenderer; AutomixPreviewVideoRenderer? get automixPreviewVideoRenderer;
+ PlaylistPanelVideoRenderer? get playlistPanelVideoRenderer; PlaylistPanelVideoWrapperRenderer? get playlistPanelVideoWrapperRenderer; AutomixPreviewVideoRenderer? get automixPreviewVideoRenderer;
 /// Create a copy of PlaylistPanelRendererContent
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -368,16 +368,16 @@ $PlaylistPanelRendererContentCopyWith<PlaylistPanelRendererContent> get copyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PlaylistPanelRendererContent&&(identical(other.playlistPanelVideoRenderer, playlistPanelVideoRenderer) || other.playlistPanelVideoRenderer == playlistPanelVideoRenderer)&&(identical(other.automixPreviewVideoRenderer, automixPreviewVideoRenderer) || other.automixPreviewVideoRenderer == automixPreviewVideoRenderer));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PlaylistPanelRendererContent&&(identical(other.playlistPanelVideoRenderer, playlistPanelVideoRenderer) || other.playlistPanelVideoRenderer == playlistPanelVideoRenderer)&&(identical(other.playlistPanelVideoWrapperRenderer, playlistPanelVideoWrapperRenderer) || other.playlistPanelVideoWrapperRenderer == playlistPanelVideoWrapperRenderer)&&(identical(other.automixPreviewVideoRenderer, automixPreviewVideoRenderer) || other.automixPreviewVideoRenderer == automixPreviewVideoRenderer));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,playlistPanelVideoRenderer,automixPreviewVideoRenderer);
+int get hashCode => Object.hash(runtimeType,playlistPanelVideoRenderer,playlistPanelVideoWrapperRenderer,automixPreviewVideoRenderer);
 
 @override
 String toString() {
-  return 'PlaylistPanelRendererContent(playlistPanelVideoRenderer: $playlistPanelVideoRenderer, automixPreviewVideoRenderer: $automixPreviewVideoRenderer)';
+  return 'PlaylistPanelRendererContent(playlistPanelVideoRenderer: $playlistPanelVideoRenderer, playlistPanelVideoWrapperRenderer: $playlistPanelVideoWrapperRenderer, automixPreviewVideoRenderer: $automixPreviewVideoRenderer)';
 }
 
 
@@ -388,11 +388,11 @@ abstract mixin class $PlaylistPanelRendererContentCopyWith<$Res>  {
   factory $PlaylistPanelRendererContentCopyWith(PlaylistPanelRendererContent value, $Res Function(PlaylistPanelRendererContent) _then) = _$PlaylistPanelRendererContentCopyWithImpl;
 @useResult
 $Res call({
- PlaylistPanelVideoRenderer? playlistPanelVideoRenderer, AutomixPreviewVideoRenderer? automixPreviewVideoRenderer
+ PlaylistPanelVideoRenderer? playlistPanelVideoRenderer, PlaylistPanelVideoWrapperRenderer? playlistPanelVideoWrapperRenderer, AutomixPreviewVideoRenderer? automixPreviewVideoRenderer
 });
 
 
-$PlaylistPanelVideoRendererCopyWith<$Res>? get playlistPanelVideoRenderer;$AutomixPreviewVideoRendererCopyWith<$Res>? get automixPreviewVideoRenderer;
+$PlaylistPanelVideoRendererCopyWith<$Res>? get playlistPanelVideoRenderer;$PlaylistPanelVideoWrapperRendererCopyWith<$Res>? get playlistPanelVideoWrapperRenderer;$AutomixPreviewVideoRendererCopyWith<$Res>? get automixPreviewVideoRenderer;
 
 }
 /// @nodoc
@@ -405,10 +405,11 @@ class _$PlaylistPanelRendererContentCopyWithImpl<$Res>
 
 /// Create a copy of PlaylistPanelRendererContent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? playlistPanelVideoRenderer = freezed,Object? automixPreviewVideoRenderer = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? playlistPanelVideoRenderer = freezed,Object? playlistPanelVideoWrapperRenderer = freezed,Object? automixPreviewVideoRenderer = freezed,}) {
   return _then(_self.copyWith(
 playlistPanelVideoRenderer: freezed == playlistPanelVideoRenderer ? _self.playlistPanelVideoRenderer : playlistPanelVideoRenderer // ignore: cast_nullable_to_non_nullable
-as PlaylistPanelVideoRenderer?,automixPreviewVideoRenderer: freezed == automixPreviewVideoRenderer ? _self.automixPreviewVideoRenderer : automixPreviewVideoRenderer // ignore: cast_nullable_to_non_nullable
+as PlaylistPanelVideoRenderer?,playlistPanelVideoWrapperRenderer: freezed == playlistPanelVideoWrapperRenderer ? _self.playlistPanelVideoWrapperRenderer : playlistPanelVideoWrapperRenderer // ignore: cast_nullable_to_non_nullable
+as PlaylistPanelVideoWrapperRenderer?,automixPreviewVideoRenderer: freezed == automixPreviewVideoRenderer ? _self.automixPreviewVideoRenderer : automixPreviewVideoRenderer // ignore: cast_nullable_to_non_nullable
 as AutomixPreviewVideoRenderer?,
   ));
 }
@@ -423,6 +424,18 @@ $PlaylistPanelVideoRendererCopyWith<$Res>? get playlistPanelVideoRenderer {
 
   return $PlaylistPanelVideoRendererCopyWith<$Res>(_self.playlistPanelVideoRenderer!, (value) {
     return _then(_self.copyWith(playlistPanelVideoRenderer: value));
+  });
+}/// Create a copy of PlaylistPanelRendererContent
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PlaylistPanelVideoWrapperRendererCopyWith<$Res>? get playlistPanelVideoWrapperRenderer {
+    if (_self.playlistPanelVideoWrapperRenderer == null) {
+    return null;
+  }
+
+  return $PlaylistPanelVideoWrapperRendererCopyWith<$Res>(_self.playlistPanelVideoWrapperRenderer!, (value) {
+    return _then(_self.copyWith(playlistPanelVideoWrapperRenderer: value));
   });
 }/// Create a copy of PlaylistPanelRendererContent
 /// with the given fields replaced by the non-null parameter values.
@@ -515,10 +528,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( PlaylistPanelVideoRenderer? playlistPanelVideoRenderer,  AutomixPreviewVideoRenderer? automixPreviewVideoRenderer)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( PlaylistPanelVideoRenderer? playlistPanelVideoRenderer,  PlaylistPanelVideoWrapperRenderer? playlistPanelVideoWrapperRenderer,  AutomixPreviewVideoRenderer? automixPreviewVideoRenderer)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _PlaylistPanelRendererContent() when $default != null:
-return $default(_that.playlistPanelVideoRenderer,_that.automixPreviewVideoRenderer);case _:
+return $default(_that.playlistPanelVideoRenderer,_that.playlistPanelVideoWrapperRenderer,_that.automixPreviewVideoRenderer);case _:
   return orElse();
 
 }
@@ -536,10 +549,10 @@ return $default(_that.playlistPanelVideoRenderer,_that.automixPreviewVideoRender
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( PlaylistPanelVideoRenderer? playlistPanelVideoRenderer,  AutomixPreviewVideoRenderer? automixPreviewVideoRenderer)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( PlaylistPanelVideoRenderer? playlistPanelVideoRenderer,  PlaylistPanelVideoWrapperRenderer? playlistPanelVideoWrapperRenderer,  AutomixPreviewVideoRenderer? automixPreviewVideoRenderer)  $default,) {final _that = this;
 switch (_that) {
 case _PlaylistPanelRendererContent():
-return $default(_that.playlistPanelVideoRenderer,_that.automixPreviewVideoRenderer);}
+return $default(_that.playlistPanelVideoRenderer,_that.playlistPanelVideoWrapperRenderer,_that.automixPreviewVideoRenderer);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -553,10 +566,10 @@ return $default(_that.playlistPanelVideoRenderer,_that.automixPreviewVideoRender
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( PlaylistPanelVideoRenderer? playlistPanelVideoRenderer,  AutomixPreviewVideoRenderer? automixPreviewVideoRenderer)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( PlaylistPanelVideoRenderer? playlistPanelVideoRenderer,  PlaylistPanelVideoWrapperRenderer? playlistPanelVideoWrapperRenderer,  AutomixPreviewVideoRenderer? automixPreviewVideoRenderer)?  $default,) {final _that = this;
 switch (_that) {
 case _PlaylistPanelRendererContent() when $default != null:
-return $default(_that.playlistPanelVideoRenderer,_that.automixPreviewVideoRenderer);case _:
+return $default(_that.playlistPanelVideoRenderer,_that.playlistPanelVideoWrapperRenderer,_that.automixPreviewVideoRenderer);case _:
   return null;
 
 }
@@ -568,10 +581,11 @@ return $default(_that.playlistPanelVideoRenderer,_that.automixPreviewVideoRender
 @JsonSerializable()
 
 class _PlaylistPanelRendererContent implements PlaylistPanelRendererContent {
-  const _PlaylistPanelRendererContent({this.playlistPanelVideoRenderer, this.automixPreviewVideoRenderer});
+  const _PlaylistPanelRendererContent({this.playlistPanelVideoRenderer, this.playlistPanelVideoWrapperRenderer, this.automixPreviewVideoRenderer});
   factory _PlaylistPanelRendererContent.fromJson(Map<String, dynamic> json) => _$PlaylistPanelRendererContentFromJson(json);
 
 @override final  PlaylistPanelVideoRenderer? playlistPanelVideoRenderer;
+@override final  PlaylistPanelVideoWrapperRenderer? playlistPanelVideoWrapperRenderer;
 @override final  AutomixPreviewVideoRenderer? automixPreviewVideoRenderer;
 
 /// Create a copy of PlaylistPanelRendererContent
@@ -587,16 +601,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PlaylistPanelRendererContent&&(identical(other.playlistPanelVideoRenderer, playlistPanelVideoRenderer) || other.playlistPanelVideoRenderer == playlistPanelVideoRenderer)&&(identical(other.automixPreviewVideoRenderer, automixPreviewVideoRenderer) || other.automixPreviewVideoRenderer == automixPreviewVideoRenderer));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PlaylistPanelRendererContent&&(identical(other.playlistPanelVideoRenderer, playlistPanelVideoRenderer) || other.playlistPanelVideoRenderer == playlistPanelVideoRenderer)&&(identical(other.playlistPanelVideoWrapperRenderer, playlistPanelVideoWrapperRenderer) || other.playlistPanelVideoWrapperRenderer == playlistPanelVideoWrapperRenderer)&&(identical(other.automixPreviewVideoRenderer, automixPreviewVideoRenderer) || other.automixPreviewVideoRenderer == automixPreviewVideoRenderer));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,playlistPanelVideoRenderer,automixPreviewVideoRenderer);
+int get hashCode => Object.hash(runtimeType,playlistPanelVideoRenderer,playlistPanelVideoWrapperRenderer,automixPreviewVideoRenderer);
 
 @override
 String toString() {
-  return 'PlaylistPanelRendererContent(playlistPanelVideoRenderer: $playlistPanelVideoRenderer, automixPreviewVideoRenderer: $automixPreviewVideoRenderer)';
+  return 'PlaylistPanelRendererContent(playlistPanelVideoRenderer: $playlistPanelVideoRenderer, playlistPanelVideoWrapperRenderer: $playlistPanelVideoWrapperRenderer, automixPreviewVideoRenderer: $automixPreviewVideoRenderer)';
 }
 
 
@@ -607,11 +621,11 @@ abstract mixin class _$PlaylistPanelRendererContentCopyWith<$Res> implements $Pl
   factory _$PlaylistPanelRendererContentCopyWith(_PlaylistPanelRendererContent value, $Res Function(_PlaylistPanelRendererContent) _then) = __$PlaylistPanelRendererContentCopyWithImpl;
 @override @useResult
 $Res call({
- PlaylistPanelVideoRenderer? playlistPanelVideoRenderer, AutomixPreviewVideoRenderer? automixPreviewVideoRenderer
+ PlaylistPanelVideoRenderer? playlistPanelVideoRenderer, PlaylistPanelVideoWrapperRenderer? playlistPanelVideoWrapperRenderer, AutomixPreviewVideoRenderer? automixPreviewVideoRenderer
 });
 
 
-@override $PlaylistPanelVideoRendererCopyWith<$Res>? get playlistPanelVideoRenderer;@override $AutomixPreviewVideoRendererCopyWith<$Res>? get automixPreviewVideoRenderer;
+@override $PlaylistPanelVideoRendererCopyWith<$Res>? get playlistPanelVideoRenderer;@override $PlaylistPanelVideoWrapperRendererCopyWith<$Res>? get playlistPanelVideoWrapperRenderer;@override $AutomixPreviewVideoRendererCopyWith<$Res>? get automixPreviewVideoRenderer;
 
 }
 /// @nodoc
@@ -624,10 +638,11 @@ class __$PlaylistPanelRendererContentCopyWithImpl<$Res>
 
 /// Create a copy of PlaylistPanelRendererContent
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? playlistPanelVideoRenderer = freezed,Object? automixPreviewVideoRenderer = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? playlistPanelVideoRenderer = freezed,Object? playlistPanelVideoWrapperRenderer = freezed,Object? automixPreviewVideoRenderer = freezed,}) {
   return _then(_PlaylistPanelRendererContent(
 playlistPanelVideoRenderer: freezed == playlistPanelVideoRenderer ? _self.playlistPanelVideoRenderer : playlistPanelVideoRenderer // ignore: cast_nullable_to_non_nullable
-as PlaylistPanelVideoRenderer?,automixPreviewVideoRenderer: freezed == automixPreviewVideoRenderer ? _self.automixPreviewVideoRenderer : automixPreviewVideoRenderer // ignore: cast_nullable_to_non_nullable
+as PlaylistPanelVideoRenderer?,playlistPanelVideoWrapperRenderer: freezed == playlistPanelVideoWrapperRenderer ? _self.playlistPanelVideoWrapperRenderer : playlistPanelVideoWrapperRenderer // ignore: cast_nullable_to_non_nullable
+as PlaylistPanelVideoWrapperRenderer?,automixPreviewVideoRenderer: freezed == automixPreviewVideoRenderer ? _self.automixPreviewVideoRenderer : automixPreviewVideoRenderer // ignore: cast_nullable_to_non_nullable
 as AutomixPreviewVideoRenderer?,
   ));
 }
@@ -643,6 +658,18 @@ $PlaylistPanelVideoRendererCopyWith<$Res>? get playlistPanelVideoRenderer {
 
   return $PlaylistPanelVideoRendererCopyWith<$Res>(_self.playlistPanelVideoRenderer!, (value) {
     return _then(_self.copyWith(playlistPanelVideoRenderer: value));
+  });
+}/// Create a copy of PlaylistPanelRendererContent
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PlaylistPanelVideoWrapperRendererCopyWith<$Res>? get playlistPanelVideoWrapperRenderer {
+    if (_self.playlistPanelVideoWrapperRenderer == null) {
+    return null;
+  }
+
+  return $PlaylistPanelVideoWrapperRendererCopyWith<$Res>(_self.playlistPanelVideoWrapperRenderer!, (value) {
+    return _then(_self.copyWith(playlistPanelVideoWrapperRenderer: value));
   });
 }/// Create a copy of PlaylistPanelRendererContent
 /// with the given fields replaced by the non-null parameter values.

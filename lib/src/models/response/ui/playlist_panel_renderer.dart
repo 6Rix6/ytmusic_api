@@ -29,6 +29,7 @@ sealed class PlaylistPanelRenderer with _$PlaylistPanelRenderer {
 sealed class PlaylistPanelRendererContent with _$PlaylistPanelRendererContent {
   const factory PlaylistPanelRendererContent({
     PlaylistPanelVideoRenderer? playlistPanelVideoRenderer,
+    PlaylistPanelVideoWrapperRenderer? playlistPanelVideoWrapperRenderer,
     AutomixPreviewVideoRenderer? automixPreviewVideoRenderer,
   }) = _PlaylistPanelRendererContent;
 
