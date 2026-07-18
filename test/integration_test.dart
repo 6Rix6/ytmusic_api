@@ -38,16 +38,14 @@ void main() {
     res.match((l) => fail('Expected success but got error: $l'), (r) {
       _logHeader('Sections');
       for (final s in r.sections) {
-        log('${s.title}: ${s.items.length} items');
-        expect(
-          s.title,
-          isNotEmpty,
-          reason: 'Section title should not be empty',
-        );
+        final title = s.titleRuns.firstOrNull?.text;
+
+        log('$title: ${s.items.length} items');
+        expect(title, isNotNull, reason: 'Section title should not be null');
         expect(
           s.items,
           isNotEmpty,
-          reason: 'Section "${s.title}" should contain items',
+          reason: 'Section "$title" should contain items',
         );
       }
 
@@ -90,16 +88,18 @@ void main() {
     ) {
       _logHeader('Sections');
       for (final s in r.sections) {
-        log('${s.title}: ${s.items.length} items');
+        final title = s.titleRuns.firstOrNull?.text;
+
+        log('$title: ${s.items.length} items');
         expect(
-          s.title,
-          isNotEmpty,
-          reason: 'Section title should not be empty',
+          title,
+          isNotNull,
+          reason: 'Section title should not be null',
         );
         expect(
           s.items,
           isNotEmpty,
-          reason: 'Section "${s.title}" should contain items',
+          reason: 'Section "$title" should contain items',
         );
       }
 

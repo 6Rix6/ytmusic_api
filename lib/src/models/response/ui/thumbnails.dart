@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../data/endpoint/endpoint.dart';
+
 part 'thumbnails.freezed.dart';
 part 'thumbnails.g.dart';
 
@@ -19,6 +21,7 @@ sealed class ThumbnailRenderer with _$ThumbnailRenderer {
 sealed class MusicThumbnailRenderer with _$MusicThumbnailRenderer {
   const factory MusicThumbnailRenderer({
     required Thumbnails thumbnail,
+    MusicThumbnailRendererOnTap? onTap,
     String? thumbnailCrop,
     String? thumbnailScale,
   }) = _MusicThumbnailRenderer;
@@ -29,6 +32,16 @@ sealed class MusicThumbnailRenderer with _$MusicThumbnailRenderer {
 
 extension MusicThumbnailRendererX on MusicThumbnailRenderer {
   String? getThumbnailUrl() => thumbnail.thumbnails.lastOrNull?.url;
+}
+
+@freezed
+sealed class MusicThumbnailRendererOnTap with _$MusicThumbnailRendererOnTap {
+  const factory MusicThumbnailRendererOnTap({
+    BrowseEndpoint? browseEndpoint,
+  }) = _MusicThumbnailRendererOnTap;
+
+  factory MusicThumbnailRendererOnTap.fromJson(Map<String, dynamic> json) =>
+      _$MusicThumbnailRendererOnTapFromJson(json);
 }
 
 @freezed

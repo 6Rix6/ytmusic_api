@@ -21,6 +21,7 @@ sealed class MusicTwoRowItemRenderer with _$MusicTwoRowItemRenderer {
     required ThumbnailRenderer thumbnailRenderer,
     required NavigationEndpoint navigationEndpoint,
     required MusicResponsiveListItemRendererOverlay? thumbnailOverlay,
+    required String aspectRatio,
   }) = _MusicTwoRowItemRenderer;
 
   factory MusicTwoRowItemRenderer.fromJson(Map<String, dynamic> json) =>
@@ -57,4 +58,9 @@ extension MusicTwoRowItemRendererX on MusicTwoRowItemRenderer {
           .playNavigationEndpoint
           ?.musicVideoType ??
       navigationEndpoint.musicVideoType;
+
+  double get aspectRatioNum =>
+      aspectRatio == 'MUSIC_TWO_ROW_ITEM_THUMBNAIL_ASPECT_RATIO_RECTANGLE_16_9'
+      ? 16 / 9
+      : 1;
 }

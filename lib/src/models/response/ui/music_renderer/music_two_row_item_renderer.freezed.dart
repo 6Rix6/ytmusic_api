@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$MusicTwoRowItemRenderer {
 
- Runs get title; Runs? get subtitle; List<Badges>? get subtitleBadges; Menu? get menu; ThumbnailRenderer get thumbnailRenderer; NavigationEndpoint get navigationEndpoint; MusicResponsiveListItemRendererOverlay? get thumbnailOverlay;
+ Runs get title; Runs? get subtitle; List<Badges>? get subtitleBadges; Menu? get menu; ThumbnailRenderer get thumbnailRenderer; NavigationEndpoint get navigationEndpoint; MusicResponsiveListItemRendererOverlay? get thumbnailOverlay; String get aspectRatio;
 /// Create a copy of MusicTwoRowItemRenderer
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $MusicTwoRowItemRendererCopyWith<MusicTwoRowItemRenderer> get copyWith => _$Musi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MusicTwoRowItemRenderer&&(identical(other.title, title) || other.title == title)&&(identical(other.subtitle, subtitle) || other.subtitle == subtitle)&&const DeepCollectionEquality().equals(other.subtitleBadges, subtitleBadges)&&(identical(other.menu, menu) || other.menu == menu)&&(identical(other.thumbnailRenderer, thumbnailRenderer) || other.thumbnailRenderer == thumbnailRenderer)&&(identical(other.navigationEndpoint, navigationEndpoint) || other.navigationEndpoint == navigationEndpoint)&&(identical(other.thumbnailOverlay, thumbnailOverlay) || other.thumbnailOverlay == thumbnailOverlay));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MusicTwoRowItemRenderer&&(identical(other.title, title) || other.title == title)&&(identical(other.subtitle, subtitle) || other.subtitle == subtitle)&&const DeepCollectionEquality().equals(other.subtitleBadges, subtitleBadges)&&(identical(other.menu, menu) || other.menu == menu)&&(identical(other.thumbnailRenderer, thumbnailRenderer) || other.thumbnailRenderer == thumbnailRenderer)&&(identical(other.navigationEndpoint, navigationEndpoint) || other.navigationEndpoint == navigationEndpoint)&&(identical(other.thumbnailOverlay, thumbnailOverlay) || other.thumbnailOverlay == thumbnailOverlay)&&(identical(other.aspectRatio, aspectRatio) || other.aspectRatio == aspectRatio));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,title,subtitle,const DeepCollectionEquality().hash(subtitleBadges),menu,thumbnailRenderer,navigationEndpoint,thumbnailOverlay);
+int get hashCode => Object.hash(runtimeType,title,subtitle,const DeepCollectionEquality().hash(subtitleBadges),menu,thumbnailRenderer,navigationEndpoint,thumbnailOverlay,aspectRatio);
 
 @override
 String toString() {
-  return 'MusicTwoRowItemRenderer(title: $title, subtitle: $subtitle, subtitleBadges: $subtitleBadges, menu: $menu, thumbnailRenderer: $thumbnailRenderer, navigationEndpoint: $navigationEndpoint, thumbnailOverlay: $thumbnailOverlay)';
+  return 'MusicTwoRowItemRenderer(title: $title, subtitle: $subtitle, subtitleBadges: $subtitleBadges, menu: $menu, thumbnailRenderer: $thumbnailRenderer, navigationEndpoint: $navigationEndpoint, thumbnailOverlay: $thumbnailOverlay, aspectRatio: $aspectRatio)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $MusicTwoRowItemRendererCopyWith<$Res>  {
   factory $MusicTwoRowItemRendererCopyWith(MusicTwoRowItemRenderer value, $Res Function(MusicTwoRowItemRenderer) _then) = _$MusicTwoRowItemRendererCopyWithImpl;
 @useResult
 $Res call({
- Runs title, Runs? subtitle, List<Badges>? subtitleBadges, Menu? menu, ThumbnailRenderer thumbnailRenderer, NavigationEndpoint navigationEndpoint, MusicResponsiveListItemRendererOverlay? thumbnailOverlay
+ Runs title, Runs? subtitle, List<Badges>? subtitleBadges, Menu? menu, ThumbnailRenderer thumbnailRenderer, NavigationEndpoint navigationEndpoint, MusicResponsiveListItemRendererOverlay? thumbnailOverlay, String aspectRatio
 });
 
 
@@ -65,7 +65,7 @@ class _$MusicTwoRowItemRendererCopyWithImpl<$Res>
 
 /// Create a copy of MusicTwoRowItemRenderer
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? title = null,Object? subtitle = freezed,Object? subtitleBadges = freezed,Object? menu = freezed,Object? thumbnailRenderer = null,Object? navigationEndpoint = null,Object? thumbnailOverlay = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? title = null,Object? subtitle = freezed,Object? subtitleBadges = freezed,Object? menu = freezed,Object? thumbnailRenderer = null,Object? navigationEndpoint = null,Object? thumbnailOverlay = freezed,Object? aspectRatio = null,}) {
   return _then(_self.copyWith(
 title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as Runs,subtitle: freezed == subtitle ? _self.subtitle : subtitle // ignore: cast_nullable_to_non_nullable
@@ -74,7 +74,8 @@ as List<Badges>?,menu: freezed == menu ? _self.menu : menu // ignore: cast_nulla
 as Menu?,thumbnailRenderer: null == thumbnailRenderer ? _self.thumbnailRenderer : thumbnailRenderer // ignore: cast_nullable_to_non_nullable
 as ThumbnailRenderer,navigationEndpoint: null == navigationEndpoint ? _self.navigationEndpoint : navigationEndpoint // ignore: cast_nullable_to_non_nullable
 as NavigationEndpoint,thumbnailOverlay: freezed == thumbnailOverlay ? _self.thumbnailOverlay : thumbnailOverlay // ignore: cast_nullable_to_non_nullable
-as MusicResponsiveListItemRendererOverlay?,
+as MusicResponsiveListItemRendererOverlay?,aspectRatio: null == aspectRatio ? _self.aspectRatio : aspectRatio // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 /// Create a copy of MusicTwoRowItemRenderer
@@ -219,10 +220,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Runs title,  Runs? subtitle,  List<Badges>? subtitleBadges,  Menu? menu,  ThumbnailRenderer thumbnailRenderer,  NavigationEndpoint navigationEndpoint,  MusicResponsiveListItemRendererOverlay? thumbnailOverlay)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Runs title,  Runs? subtitle,  List<Badges>? subtitleBadges,  Menu? menu,  ThumbnailRenderer thumbnailRenderer,  NavigationEndpoint navigationEndpoint,  MusicResponsiveListItemRendererOverlay? thumbnailOverlay,  String aspectRatio)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _MusicTwoRowItemRenderer() when $default != null:
-return $default(_that.title,_that.subtitle,_that.subtitleBadges,_that.menu,_that.thumbnailRenderer,_that.navigationEndpoint,_that.thumbnailOverlay);case _:
+return $default(_that.title,_that.subtitle,_that.subtitleBadges,_that.menu,_that.thumbnailRenderer,_that.navigationEndpoint,_that.thumbnailOverlay,_that.aspectRatio);case _:
   return orElse();
 
 }
@@ -240,10 +241,10 @@ return $default(_that.title,_that.subtitle,_that.subtitleBadges,_that.menu,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Runs title,  Runs? subtitle,  List<Badges>? subtitleBadges,  Menu? menu,  ThumbnailRenderer thumbnailRenderer,  NavigationEndpoint navigationEndpoint,  MusicResponsiveListItemRendererOverlay? thumbnailOverlay)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Runs title,  Runs? subtitle,  List<Badges>? subtitleBadges,  Menu? menu,  ThumbnailRenderer thumbnailRenderer,  NavigationEndpoint navigationEndpoint,  MusicResponsiveListItemRendererOverlay? thumbnailOverlay,  String aspectRatio)  $default,) {final _that = this;
 switch (_that) {
 case _MusicTwoRowItemRenderer():
-return $default(_that.title,_that.subtitle,_that.subtitleBadges,_that.menu,_that.thumbnailRenderer,_that.navigationEndpoint,_that.thumbnailOverlay);}
+return $default(_that.title,_that.subtitle,_that.subtitleBadges,_that.menu,_that.thumbnailRenderer,_that.navigationEndpoint,_that.thumbnailOverlay,_that.aspectRatio);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -257,10 +258,10 @@ return $default(_that.title,_that.subtitle,_that.subtitleBadges,_that.menu,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Runs title,  Runs? subtitle,  List<Badges>? subtitleBadges,  Menu? menu,  ThumbnailRenderer thumbnailRenderer,  NavigationEndpoint navigationEndpoint,  MusicResponsiveListItemRendererOverlay? thumbnailOverlay)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Runs title,  Runs? subtitle,  List<Badges>? subtitleBadges,  Menu? menu,  ThumbnailRenderer thumbnailRenderer,  NavigationEndpoint navigationEndpoint,  MusicResponsiveListItemRendererOverlay? thumbnailOverlay,  String aspectRatio)?  $default,) {final _that = this;
 switch (_that) {
 case _MusicTwoRowItemRenderer() when $default != null:
-return $default(_that.title,_that.subtitle,_that.subtitleBadges,_that.menu,_that.thumbnailRenderer,_that.navigationEndpoint,_that.thumbnailOverlay);case _:
+return $default(_that.title,_that.subtitle,_that.subtitleBadges,_that.menu,_that.thumbnailRenderer,_that.navigationEndpoint,_that.thumbnailOverlay,_that.aspectRatio);case _:
   return null;
 
 }
@@ -272,7 +273,7 @@ return $default(_that.title,_that.subtitle,_that.subtitleBadges,_that.menu,_that
 @JsonSerializable()
 
 class _MusicTwoRowItemRenderer implements MusicTwoRowItemRenderer {
-  const _MusicTwoRowItemRenderer({required this.title, required this.subtitle, required final  List<Badges>? subtitleBadges, required this.menu, required this.thumbnailRenderer, required this.navigationEndpoint, required this.thumbnailOverlay}): _subtitleBadges = subtitleBadges;
+  const _MusicTwoRowItemRenderer({required this.title, required this.subtitle, required final  List<Badges>? subtitleBadges, required this.menu, required this.thumbnailRenderer, required this.navigationEndpoint, required this.thumbnailOverlay, required this.aspectRatio}): _subtitleBadges = subtitleBadges;
   factory _MusicTwoRowItemRenderer.fromJson(Map<String, dynamic> json) => _$MusicTwoRowItemRendererFromJson(json);
 
 @override final  Runs title;
@@ -290,6 +291,7 @@ class _MusicTwoRowItemRenderer implements MusicTwoRowItemRenderer {
 @override final  ThumbnailRenderer thumbnailRenderer;
 @override final  NavigationEndpoint navigationEndpoint;
 @override final  MusicResponsiveListItemRendererOverlay? thumbnailOverlay;
+@override final  String aspectRatio;
 
 /// Create a copy of MusicTwoRowItemRenderer
 /// with the given fields replaced by the non-null parameter values.
@@ -304,16 +306,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MusicTwoRowItemRenderer&&(identical(other.title, title) || other.title == title)&&(identical(other.subtitle, subtitle) || other.subtitle == subtitle)&&const DeepCollectionEquality().equals(other._subtitleBadges, _subtitleBadges)&&(identical(other.menu, menu) || other.menu == menu)&&(identical(other.thumbnailRenderer, thumbnailRenderer) || other.thumbnailRenderer == thumbnailRenderer)&&(identical(other.navigationEndpoint, navigationEndpoint) || other.navigationEndpoint == navigationEndpoint)&&(identical(other.thumbnailOverlay, thumbnailOverlay) || other.thumbnailOverlay == thumbnailOverlay));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MusicTwoRowItemRenderer&&(identical(other.title, title) || other.title == title)&&(identical(other.subtitle, subtitle) || other.subtitle == subtitle)&&const DeepCollectionEquality().equals(other._subtitleBadges, _subtitleBadges)&&(identical(other.menu, menu) || other.menu == menu)&&(identical(other.thumbnailRenderer, thumbnailRenderer) || other.thumbnailRenderer == thumbnailRenderer)&&(identical(other.navigationEndpoint, navigationEndpoint) || other.navigationEndpoint == navigationEndpoint)&&(identical(other.thumbnailOverlay, thumbnailOverlay) || other.thumbnailOverlay == thumbnailOverlay)&&(identical(other.aspectRatio, aspectRatio) || other.aspectRatio == aspectRatio));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,title,subtitle,const DeepCollectionEquality().hash(_subtitleBadges),menu,thumbnailRenderer,navigationEndpoint,thumbnailOverlay);
+int get hashCode => Object.hash(runtimeType,title,subtitle,const DeepCollectionEquality().hash(_subtitleBadges),menu,thumbnailRenderer,navigationEndpoint,thumbnailOverlay,aspectRatio);
 
 @override
 String toString() {
-  return 'MusicTwoRowItemRenderer(title: $title, subtitle: $subtitle, subtitleBadges: $subtitleBadges, menu: $menu, thumbnailRenderer: $thumbnailRenderer, navigationEndpoint: $navigationEndpoint, thumbnailOverlay: $thumbnailOverlay)';
+  return 'MusicTwoRowItemRenderer(title: $title, subtitle: $subtitle, subtitleBadges: $subtitleBadges, menu: $menu, thumbnailRenderer: $thumbnailRenderer, navigationEndpoint: $navigationEndpoint, thumbnailOverlay: $thumbnailOverlay, aspectRatio: $aspectRatio)';
 }
 
 
@@ -324,7 +326,7 @@ abstract mixin class _$MusicTwoRowItemRendererCopyWith<$Res> implements $MusicTw
   factory _$MusicTwoRowItemRendererCopyWith(_MusicTwoRowItemRenderer value, $Res Function(_MusicTwoRowItemRenderer) _then) = __$MusicTwoRowItemRendererCopyWithImpl;
 @override @useResult
 $Res call({
- Runs title, Runs? subtitle, List<Badges>? subtitleBadges, Menu? menu, ThumbnailRenderer thumbnailRenderer, NavigationEndpoint navigationEndpoint, MusicResponsiveListItemRendererOverlay? thumbnailOverlay
+ Runs title, Runs? subtitle, List<Badges>? subtitleBadges, Menu? menu, ThumbnailRenderer thumbnailRenderer, NavigationEndpoint navigationEndpoint, MusicResponsiveListItemRendererOverlay? thumbnailOverlay, String aspectRatio
 });
 
 
@@ -341,7 +343,7 @@ class __$MusicTwoRowItemRendererCopyWithImpl<$Res>
 
 /// Create a copy of MusicTwoRowItemRenderer
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? title = null,Object? subtitle = freezed,Object? subtitleBadges = freezed,Object? menu = freezed,Object? thumbnailRenderer = null,Object? navigationEndpoint = null,Object? thumbnailOverlay = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? title = null,Object? subtitle = freezed,Object? subtitleBadges = freezed,Object? menu = freezed,Object? thumbnailRenderer = null,Object? navigationEndpoint = null,Object? thumbnailOverlay = freezed,Object? aspectRatio = null,}) {
   return _then(_MusicTwoRowItemRenderer(
 title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as Runs,subtitle: freezed == subtitle ? _self.subtitle : subtitle // ignore: cast_nullable_to_non_nullable
@@ -350,7 +352,8 @@ as List<Badges>?,menu: freezed == menu ? _self.menu : menu // ignore: cast_nulla
 as Menu?,thumbnailRenderer: null == thumbnailRenderer ? _self.thumbnailRenderer : thumbnailRenderer // ignore: cast_nullable_to_non_nullable
 as ThumbnailRenderer,navigationEndpoint: null == navigationEndpoint ? _self.navigationEndpoint : navigationEndpoint // ignore: cast_nullable_to_non_nullable
 as NavigationEndpoint,thumbnailOverlay: freezed == thumbnailOverlay ? _self.thumbnailOverlay : thumbnailOverlay // ignore: cast_nullable_to_non_nullable
-as MusicResponsiveListItemRendererOverlay?,
+as MusicResponsiveListItemRendererOverlay?,aspectRatio: null == aspectRatio ? _self.aspectRatio : aspectRatio // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 

@@ -30,6 +30,7 @@ _MusicTwoRowItemRenderer _$MusicTwoRowItemRendererFromJson(
       : MusicResponsiveListItemRendererOverlay.fromJson(
           json['thumbnailOverlay'] as Map<String, dynamic>,
         ),
+  aspectRatio: json['aspectRatio'] as String,
 );
 
 Map<String, dynamic> _$MusicTwoRowItemRendererToJson(
@@ -42,4 +43,5 @@ Map<String, dynamic> _$MusicTwoRowItemRendererToJson(
   'thumbnailRenderer': instance.thumbnailRenderer,
   'navigationEndpoint': instance.navigationEndpoint,
   'thumbnailOverlay': instance.thumbnailOverlay,
+  'aspectRatio': instance.aspectRatio,
 };

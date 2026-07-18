@@ -350,7 +350,7 @@ $MusicThumbnailRendererCopyWith<$Res>? get croppedSquareThumbnailRenderer {
 /// @nodoc
 mixin _$MusicThumbnailRenderer {
 
- Thumbnails get thumbnail; String? get thumbnailCrop; String? get thumbnailScale;
+ Thumbnails get thumbnail; MusicThumbnailRendererOnTap? get onTap; String? get thumbnailCrop; String? get thumbnailScale;
 /// Create a copy of MusicThumbnailRenderer
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -363,16 +363,16 @@ $MusicThumbnailRendererCopyWith<MusicThumbnailRenderer> get copyWith => _$MusicT
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MusicThumbnailRenderer&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail)&&(identical(other.thumbnailCrop, thumbnailCrop) || other.thumbnailCrop == thumbnailCrop)&&(identical(other.thumbnailScale, thumbnailScale) || other.thumbnailScale == thumbnailScale));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MusicThumbnailRenderer&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail)&&(identical(other.onTap, onTap) || other.onTap == onTap)&&(identical(other.thumbnailCrop, thumbnailCrop) || other.thumbnailCrop == thumbnailCrop)&&(identical(other.thumbnailScale, thumbnailScale) || other.thumbnailScale == thumbnailScale));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,thumbnail,thumbnailCrop,thumbnailScale);
+int get hashCode => Object.hash(runtimeType,thumbnail,onTap,thumbnailCrop,thumbnailScale);
 
 @override
 String toString() {
-  return 'MusicThumbnailRenderer(thumbnail: $thumbnail, thumbnailCrop: $thumbnailCrop, thumbnailScale: $thumbnailScale)';
+  return 'MusicThumbnailRenderer(thumbnail: $thumbnail, onTap: $onTap, thumbnailCrop: $thumbnailCrop, thumbnailScale: $thumbnailScale)';
 }
 
 
@@ -383,11 +383,11 @@ abstract mixin class $MusicThumbnailRendererCopyWith<$Res>  {
   factory $MusicThumbnailRendererCopyWith(MusicThumbnailRenderer value, $Res Function(MusicThumbnailRenderer) _then) = _$MusicThumbnailRendererCopyWithImpl;
 @useResult
 $Res call({
- Thumbnails thumbnail, String? thumbnailCrop, String? thumbnailScale
+ Thumbnails thumbnail, MusicThumbnailRendererOnTap? onTap, String? thumbnailCrop, String? thumbnailScale
 });
 
 
-$ThumbnailsCopyWith<$Res> get thumbnail;
+$ThumbnailsCopyWith<$Res> get thumbnail;$MusicThumbnailRendererOnTapCopyWith<$Res>? get onTap;
 
 }
 /// @nodoc
@@ -400,10 +400,11 @@ class _$MusicThumbnailRendererCopyWithImpl<$Res>
 
 /// Create a copy of MusicThumbnailRenderer
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? thumbnail = null,Object? thumbnailCrop = freezed,Object? thumbnailScale = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? thumbnail = null,Object? onTap = freezed,Object? thumbnailCrop = freezed,Object? thumbnailScale = freezed,}) {
   return _then(_self.copyWith(
 thumbnail: null == thumbnail ? _self.thumbnail : thumbnail // ignore: cast_nullable_to_non_nullable
-as Thumbnails,thumbnailCrop: freezed == thumbnailCrop ? _self.thumbnailCrop : thumbnailCrop // ignore: cast_nullable_to_non_nullable
+as Thumbnails,onTap: freezed == onTap ? _self.onTap : onTap // ignore: cast_nullable_to_non_nullable
+as MusicThumbnailRendererOnTap?,thumbnailCrop: freezed == thumbnailCrop ? _self.thumbnailCrop : thumbnailCrop // ignore: cast_nullable_to_non_nullable
 as String?,thumbnailScale: freezed == thumbnailScale ? _self.thumbnailScale : thumbnailScale // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
@@ -416,6 +417,18 @@ $ThumbnailsCopyWith<$Res> get thumbnail {
   
   return $ThumbnailsCopyWith<$Res>(_self.thumbnail, (value) {
     return _then(_self.copyWith(thumbnail: value));
+  });
+}/// Create a copy of MusicThumbnailRenderer
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MusicThumbnailRendererOnTapCopyWith<$Res>? get onTap {
+    if (_self.onTap == null) {
+    return null;
+  }
+
+  return $MusicThumbnailRendererOnTapCopyWith<$Res>(_self.onTap!, (value) {
+    return _then(_self.copyWith(onTap: value));
   });
 }
 }
@@ -496,10 +509,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Thumbnails thumbnail,  String? thumbnailCrop,  String? thumbnailScale)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Thumbnails thumbnail,  MusicThumbnailRendererOnTap? onTap,  String? thumbnailCrop,  String? thumbnailScale)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _MusicThumbnailRenderer() when $default != null:
-return $default(_that.thumbnail,_that.thumbnailCrop,_that.thumbnailScale);case _:
+return $default(_that.thumbnail,_that.onTap,_that.thumbnailCrop,_that.thumbnailScale);case _:
   return orElse();
 
 }
@@ -517,10 +530,10 @@ return $default(_that.thumbnail,_that.thumbnailCrop,_that.thumbnailScale);case _
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Thumbnails thumbnail,  String? thumbnailCrop,  String? thumbnailScale)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Thumbnails thumbnail,  MusicThumbnailRendererOnTap? onTap,  String? thumbnailCrop,  String? thumbnailScale)  $default,) {final _that = this;
 switch (_that) {
 case _MusicThumbnailRenderer():
-return $default(_that.thumbnail,_that.thumbnailCrop,_that.thumbnailScale);}
+return $default(_that.thumbnail,_that.onTap,_that.thumbnailCrop,_that.thumbnailScale);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -534,10 +547,10 @@ return $default(_that.thumbnail,_that.thumbnailCrop,_that.thumbnailScale);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Thumbnails thumbnail,  String? thumbnailCrop,  String? thumbnailScale)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Thumbnails thumbnail,  MusicThumbnailRendererOnTap? onTap,  String? thumbnailCrop,  String? thumbnailScale)?  $default,) {final _that = this;
 switch (_that) {
 case _MusicThumbnailRenderer() when $default != null:
-return $default(_that.thumbnail,_that.thumbnailCrop,_that.thumbnailScale);case _:
+return $default(_that.thumbnail,_that.onTap,_that.thumbnailCrop,_that.thumbnailScale);case _:
   return null;
 
 }
@@ -549,10 +562,11 @@ return $default(_that.thumbnail,_that.thumbnailCrop,_that.thumbnailScale);case _
 @JsonSerializable()
 
 class _MusicThumbnailRenderer implements MusicThumbnailRenderer {
-  const _MusicThumbnailRenderer({required this.thumbnail, this.thumbnailCrop, this.thumbnailScale});
+  const _MusicThumbnailRenderer({required this.thumbnail, this.onTap, this.thumbnailCrop, this.thumbnailScale});
   factory _MusicThumbnailRenderer.fromJson(Map<String, dynamic> json) => _$MusicThumbnailRendererFromJson(json);
 
 @override final  Thumbnails thumbnail;
+@override final  MusicThumbnailRendererOnTap? onTap;
 @override final  String? thumbnailCrop;
 @override final  String? thumbnailScale;
 
@@ -569,16 +583,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MusicThumbnailRenderer&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail)&&(identical(other.thumbnailCrop, thumbnailCrop) || other.thumbnailCrop == thumbnailCrop)&&(identical(other.thumbnailScale, thumbnailScale) || other.thumbnailScale == thumbnailScale));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MusicThumbnailRenderer&&(identical(other.thumbnail, thumbnail) || other.thumbnail == thumbnail)&&(identical(other.onTap, onTap) || other.onTap == onTap)&&(identical(other.thumbnailCrop, thumbnailCrop) || other.thumbnailCrop == thumbnailCrop)&&(identical(other.thumbnailScale, thumbnailScale) || other.thumbnailScale == thumbnailScale));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,thumbnail,thumbnailCrop,thumbnailScale);
+int get hashCode => Object.hash(runtimeType,thumbnail,onTap,thumbnailCrop,thumbnailScale);
 
 @override
 String toString() {
-  return 'MusicThumbnailRenderer(thumbnail: $thumbnail, thumbnailCrop: $thumbnailCrop, thumbnailScale: $thumbnailScale)';
+  return 'MusicThumbnailRenderer(thumbnail: $thumbnail, onTap: $onTap, thumbnailCrop: $thumbnailCrop, thumbnailScale: $thumbnailScale)';
 }
 
 
@@ -589,11 +603,11 @@ abstract mixin class _$MusicThumbnailRendererCopyWith<$Res> implements $MusicThu
   factory _$MusicThumbnailRendererCopyWith(_MusicThumbnailRenderer value, $Res Function(_MusicThumbnailRenderer) _then) = __$MusicThumbnailRendererCopyWithImpl;
 @override @useResult
 $Res call({
- Thumbnails thumbnail, String? thumbnailCrop, String? thumbnailScale
+ Thumbnails thumbnail, MusicThumbnailRendererOnTap? onTap, String? thumbnailCrop, String? thumbnailScale
 });
 
 
-@override $ThumbnailsCopyWith<$Res> get thumbnail;
+@override $ThumbnailsCopyWith<$Res> get thumbnail;@override $MusicThumbnailRendererOnTapCopyWith<$Res>? get onTap;
 
 }
 /// @nodoc
@@ -606,10 +620,11 @@ class __$MusicThumbnailRendererCopyWithImpl<$Res>
 
 /// Create a copy of MusicThumbnailRenderer
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? thumbnail = null,Object? thumbnailCrop = freezed,Object? thumbnailScale = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? thumbnail = null,Object? onTap = freezed,Object? thumbnailCrop = freezed,Object? thumbnailScale = freezed,}) {
   return _then(_MusicThumbnailRenderer(
 thumbnail: null == thumbnail ? _self.thumbnail : thumbnail // ignore: cast_nullable_to_non_nullable
-as Thumbnails,thumbnailCrop: freezed == thumbnailCrop ? _self.thumbnailCrop : thumbnailCrop // ignore: cast_nullable_to_non_nullable
+as Thumbnails,onTap: freezed == onTap ? _self.onTap : onTap // ignore: cast_nullable_to_non_nullable
+as MusicThumbnailRendererOnTap?,thumbnailCrop: freezed == thumbnailCrop ? _self.thumbnailCrop : thumbnailCrop // ignore: cast_nullable_to_non_nullable
 as String?,thumbnailScale: freezed == thumbnailScale ? _self.thumbnailScale : thumbnailScale // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
@@ -623,6 +638,299 @@ $ThumbnailsCopyWith<$Res> get thumbnail {
   
   return $ThumbnailsCopyWith<$Res>(_self.thumbnail, (value) {
     return _then(_self.copyWith(thumbnail: value));
+  });
+}/// Create a copy of MusicThumbnailRenderer
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MusicThumbnailRendererOnTapCopyWith<$Res>? get onTap {
+    if (_self.onTap == null) {
+    return null;
+  }
+
+  return $MusicThumbnailRendererOnTapCopyWith<$Res>(_self.onTap!, (value) {
+    return _then(_self.copyWith(onTap: value));
+  });
+}
+}
+
+
+/// @nodoc
+mixin _$MusicThumbnailRendererOnTap {
+
+ BrowseEndpoint? get browseEndpoint;
+/// Create a copy of MusicThumbnailRendererOnTap
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$MusicThumbnailRendererOnTapCopyWith<MusicThumbnailRendererOnTap> get copyWith => _$MusicThumbnailRendererOnTapCopyWithImpl<MusicThumbnailRendererOnTap>(this as MusicThumbnailRendererOnTap, _$identity);
+
+  /// Serializes this MusicThumbnailRendererOnTap to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MusicThumbnailRendererOnTap&&(identical(other.browseEndpoint, browseEndpoint) || other.browseEndpoint == browseEndpoint));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,browseEndpoint);
+
+@override
+String toString() {
+  return 'MusicThumbnailRendererOnTap(browseEndpoint: $browseEndpoint)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $MusicThumbnailRendererOnTapCopyWith<$Res>  {
+  factory $MusicThumbnailRendererOnTapCopyWith(MusicThumbnailRendererOnTap value, $Res Function(MusicThumbnailRendererOnTap) _then) = _$MusicThumbnailRendererOnTapCopyWithImpl;
+@useResult
+$Res call({
+ BrowseEndpoint? browseEndpoint
+});
+
+
+$BrowseEndpointCopyWith<$Res>? get browseEndpoint;
+
+}
+/// @nodoc
+class _$MusicThumbnailRendererOnTapCopyWithImpl<$Res>
+    implements $MusicThumbnailRendererOnTapCopyWith<$Res> {
+  _$MusicThumbnailRendererOnTapCopyWithImpl(this._self, this._then);
+
+  final MusicThumbnailRendererOnTap _self;
+  final $Res Function(MusicThumbnailRendererOnTap) _then;
+
+/// Create a copy of MusicThumbnailRendererOnTap
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? browseEndpoint = freezed,}) {
+  return _then(_self.copyWith(
+browseEndpoint: freezed == browseEndpoint ? _self.browseEndpoint : browseEndpoint // ignore: cast_nullable_to_non_nullable
+as BrowseEndpoint?,
+  ));
+}
+/// Create a copy of MusicThumbnailRendererOnTap
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$BrowseEndpointCopyWith<$Res>? get browseEndpoint {
+    if (_self.browseEndpoint == null) {
+    return null;
+  }
+
+  return $BrowseEndpointCopyWith<$Res>(_self.browseEndpoint!, (value) {
+    return _then(_self.copyWith(browseEndpoint: value));
+  });
+}
+}
+
+
+/// Adds pattern-matching-related methods to [MusicThumbnailRendererOnTap].
+extension MusicThumbnailRendererOnTapPatterns on MusicThumbnailRendererOnTap {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _MusicThumbnailRendererOnTap value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _MusicThumbnailRendererOnTap() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _MusicThumbnailRendererOnTap value)  $default,){
+final _that = this;
+switch (_that) {
+case _MusicThumbnailRendererOnTap():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _MusicThumbnailRendererOnTap value)?  $default,){
+final _that = this;
+switch (_that) {
+case _MusicThumbnailRendererOnTap() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( BrowseEndpoint? browseEndpoint)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _MusicThumbnailRendererOnTap() when $default != null:
+return $default(_that.browseEndpoint);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( BrowseEndpoint? browseEndpoint)  $default,) {final _that = this;
+switch (_that) {
+case _MusicThumbnailRendererOnTap():
+return $default(_that.browseEndpoint);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( BrowseEndpoint? browseEndpoint)?  $default,) {final _that = this;
+switch (_that) {
+case _MusicThumbnailRendererOnTap() when $default != null:
+return $default(_that.browseEndpoint);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _MusicThumbnailRendererOnTap implements MusicThumbnailRendererOnTap {
+  const _MusicThumbnailRendererOnTap({this.browseEndpoint});
+  factory _MusicThumbnailRendererOnTap.fromJson(Map<String, dynamic> json) => _$MusicThumbnailRendererOnTapFromJson(json);
+
+@override final  BrowseEndpoint? browseEndpoint;
+
+/// Create a copy of MusicThumbnailRendererOnTap
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$MusicThumbnailRendererOnTapCopyWith<_MusicThumbnailRendererOnTap> get copyWith => __$MusicThumbnailRendererOnTapCopyWithImpl<_MusicThumbnailRendererOnTap>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$MusicThumbnailRendererOnTapToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MusicThumbnailRendererOnTap&&(identical(other.browseEndpoint, browseEndpoint) || other.browseEndpoint == browseEndpoint));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,browseEndpoint);
+
+@override
+String toString() {
+  return 'MusicThumbnailRendererOnTap(browseEndpoint: $browseEndpoint)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$MusicThumbnailRendererOnTapCopyWith<$Res> implements $MusicThumbnailRendererOnTapCopyWith<$Res> {
+  factory _$MusicThumbnailRendererOnTapCopyWith(_MusicThumbnailRendererOnTap value, $Res Function(_MusicThumbnailRendererOnTap) _then) = __$MusicThumbnailRendererOnTapCopyWithImpl;
+@override @useResult
+$Res call({
+ BrowseEndpoint? browseEndpoint
+});
+
+
+@override $BrowseEndpointCopyWith<$Res>? get browseEndpoint;
+
+}
+/// @nodoc
+class __$MusicThumbnailRendererOnTapCopyWithImpl<$Res>
+    implements _$MusicThumbnailRendererOnTapCopyWith<$Res> {
+  __$MusicThumbnailRendererOnTapCopyWithImpl(this._self, this._then);
+
+  final _MusicThumbnailRendererOnTap _self;
+  final $Res Function(_MusicThumbnailRendererOnTap) _then;
+
+/// Create a copy of MusicThumbnailRendererOnTap
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? browseEndpoint = freezed,}) {
+  return _then(_MusicThumbnailRendererOnTap(
+browseEndpoint: freezed == browseEndpoint ? _self.browseEndpoint : browseEndpoint // ignore: cast_nullable_to_non_nullable
+as BrowseEndpoint?,
+  ));
+}
+
+/// Create a copy of MusicThumbnailRendererOnTap
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$BrowseEndpointCopyWith<$Res>? get browseEndpoint {
+    if (_self.browseEndpoint == null) {
+    return null;
+  }
+
+  return $BrowseEndpointCopyWith<$Res>(_self.browseEndpoint!, (value) {
+    return _then(_self.copyWith(browseEndpoint: value));
   });
 }
 }
