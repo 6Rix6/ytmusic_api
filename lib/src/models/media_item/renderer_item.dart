@@ -31,10 +31,3 @@ sealed class RendererItem with _$RendererItem {
   factory RendererItem.fromJson(Map<String, dynamic> json) =>
       _$RendererItemFromJson(json);
 }
-//
-// extension RendererItemX on RendererItem {
-//   YTItem get item => switch(this){
-//     TwoRowYTItem(:final ytItem) => ytItem,
-//     ResponsiveYTItem(:final songItem) => songItem
-//   };
-// }
