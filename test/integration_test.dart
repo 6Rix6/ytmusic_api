@@ -91,11 +91,7 @@ void main() {
         final title = s.titleRuns.firstOrNull?.text;
 
         log('$title: ${s.items.length} items');
-        expect(
-          title,
-          isNotNull,
-          reason: 'Section title should not be null',
-        );
+        expect(title, isNotNull, reason: 'Section title should not be null');
         expect(
           s.items,
           isNotEmpty,
@@ -255,6 +251,26 @@ void main() {
 
       for (final item in r.items) {
         log(item.title);
+      }
+    });
+  });
+
+  test('Explore', () async {
+    final res = await client.explore();
+
+    res.match((l) => fail('Expected success but got error: $l'), (r) {
+      _logHeader('Sections');
+      for (var section in r.sections) {
+        log('title: ${section.titleRuns.firstOrNull?.text}');
+        log('${section.items.length} items');
+      }
+
+      if (r.moodAndGenres != null) {
+        _logHeader('Mood and Genres');
+        log('title: ${r.moodAndGenres!.titleRuns.firstOrNull?.text}');
+        for (var item in r.moodAndGenres!.items) {
+          log('item: ${item.title}');
+        }
       }
     });
   });

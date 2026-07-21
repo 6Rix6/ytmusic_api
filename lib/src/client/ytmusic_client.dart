@@ -441,6 +441,18 @@ class YTMusicClient {
         .run();
   }
 
+  YouTubeResult<ExplorePage> explore() {
+    return _innerTube
+        .browse(YouTubeClient.webRemix, browseId: 'FEmusic_explore')
+        .flatMap(
+          (r) => _parseResponse(r, (val) {
+            final res = BrowseResponse.fromJson(val);
+            return ExplorePageParser.fromBrowseResponse(res);
+          }),
+        )
+        .run();
+  }
+
   // ========== Search ==========
 
   YouTubeResult<SearchPage> search(String query, {SearchFilter? filter}) {
