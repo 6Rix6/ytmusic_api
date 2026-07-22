@@ -320,9 +320,12 @@ class InnerTube {
     );
   }
 
-  InnerTubeTask getSearchSuggestions(YouTubeClient client, String input) {
+  InnerTubeTask<Map<String, dynamic>> getSearchSuggestions(
+    YouTubeClient client,
+    String input,
+  ) {
     return _task(
-      () => _httpClient.post(
+      () => _httpClient.post<Map<String, dynamic>>(
         'music/get_search_suggestions',
         queryParameters: {'prettyPrint': false},
         options: Options(headers: _ytHeaders(client, setLogin: true)),

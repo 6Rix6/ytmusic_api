@@ -290,6 +290,21 @@ void main() {
     });
   });
 
+  test('Search Suggestions', () async {
+    final res = await client.searchSuggestions('Yoaso');
+
+    res.match((l) => fail('Expected success but got error: $l'), (r) {
+      _logHeader('Suggestion Queries');
+      for (var query in r.queries) {
+        log(query);
+      }
+      _logHeader('Recommended Items');
+      for (var item in r.recommendedItems) {
+        log(item.item.title);
+      }
+    });
+  });
+
   test('Player', () async {
     final res = await client.player(YouTubeClient.webRemix, 'HHrm77putKQ');
 

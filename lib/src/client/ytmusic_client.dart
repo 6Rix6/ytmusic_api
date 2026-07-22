@@ -479,6 +479,20 @@ class YTMusicClient {
         .run();
   }
 
+  YouTubeResult<SearchSuggestions> searchSuggestions(String query) {
+    return _innerTube
+        .getSearchSuggestions(YouTubeClient.webRemix, query)
+        .flatMap(
+          (r) => _parseResponse(r, (val) {
+            final res = GetSearchSuggestionsResponse.fromJson(val);
+            return SearchSuggestionPageParser.fromGetSearchSuggestionsResponse(
+              res,
+            );
+          }),
+        )
+        .run();
+  }
+
   // ========== Player ===========
 
   YouTubeResult<PlayerResponse> player(
